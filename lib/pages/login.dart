@@ -51,8 +51,9 @@ class _PageState extends State<SignInPage> {
                     padding: EdgeInsets.all(20.0),
                   ),
                   FButton(
-                      text: "Register",
+                      text: "Sign In",
                       info: "Don't have an account? Register here",
+                      onPressed: (){},
                       onTap: () {
                         Navigator.push(
                             context,
