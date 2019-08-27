@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uno/pages/registration.dart';
 
 void main()=> runApp(
   HomePage()
@@ -7,8 +8,9 @@ void main()=> runApp(
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return MaterialApp(
+      home: Registration(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
