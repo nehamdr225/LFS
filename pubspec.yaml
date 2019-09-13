@@ -1,5 +1,5 @@
-name: uno
-description: A new Flutter project.
+name: LFS
+description: A merchant discount app.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,6 +23,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  carousel_pro: ^1.0.0
+  http: ^0.12.0
+  provider: ^3.0.0+1
+  smooth_star_rating: ^1.0.3
+  flutter_statusbarcolor: ^0.2.1
+
 
 dev_dependencies:
   flutter_test:
@@ -41,8 +47,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  #assets:
-   # - images/bgart.png
+  assets:
+   - assets/images/
 
   #  - images/a_dot_ham.jpeg
 
@@ -57,12 +63,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Bree
+      fonts:
+        - asset: assets/fonts/Bree_Serif/BreeSerif-Regular.ttf
+    - family: Crimson
+      fonts:
+        - asset: assets/fonts/Crimson_Pro/CrimsonPro-Regular.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

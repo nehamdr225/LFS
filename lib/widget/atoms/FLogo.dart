@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uno/widget/atoms/FText.dart';
+import 'package:LFS/widget/atoms/FText.dart';
 
 class FLogo extends StatelessWidget {
   final String text;

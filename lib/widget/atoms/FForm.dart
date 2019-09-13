@@ -9,21 +9,27 @@ class FForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Color(0xff0D47A1),
       obscureText: obscure,
       keyboardType: type,
       decoration: InputDecoration(
+        fillColor: Color(0xff0D47A1),
+        hoverColor: Color(0xff0D47A1),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.orangeAccent[400]),
-        ),
-        icon: Icon(icon, color: Color(0xff00e676)),
-        focusColor: Color(0xff00e676),
+          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+          borderSide: BorderSide(color: Colors.blue,
+        ),),
+        icon: Icon(icon, color: Color(0xff0D47A1)),
+        focusColor: Color(0xff0D47A1),
         labelText: text,
-        labelStyle: TextStyle(color: Color(0xff00e676)),
+        labelStyle: TextStyle(
+          fontFamily: 'Crimson',
+          color: Color(0xff0D47A1)),
         hintText: 'Type your $text here',
+        hintStyle: TextStyle(color: Color(0xff4FC3F7)),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.greenAccent[400]),
+          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+          borderSide: BorderSide(color: Colors.blue[900]),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red[800]),
