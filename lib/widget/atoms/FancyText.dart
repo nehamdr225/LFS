@@ -9,8 +9,9 @@ class FancyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
+      //color: Colors.blue[900],
       child: Material(
+        color: Colors.transparent,
         child: InkWell(
           child: Text(text,
               style: TextStyle(

@@ -28,6 +28,7 @@ dependencies:
   provider: ^3.0.0+1
   smooth_star_rating: ^1.0.3
   flutter_statusbarcolor: ^0.2.1
+  vector_math: any
 
 
 dev_dependencies:

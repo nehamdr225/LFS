@@ -5,18 +5,19 @@ class FCarousel extends StatelessWidget {
   // final List <AssetImage> images;
   // FCarousel({this.images});
   Widget build(BuildContext context) {
-    return Container(
-      height: 350.0,
+    return SizedBox(
+      height: 200.0,
+      width: 350.0 ,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: [
-          AssetImage('assets/images/offers/one.jpg'),
-          AssetImage('assets/images/offers/two.jpg'),
-          AssetImage('assets/images/offers/three.jpg'),
+          AssetImage('assets/images/one.jpg'),
+          AssetImage('assets/images/two.jpg'),
+          AssetImage('assets/images/three.jpg'),
         ],
         animationCurve: Curves.ease,
         autoplay: true,
-        animationDuration: Duration(milliseconds: 900),
+        animationDuration: Duration(seconds: 1),
         dotSize: 6.0,
         overlayShadowColors: Color(0xff0d47a1),
         dotBgColor: Colors.transparent,
