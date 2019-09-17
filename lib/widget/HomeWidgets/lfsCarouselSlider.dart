@@ -7,7 +7,7 @@ class CarouselSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Carousel(
-        boxFit: BoxFit.fitWidth,
+        boxFit: BoxFit.fill,
         images:[
           AssetImage('assets/images/categoryPics/lfsHotels.png'),
           AssetImage('assets/images/categoryPics/lfsRestaurants.jpg'),

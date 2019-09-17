@@ -17,18 +17,40 @@ class HomePage extends StatelessWidget {
               flexibleSpace: CarouselSlide(),
               backgroundColor: Colors.blue,
               floating: true,
-              expandedHeight: 450.0,
-              leading: Icon(Icons.arrow_back, color: Colors.transparent,),
+              expandedHeight: 400.0,
+              leading: Icon(
+                Icons.arrow_back,
+                color: Colors.transparent,
+              ),
+              actions: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: FloatingActionButton(
+                      elevation: 5.0,
+                      heroTag: 'Search',
+                      backgroundColor: Colors.black45,
+                      onPressed: () {},
+                      child: Icon(Icons.search, color: Colors.white)),
+                ),
+              ],
             ),
-            
+            SliverToBoxAdapter(
+                child: Padding(
+              padding: EdgeInsets.all(12.0),
+            )),
             CircleOpts(),
-            
             Container(
               child: HorizontalSlider(),
             ),
-            FollowAt()
-
-
+            SliverToBoxAdapter(
+                child: Padding(
+              padding: EdgeInsets.all(12.0),
+            )),
+            FollowAt(),
+            SliverToBoxAdapter(
+                child: Padding(
+              padding: EdgeInsets.all(12.0),
+            )),
           ],
         ),
       ),

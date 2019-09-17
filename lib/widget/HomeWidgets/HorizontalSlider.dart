@@ -11,7 +11,7 @@ class HorizontalSlider extends StatelessWidget {
       delegate: SliverChildListDelegate(
         <Widget>[
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
             child: FancyText(text: '~~~  Exclusive Discounts  ~~~', textColor: primary, size: 20.0, textAlign: TextAlign.center,),
           ),
           HorizontalList(),
