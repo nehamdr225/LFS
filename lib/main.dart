@@ -3,10 +3,10 @@ import 'package:LFS/pages/signinNsignup/UserPrompt.dart';
 import 'package:flutter/material.dart';
 
 void main()=> runApp(
-  HomePage()
+  MainPage()
 );
 
-class HomePage extends StatelessWidget {
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

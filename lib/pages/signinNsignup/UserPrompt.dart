@@ -1,4 +1,4 @@
-import 'package:LFS/pages/home.dart';
+import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/pages/signinNsignup/login.dart';
 import 'package:LFS/pages/signinNsignup/registration.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
@@ -57,7 +57,7 @@ class UserPrompt extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePage()));
+                              builder: (context) => NavigationPage()));
                       },
                     ),
             Padding(padding: EdgeInsets.only(bottom: 28.0),),

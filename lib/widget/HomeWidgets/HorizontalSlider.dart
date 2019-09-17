@@ -1,28 +1,46 @@
-// import 'package:LFS/widget/HomeWidgets/Category.dart';
-// import 'package:LFS/widget/HomeWidgets/constantsCat.dart';
-// import 'package:flutter/material.dart';
+import 'package:LFS/constants/HomeSlider.dart';
+import 'package:LFS/widget/HomeWidgets/Category.dart';
+import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:flutter/material.dart';
+import 'package:LFS/constants/colors.dart';
 
-// class AsymmetricView extends StatelessWidget {
+class HorizontalSlider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: FancyText(text: '~~~  Exclusive Discounts  ~~~', textColor: primary, size: 20.0, textAlign: TextAlign.center,),
+          ),
+          HorizontalList(),
+        ],
+      ),
+    );
+  }
+}
 
-//   const AsymmetricView({Key key});
-  
-//   List<Widget> _buildColumns(BuildContext context){
-//    return List.generate(_listItemCount(products.length),(int index){
-//      double width = .59 * MediaQuery.of(context).size.width;
-//      Widget column;
-//      if (index %2 == 0){
-//        int bottom = _evenCasesIndex(index);
-//        column = TwoProductCardColumn(column);
-//      }
-//    });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView(
-//       scrollDirection: Axis.horizontal,
-//       padding: EdgeInsets.fromLTRB(0.0, 34.0, 16.0, 44.0),
-//       children: _buildColumns(context),
-//     );
-//   }
-// }
+class HorizontalList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200.0,
+      width: 150.0,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 4,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            elevation: 2.0,
+            shape: Border.all(width: 1.0, style: BorderStyle.solid, color: Colors.grey[200]),
+            child: Category(
+              name: Main[index]['name'],
+              src: Main[index]['src'],
+            ),
+          );
+        }, //
+      ),
+    );
+  }
+}

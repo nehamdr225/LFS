@@ -4,8 +4,9 @@ class FancyText extends StatelessWidget {
   final String text;
   final double size;
   final Color textColor;
+  final TextAlign textAlign;
 
-  FancyText({this.text, this.textColor, this.size});
+  FancyText({this.text, this.textAlign, this.textColor, this.size});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +19,8 @@ class FancyText extends StatelessWidget {
                 fontFamily: 'Bree',
                 fontSize: size,
                 color: textColor,
-              )),
+              ),
+              textAlign: textAlign,),
         ),
       ),
     );

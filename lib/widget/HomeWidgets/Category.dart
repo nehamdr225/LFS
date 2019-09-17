@@ -1,4 +1,4 @@
-import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
@@ -18,24 +18,26 @@ class Category extends StatelessWidget {
             //   MaterialPageRoute(
             //     builder: (context) => CategoryPage(text: name),
             //   ),
-            // );
+            //);
           },
           child: Container(
-            height: 200.0,
-            width: 300.0,
-              child: Stack(
-                children: <Widget>[
-                  Image.asset(src),
-                  Container(
-                    color: Colors.black12,
+            width: 150.0,
+              child: ListTile(
+                title: Image.asset(
+                  src,
+                  width: 150.0,
+                  height: 150.0,
+                ),
+                contentPadding: EdgeInsets.all(1.0),
+                subtitle: Container(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    name,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Bree', fontSize: 15.0, color: primary),
                   ),
-                  FancyText(
-                    text: name,
-                    textColor: Colors.white,
-                  )
-                ],
-              ),
-          ),
+                ),
+              )),
         ));
   }
 }
