@@ -1,31 +1,31 @@
 import 'package:LFS/widget/HomeWidgets/AppBarPage.dart';
-import 'package:LFS/widget/HomeWidgets/FCarousel.dart';
 import 'package:LFS/widget/HomeWidgets/bottomnavbar/FancyTabBar.dart';
 //import 'package:LFS/widget/HomeWidgets/HorizontalSlider.dart';
 import 'package:LFS/widget/HomeWidgets/MenuBar.dart';
+import 'package:LFS/widget/OverlayCarousel.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  HomePage({Key key, this.title}): super(key:key);
+  HomePage({Key key, this.title}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+          backgroundColor: Colors.white,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
             child: AppBarPage(),
           ),
-          bottomNavigationBar: FancyTabBar(),
+          // bottomNavigationBar: FancyTabBar(),
           // Container(
           //   color: Colors.white,
           //   child: Row(
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
           //         color: Colors.blue[900],
           //         icon: Icon(Icons.home),
           //         onPressed: (){},
-          //       ),                
+          //       ),
           //       IconButton(
           //         color: Colors.blue[900],
           //         icon: Icon(Icons.account_circle),
@@ -52,9 +52,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
           body: ListView(
             children: <Widget>[
               MenuBar(),
-              Padding(padding: EdgeInsets.all(8.0),),
-              FCarousel(),
-              Padding(padding: EdgeInsets.all(8.0),),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+              ),
+              OverlayCarousel(),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+              ),
               Container(
                 padding: EdgeInsets.all(8.0),
                 alignment: Alignment.topLeft,
@@ -65,9 +69,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 ),
               ),
               Container(
-                //child: AsymmetricView(),
-              )
-              
+                  //child: AsymmetricView(),
+                  )
             ],
           )),
     );
