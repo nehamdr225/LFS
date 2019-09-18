@@ -1,4 +1,6 @@
+import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppBarPage extends StatelessWidget {
@@ -26,7 +28,7 @@ class AppBarPage extends StatelessWidget {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.search),
+          icon: Icon(CupertinoIcons.search, color: primary,),
           onPressed: (){
             
           },
