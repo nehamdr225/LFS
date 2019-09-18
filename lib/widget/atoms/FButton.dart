@@ -11,8 +11,8 @@ class FButton extends StatelessWidget {
     return Column(
       children: <Widget>[
         SizedBox(
-            width: 300.0,
-            height: 50.0,
+            width: 250.0,
+            height: 40.0,
             child: RaisedButton(
               elevation: 4.0,
               hoverColor: Colors.blue[900],

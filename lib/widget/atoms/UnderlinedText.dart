@@ -9,15 +9,16 @@ class UnderlinedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
         child: Text(text,
             style: TextStyle(
                 fontFamily: 'Crimson',
                 fontSize: size,
-                color: Colors.blue[900],
+                color: Colors.white,
                 decoration: TextDecoration.underline,
-                decorationColor: Colors.blue[900],)),
+                decorationColor: Colors.white,)),
       ),
     );
   }
