@@ -5,7 +5,7 @@ import 'package:LFS/pages/signinNsignup/registration.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/widget/atoms/UnderlinedText.dart';
-import 'package:LFS/widget/atoms/Logo.dart';
+// import 'package:LFS/widget/atoms/Logo.dart';
 import 'package:flutter/material.dart';
 
 class UserPrompt extends StatelessWidget {
