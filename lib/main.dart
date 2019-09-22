@@ -1,7 +1,8 @@
-import 'package:LFS/pages/signinNsignup/UserPrompt.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './state/theme.dart';
+
+import 'package:LFS/pages/signinNsignup/UserPrompt.dart';
+import 'package:LFS/state/theme.dart';
 
 void main() => runApp(MainPage());
 
