@@ -36,7 +36,7 @@ class _RegistrationState extends State<Registration> {
                         text: 'Id',
                         obscure: false,
                         type: TextInputType.text,
-                        icon: Icons.people,
+                        // icon: Icons.people,
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -45,7 +45,7 @@ class _RegistrationState extends State<Registration> {
                         text: 'Email',
                         obscure: false,
                         type: TextInputType.emailAddress,
-                        icon: Icons.email,
+                        // icon: Icons.email,
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -54,7 +54,7 @@ class _RegistrationState extends State<Registration> {
                         text: 'Phone No.',
                         obscure: false,
                         type: TextInputType.phone,
-                        icon: Icons.phone,
+                        // icon: Icons.phone,
                       ),
                       Padding(
                         padding: EdgeInsets.all(4.0),

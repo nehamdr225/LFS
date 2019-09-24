@@ -1,4 +1,5 @@
 import 'package:LFS/state/merchants.dart';
+import 'package:LFS/state/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,8 @@ class BootStrapper extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(builder: (context) => FTheme()),
-        ChangeNotifierProvider(builder: (context) => MerchantsModel())
+        ChangeNotifierProvider(builder: (context) => MerchantsModel()),
+        ChangeNotifierProvider(builder: (context) => UserModel())
       ],
       child: LfsApp(),
     );

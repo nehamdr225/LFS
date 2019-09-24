@@ -23,7 +23,7 @@ class CPassword extends StatelessWidget {
                   text: 'Password',
                   obscure: true,
                   type: TextInputType.text,
-                  icon: Icons.lock,
+                  // icon: Icons.lock,
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
@@ -32,7 +32,7 @@ class CPassword extends StatelessWidget {
                   text: 'Confirm Password',
                   obscure: true,
                   type: TextInputType.text,
-                  icon: Icons.lock,
+                  // icon: Icons.lock,
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),

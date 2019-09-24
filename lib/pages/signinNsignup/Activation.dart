@@ -38,7 +38,7 @@ class Activation extends StatelessWidget {
                   text: 'Activation Code',
                   type: TextInputType.number,
                   obscure: false,
-                  icon: Icons.lock_open,
+                  // icon: Icons.lock_open,
                 ),
                 Padding(
                   padding: EdgeInsets.all(14.0),
