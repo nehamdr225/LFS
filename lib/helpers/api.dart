@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import '../state/store.dart'
-;
-final String url = "https://apiesell.herokuapp.com";
+import '../state/store.dart';
+
+final String url = "https://lfscards.herokuapp.com";
 String method = "GET";
 
 logout() async {
@@ -74,10 +74,17 @@ getUser(token) async {
   }
 }
 
+getMerchants() async {
+  try {
+    return await fetch(uri: "$url/merchants");
+  } catch (err) {
+    return {"error": "Error ocurred"};
+  }
+}
+
 Map<String, String> headers = {
   HttpHeaders.contentTypeHeader: 'application/json',
 };
-
 
 fetch({uri, method: "GET", body: ''}) async {
   print("called");

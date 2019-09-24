@@ -21,13 +21,13 @@ class _PageState extends State<SignInPage> {
       child: Scaffold(
           body: Center(
             child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
             //Padding(padding: EdgeInsets.all(2.0),),
             FancyText(
               text: 'Login',
-              size: 26.0,
+              size: 20.0,
             ),
             Container(
                 alignment: Alignment.center,
