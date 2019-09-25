@@ -1,7 +1,7 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/NavigationPage.dart';
-import 'package:LFS/pages/signinNsignup/login.dart';
-import 'package:LFS/pages/signinNsignup/registration.dart';
+import 'package:LFS/pages/SigninPage.dart';
+import 'package:LFS/pages/SignupPage.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/widget/atoms/UnderlinedText.dart';

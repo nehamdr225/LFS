@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:LFS/pages/signinNsignup/CPassword.dart';
+import 'package:LFS/pages/ChangePwdPage.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FText.dart';
 import 'package:LFS/widget/atoms/FForm.dart';

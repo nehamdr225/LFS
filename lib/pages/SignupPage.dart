@@ -1,7 +1,7 @@
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
-import 'package:LFS/pages/signinNsignup/Activation.dart';
-import 'package:LFS/pages/signinNsignup/login.dart';
+import 'package:LFS/pages/ActivationPage.dart';
+import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 
