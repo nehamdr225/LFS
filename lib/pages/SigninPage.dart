@@ -2,9 +2,10 @@ import 'package:LFS/helpers/api.dart';
 import 'package:LFS/helpers/validators.dart';
 import 'package:LFS/pages/HomePage.dart';
 import 'package:LFS/pages/views/SigninView.dart';
+import 'package:LFS/state/user.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:LFS/state/user.dart';
 
 class SignInPage extends StatefulWidget {
   @override

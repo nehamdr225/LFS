@@ -1,10 +1,11 @@
+import 'package:LFS/state/cards.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:LFS/state/user.dart';
+import 'package:LFS/state/theme.dart';
+import 'package:LFS/pages/UserPrompt.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:LFS/pages/UserPrompt.dart';
-import 'package:LFS/state/theme.dart';
 
 void main() => runApp(BootStrapper());
 
@@ -15,7 +16,8 @@ class BootStrapper extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(builder: (context) => FTheme()),
         ChangeNotifierProvider(builder: (context) => MerchantsModel()),
-        ChangeNotifierProvider(builder: (context) => UserModel())
+        ChangeNotifierProvider(builder: (context) => UserModel()),
+        ChangeNotifierProvider(builder: (context) => CardsModel())
       ],
       child: LfsApp(),
     );

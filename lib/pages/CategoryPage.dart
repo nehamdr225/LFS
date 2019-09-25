@@ -21,7 +21,7 @@ class CategoryPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MerchantsPage(type: 'Hotels')),
+                    builder: (context) => MerchantsPage(type: 'Hotel')),
               );
             },
           ),
@@ -33,7 +33,7 @@ class CategoryPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MerchantsPage(type: 'Restaurants')),
+                    builder: (context) => MerchantsPage(type: 'Restaurant')),
               );
             },
           ),
@@ -58,7 +58,7 @@ class CategoryPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MerchantsPage(type: 'Movie Halls')),
+                    builder: (context) => MerchantsPage(type: 'Movie')),
               );
             },
           ),

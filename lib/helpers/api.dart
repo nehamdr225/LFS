@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../state/store.dart';
 
-final String url = "https://lfscards.herokuapp.com";
+const String URL = "https://lfscards.herokuapp.com";
 String method = "GET";
 
 logout() async {
@@ -17,7 +17,7 @@ logout() async {
 
 login(String email, String password) async {
   try {
-    var response = await fetch(uri: '$url/user/login', method: "POST", body: {
+    var response = await fetch(uri: '$URL/users/login', method: "POST", body: {
       'email': email,
       'password': password,
     });
@@ -33,7 +33,7 @@ login(String email, String password) async {
 
 signup(String email, String password, String name) async {
   try {
-    var response = await fetch(uri: '$url/user/signup', method: "POST", body: {
+    var response = await fetch(uri: '$URL/users/signup', method: "POST", body: {
       'email': email,
       'password': password,
       'name': name,
@@ -44,10 +44,10 @@ signup(String email, String password, String name) async {
   }
 }
 
-getProducts({result = 10, page = 1}) async {
+getOffers({result = 10, page = 1}) async {
   try {
     var response = await fetch(
-      uri: '$url/products?result=$result&page=$page',
+      uri: '$URL/cards?result=$result&page=$page',
     );
     return response['products'];
   } catch (err) {
@@ -55,9 +55,9 @@ getProducts({result = 10, page = 1}) async {
   }
 }
 
-getProductsByCategory({category = "top", result = 10, page = 1}) async {
+getOffersByCategory({category = "Hotels", result = 10, page = 1}) async {
   fetch(
-    uri: '$url/products/category/$category?result=$result&page=$page',
+    uri: '$URL/offers/category/$category?result=$result&page=$page',
   ).then((response) {
     return response['products'];
   });
@@ -66,7 +66,7 @@ getProductsByCategory({category = "top", result = 10, page = 1}) async {
 getUser(token) async {
   if (headers['X-Access-Token'] == null) updateAccessToken(token);
   try {
-    var response = await fetch(uri: "$url/user");
+    var response = await fetch(uri: "$URL/user");
     if (response['message'] != null) return "token expired";
     return response['result'];
   } catch (err) {
@@ -76,7 +76,7 @@ getUser(token) async {
 
 getMerchants() async {
   try {
-    return await fetch(uri: "$url/merchants");
+    return await fetch(uri: "$URL/merchants");
   } catch (err) {
     return {"error": "Error ocurred"};
   }
