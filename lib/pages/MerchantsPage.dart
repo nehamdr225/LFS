@@ -12,15 +12,45 @@ class MerchantsPage extends StatelessWidget {
   MerchantsPage({this.type});
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     final merchants = Provider.of<MerchantsModel>(context).merchants;
     print(type);
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: AppBarPage(),
+        child: AppBarPage(
+          elevation: 2.0,
+          select: true,
+          search: true,
+        ),
       ),
       body: ListView(
         children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
+            child: FancyText(
+              text: 'Recommendations',
+              textColor: primary,
+              size: 20.0,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
+            child: FancyText(
+              text: 'View All Merchants',
+              textColor: primary,
+              size: 10.0,
+              textAlign: TextAlign.right,
+            ),
+          ),
+            ],
+          ),
+          
           Container(
             height: 120.0,
             width: 150.0,
@@ -47,17 +77,9 @@ class MerchantsPage extends StatelessWidget {
               }, //
             ),
           ),
+          
           Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
-            child: FancyText(
-              text: 'View All Merchants',
-              textColor: primary,
-              size: 10.0,
-              textAlign: TextAlign.right,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
+            padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
             child: FancyText(
               text: '$type Offers & Discounts',
               textColor: primary,
@@ -65,11 +87,20 @@ class MerchantsPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
+            child: FancyText(
+              text: 'View All Offers',
+              textColor: primary,
+              size: 10.0,
+              textAlign: TextAlign.right,
+            ),
+          ),
           Container(
-            height: 300.0,
+            height: screenHeight,
             width: 150.0,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               itemCount: 5,
               itemBuilder: (BuildContext context, int index) {
                 print(merchants[index]['media']);
@@ -91,15 +122,7 @@ class MerchantsPage extends StatelessWidget {
               }, //
             ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
-            child: FancyText(
-              text: 'View All Offers',
-              textColor: primary,
-              size: 10.0,
-              textAlign: TextAlign.right,
-            ),
-          ),
+          
         ],
       ),
     );

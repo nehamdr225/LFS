@@ -1,3 +1,5 @@
+import 'package:LFS/constants/colors.dart';
+import 'package:LFS/widget/HomeWidgets/AppBarPage.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,13 @@ class SignupView extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+         appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: AppBarPage(
+            select: false,
+            text: 'Sign-Up',
+          ),
+        ),
         backgroundColor: Colors.grey[200],
         resizeToAvoidBottomPadding: false,
         body: Align(
@@ -74,7 +83,7 @@ class SignupView extends StatelessWidget {
                   text: "Sign-up",
                   width: 160.0,
                   color: Colors.white,
-                  bg: Colors.deepPurple[900],
+                  bg: primary,
                   onPressed: signupUser,
                 ), //onPressed: () {}),
                 SizedBox(height: 30.0),

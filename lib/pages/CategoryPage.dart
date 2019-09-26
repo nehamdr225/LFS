@@ -9,7 +9,10 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: AppBarPage(),
+        child: AppBarPage(
+          select: true,
+          search: true,
+        ),
       ),
       body: ListView(
         children: <Widget>[

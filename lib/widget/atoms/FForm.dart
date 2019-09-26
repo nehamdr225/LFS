@@ -7,7 +7,7 @@ class FForm extends StatelessWidget {
   final TextInputType type;
   final Function onChanged;
   final style = TextStyle(
-      fontFamily: 'Ropa Sans',
+      fontFamily: 'Crimson',
       fontWeight: FontWeight.bold,
       fontSize: 18,
       color: Colors.black54);

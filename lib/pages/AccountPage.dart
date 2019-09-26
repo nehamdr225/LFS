@@ -1,4 +1,5 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/widget/HomeWidgets/AppBarPage.dart';
 //import 'package:LFS/widget/HomeWidgets/AppBarPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,11 +12,15 @@ class AccountPage extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        iconTheme: IconThemeData(color: primary),
-      ),
+       appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: AppBarPage(
+            bgcolor: Colors.white,
+            elevation: 0.0,
+            select: false,
+            search: false,
+          ),
+        ),
       body: ListView(
         children: <Widget>[
           Padding(

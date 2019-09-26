@@ -3,11 +3,15 @@ import 'package:LFS/state/merchants.dart';
 import 'package:LFS/state/user.dart';
 import 'package:LFS/state/theme.dart';
 import 'package:LFS/pages/UserPrompt.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(BootStrapper());
+Future main() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(BootStrapper());//(await getValue('token')));
+}
 
 class BootStrapper extends StatelessWidget {
   @override
