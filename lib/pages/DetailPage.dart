@@ -34,6 +34,15 @@ class DetailPage extends StatelessWidget {
                 size: 32,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.all(2),
+              child: FancyText(
+                text: merchant['categories'],
+                textColor: primary,
+                textAlign: TextAlign.center,
+                size: 22,
+              ),
+            ),
           ],
         ));
   }
