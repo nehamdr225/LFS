@@ -1,3 +1,4 @@
+import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/state/cards.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:LFS/state/user.dart';
@@ -8,9 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-Future main() async {
+main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(BootStrapper());//(await getValue('token')));
+  runApp(BootStrapper());
 }
 
 class BootStrapper extends StatelessWidget {
@@ -31,9 +32,10 @@ class BootStrapper extends StatelessWidget {
 class LfsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final token = Provider.of<UserModel>(context).token;
     final theme = Provider.of<FTheme>(context).getTheme();
     return MaterialApp(
-      home: UserPrompt(),
+      home: token != null ? NavigationPage() : UserPrompt(),
       debugShowCheckedModeBanner: false,
       theme: theme,
     );

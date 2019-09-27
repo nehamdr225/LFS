@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
   UserModel() {
-    getValue('token').then((token) {
-      if (token != null && token != state["token"]) {
-        state["token"] = token;
-        getUser(token).then((result) {
+    getValue('token').then((localToken) {
+      if (localToken != null && localToken != state["token"]) {
+        state["token"] = localToken;
+        getUser(localToken).then((result) {
           if (result == "token expired") {
             delKeyVal("token").then(() {
-              state["token"] = null;
+              token = null;
               return;
             });
           }

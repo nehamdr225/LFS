@@ -16,6 +16,8 @@ class MerchantsModel extends ChangeNotifier {
 
   List get merchants => _merchants;
 
+  Map one(id) => _merchants.firstWhere((merchant) => merchant["_id"] == id);
+
   set merchants(List data) {
     _merchants.addAll(data);
     notifyListeners();

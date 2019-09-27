@@ -2,19 +2,6 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class CircleOpts extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate(
-        <Widget>[
-          Options(),
-        ],
-      ),
-    );
-  }
-}
-
 class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:LFS/widget/HomeWidgets/AppBarPage.dart';
+import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:flutter/material.dart';
 
 class CardsPage extends StatelessWidget {
@@ -9,7 +9,7 @@ class CardsPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: AppBarPage(),
+        child: FAppbar(),
       ),
       body: ListView(
         children: <Widget>[Text("Cards")],

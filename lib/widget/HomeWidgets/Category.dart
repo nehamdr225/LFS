@@ -1,17 +1,18 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/pages/DetailPage.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
   final network;
-  final String src;
+  final String src, name, id;
   final caption;
-  final String name;
   final height;
   final width;
 
   Category(
       {this.caption,
       this.src,
+      this.id,
       this.name,
       this.network = false,
       this.height = 150.0,
@@ -24,14 +25,14 @@ class Category extends StatelessWidget {
           padding: EdgeInsets.all(2.0),
           child: InkWell(
             onTap: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => CategoryPage(text: name),
-              //   ),
-              //);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(name: name, id: id),
+                ),
+              );
             },
             child: Container(
-              height: height+60.0,
+                height: height,
                 width: width,
                 child: ListTile(
                   title: network != null
@@ -40,7 +41,7 @@ class Category extends StatelessWidget {
                           width: width,
                           height: height,
                         )
-                      : Text("N/A"),
+                      : Text("Image could not be loaded!"),
                   contentPadding: EdgeInsets.all(1.0),
                   subtitle: Container(
                     alignment: Alignment.topCenter,
