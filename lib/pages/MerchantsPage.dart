@@ -1,5 +1,6 @@
 import 'package:LFS/widget/HomeWidgets/Category.dart';
 import 'package:LFS/state/merchants.dart';
+import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 // import 'package:LFS/widget/atoms/FText.dart';
@@ -117,6 +118,7 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
+                  Follow(),
                 ]
               : <Widget>[
                   Row(

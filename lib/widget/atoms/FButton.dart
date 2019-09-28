@@ -1,3 +1,4 @@
+import 'package:LFS/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class FButton extends StatelessWidget {
@@ -5,7 +6,7 @@ class FButton extends StatelessWidget {
   final Function onPressed, onTap;
   final Color color;
   final Color textColor;
-  FButton({this.text, this.textColor, this.color,this.onPressed, this.info, this.onTap});
+  FButton({this.text, this.textColor:primary, this.color:primary,this.onPressed, this.info, this.onTap});
   @override
   Widget build(BuildContext context) {
     return Column(

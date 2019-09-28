@@ -5,8 +5,9 @@ class FancyText extends StatelessWidget {
   final double size;
   final Color textColor;
   final TextAlign textAlign;
+  final fontFamily;
 
-  FancyText({this.text, this.textAlign, this.textColor, this.size});
+  FancyText({this.text, this.textAlign, this.textColor, this.size, this.fontFamily:'Bree'});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class FancyText extends StatelessWidget {
         child: InkWell(
           child: Text(text,
               style: TextStyle(
-                fontFamily: 'Bree',
+                fontFamily: fontFamily,
                 fontSize: size,
                 color: textColor,
               ),

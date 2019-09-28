@@ -1,8 +1,10 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FAppbar extends StatelessWidget {
-  const FAppbar({Key key}) : super(key: key);
+  final heart;
+  const FAppbar({Key key, this.heart: false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class FAppbar extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             Icons.menu,
-            color: primary,
+            color: Colors.transparent ,
           ),
           onPressed: () {},
           splashColor: splash,
@@ -26,6 +28,16 @@ class FAppbar extends StatelessWidget {
             onPressed: () {},
             splashColor: splash,
           ),
+          heart == true?
+          IconButton(
+            icon: Icon(
+              CupertinoIcons.heart_solid,
+              color: primary,
+            ),
+            onPressed: () {},
+            splashColor: splash,
+          ):
+          Text('')
         ],
       ),
     );
