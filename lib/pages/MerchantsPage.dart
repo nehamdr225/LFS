@@ -13,24 +13,28 @@ class MerchantsPage extends StatelessWidget {
   MerchantsPage({this.type});
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     final merchants = Provider.of<MerchantsModel>(context).merchants;
     // print(type);
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: FAppbar(),
+        child: FAppbar(
+          leadingChoice: false,
+        ),
       ),
       body: ListView(
           children: merchants.length != 0
               ? <Widget>[
+                ////////////////////  TOP HORIZONTAL SCROLLER   ////////////////////////////////////
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
-                          text: 'Merchants',
+                          text: 'Recommendations',
                           textColor: primary,
                           size: 20.0,
                           textAlign: TextAlign.center,
@@ -39,7 +43,7 @@ class MerchantsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
-                          text: 'View All Merchants',
+                          text: 'View All',
                           textColor: primary,
                           size: 10.0,
                           textAlign: TextAlign.right,
@@ -74,13 +78,15 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////  MID HORIZONTAL SCROLLER  ////////////////////////////////////////////
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
                     child: FancyText(
-                      text: '$type Offers & Discounts',
+                      text: 'Best $type Offers & Discounts',
                       textColor: primary,
                       size: 20.0,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                     ),
                   ),
                   Padding(
@@ -94,7 +100,7 @@ class MerchantsPage extends StatelessWidget {
                   ),
                   Container(
                     height: 200,
-                    width: 150.0,
+                    width: screenWidth,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 5,
@@ -108,8 +114,9 @@ class MerchantsPage extends StatelessWidget {
                               color: Colors.grey[200]),
                           child: Category(
                             name: merchants[index]['name'],
+                            id: merchants[index]['_id'],
+                            width: screenWidth,
                             height: 150.0,
-                            width: 300.0,
                             network: merchants[index]['media'] != null
                                 ? merchants[index]['media']['src'][0]
                                 : null,
@@ -118,19 +125,28 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
+///////////////////////////////////////////////////////////////////////////////////////////////////
+                  Padding(padding: EdgeInsets.all(60.0),),
                   Follow(),
                 ]
+ ////////////////////////////////  ERROR MESSAGE WHEN NOT CONNECTED TO THE INTERNET ////////////////////               
               : <Widget>[
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
-                          child: FancyText(
-                            text: 'Error ocurred! Try again later.',
-                            textColor: errorColor,
-                            size: 20.0,
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('assets/images/error.png', width: screenWidth*0.80,),
+                              FancyText(
+                                text: 'Error ocurred! Try again later.',
+                                textColor: errorColor,
+                                size: 20.0,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         )
                       ])

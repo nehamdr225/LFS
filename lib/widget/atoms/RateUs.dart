@@ -16,7 +16,7 @@ class _RateUsState extends State<RateUs> {
                     children: [
                       FancyText(
                         text: 'Rate us',
-                        size: 32.0,
+                        size: 24.0,
                         textAlign: TextAlign.center,
                         textColor: primary,
                       ),
@@ -29,7 +29,7 @@ class _RateUsState extends State<RateUs> {
                           starCount: 5,
                           rating: rating,
                           size: 28.0,
-                          color: Colors.yellow,
+                          color: Colors.yellow[700],
                           borderColor: Colors.black45,
                           spacing: 0.0)
                     ],

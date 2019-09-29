@@ -30,6 +30,7 @@ dependencies:
   smooth_star_rating: ^1.0.3
   flutter_statusbarcolor: ^0.2.1
   vector_math: any
+  google_maps_flutter: ^0.5.21
 
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:LFS/constants/colors.dart';
-
+import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -62,6 +63,20 @@ class AccountPage extends StatelessWidget {
               CupertinoIcons.right_chevron,
               color: primary,
             ),
+            onTap: (){
+              AlertDialog(
+                elevation: 2.0,
+                title: FancyText(
+                  text: 'Rate Us',
+                  textColor: primary,
+                  size: 18.0,
+                ),
+                actions: <Widget>[
+                  RateUs()
+                ],
+              
+              );
+            },
           ),
         ),
         Padding(
