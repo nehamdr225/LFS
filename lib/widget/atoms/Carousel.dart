@@ -21,7 +21,7 @@ class FCarousel extends StatelessWidget {
       autoplay: false,
       dotSize: 6.0,
       overlayShadowColors: Color(0xff0d47a1),
-      dotBgColor: Colors.black54,
+      dotBgColor: Colors.transparent,
       indicatorBgPadding: 12.0,
     );
   }

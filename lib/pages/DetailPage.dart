@@ -5,6 +5,7 @@ import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/state/merchants.dart';
+import 'package:LFS/widget/atoms/Services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -103,7 +104,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
           Padding( // about detail
-            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 0.0),
             child: FancyText(
               text:
                   'Bringing you a new concept in the nightlife of Kathmandu, the, 20,000 sq. ft. venue has a stylish design concept that reminds of a warehouse. The venue has a total capacity of 3000 pax with seating arrangements for approx. 300 pax. ',
@@ -114,6 +115,7 @@ class _DetailPageState extends State<DetailPage> {
               size: 16,
             ),
           ),
+          Services(),
           Padding( // opening hours title
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(

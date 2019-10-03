@@ -32,20 +32,22 @@ class UserPrompt extends StatelessWidget {
             children: <Widget>[
               //Logo(),
               FancyText(
-                  text: "LFS",
-                  textColor: primary,
-                  size: 32.0,
-                ),
-              
-              SizedBox(height: 300.0,),
+                text: "LFS",
+                textColor: primary,
+                size: 32.0,
+              ),
+
+              SizedBox(
+                height: 300.0,
+              ),
               Container(
                   color: Colors.transparent,
                   child: Column(
                     children: <Widget>[
                       FButton(
                           text: "Sign-in",
-                          textColor: Colors.white,
-                          color: Colors.blue[900],
+                          textColor: lfsWhite,
+                          color: primary,
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -57,8 +59,8 @@ class UserPrompt extends StatelessWidget {
                       ),
                       FButton(
                           text: "Sign-up",
-                          textColor: Colors.black,
-                          color: Colors.white,
+                          textColor: textColor,
+                          color: lfsWhite,
                           info: '',
                           onTap: null,
                           onPressed: () {
@@ -69,9 +71,9 @@ class UserPrompt extends StatelessWidget {
                           }),
                     ],
                   )),
-                  Padding(
-                        padding: EdgeInsets.only(bottom: 14.0),
-                      ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 14.0),
+              ),
               UnderlinedText(
                 text: "Continue without sign-in",
                 size: 18.0,

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: FancyText(
-            text: 'Explore you city',
+            text: 'Near You',
             textColor: textColor,
             fontFamily: 'Bree',
             size: 20.0,
