@@ -10,6 +10,8 @@ const splash = Colors.black12;
 const textColor = Color(0xff778094);
 const buttonColor = Color(0xff72bb46);
 
+const deepBlue = Color.fromRGBO(40, 40, 150, 0.8);
+
 // const p_light = Color(0xff5472d3);
 const p_dark = Color(0xff002171);
 // const s_light = Color(0xffb6e3ff);

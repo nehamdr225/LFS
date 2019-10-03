@@ -4,16 +4,15 @@ import 'package:flutter/cupertino.dart';
 
 class MerchantsModel extends ChangeNotifier {
   MerchantsModel() {
+    //Cache data locally and retrieve if not network
     getMerchants().then((data) {
-      if (data["error"] != null)
-        print(data);
-      else
+      if (data["result"] != null) {
         merchants = data["result"];
+      }
     });
   }
 
   List _merchants = [];
-
   List get merchants => _merchants;
 
   Map one(id) => _merchants.firstWhere((merchant) => merchant["_id"] == id);
@@ -23,6 +22,6 @@ class MerchantsModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  category(String cat) => _merchants
-      .where((card) => card["category"].split(";").any((el) => el == cat));
+  category(String cat) =>
+      _merchants.where((card) => card["category"].contains(cat)).toList();
 }

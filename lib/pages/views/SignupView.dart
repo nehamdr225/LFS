@@ -5,8 +5,8 @@ import 'package:LFS/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
-  final String nameErr, emailErr, passwordErr, signupErr;
-  final Function setName, setEmail, setPassword, signupUser;
+  final String nameErr, emailErr, passwordErr, signupErr, cardIdErr;
+  final Function setName, setEmail, setPassword, signupUser, setCardId;
   SignupView(
       {this.nameErr,
       this.emailErr,
@@ -15,7 +15,9 @@ class SignupView extends StatelessWidget {
       this.setName,
       this.setEmail,
       this.setPassword,
-      this.signupUser});
+      this.signupUser,
+      this.cardIdErr,
+      this.setCardId});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,10 @@ class SignupView extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
-            title: Text('Sign-Up', style: TextStyle(color: primary, fontFamily: 'Helvetica'),),
+            title: Text(
+              'Sign-Up',
+              style: TextStyle(color: primary, fontFamily: 'Helvetica'),
+            ),
             backgroundColor: lfsWhite,
             elevation: 2.0,
             leading: IconButton(
@@ -46,9 +51,20 @@ class SignupView extends StatelessWidget {
             padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
-                 FLogo(
+                Padding(
+                  padding: EdgeInsets.all(5.0),
+                ),
+                FLogo(
                   height: 70.0,
                   width: 150.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                FForm(
+                  type: TextInputType.text,
+                  text: "Card ID",
+                  onChanged: (String id) {},
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),

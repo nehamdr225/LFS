@@ -4,6 +4,7 @@ import 'package:LFS/state/merchants.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/widget/atoms/OfferCard.dart';
 // import 'package:LFS/widget/atoms/FText.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,7 @@ class MerchantsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    final merchants = Provider.of<MerchantsModel>(context).merchants;
+    final merchants = Provider.of<MerchantsModel>(context).category(type);
     // print(type);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -26,10 +27,9 @@ class MerchantsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        
           children: merchants.length != 0
               ? <Widget>[
-                ////////////////////  TOP HORIZONTAL SCROLLER   ////////////////////////////////////
+                  ////////////////////  TOP HORIZONTAL SCROLLER   ////////////////////////////////////
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -45,10 +45,12 @@ class MerchantsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
-                          onTap: (){
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProductsPage()));
-                      },
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductsPage()));
+                          },
                           text: 'View All',
                           textColor: textColor,
                           size: 10.0,
@@ -62,7 +64,7 @@ class MerchantsPage extends StatelessWidget {
                     width: 150.0,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
                         return Card(
@@ -98,9 +100,11 @@ class MerchantsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
                     child: FancyText(
-                      onTap: (){
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProductsPage()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductsPage()));
                       },
                       text: 'View All Offers',
                       textColor: textColor,
@@ -113,35 +117,31 @@ class MerchantsPage extends StatelessWidget {
                     width: screenWidth,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
-                        return Card(
-                          elevation: 2.0,
-                          shape: Border.all(
-                              width: 1.0,
-                              style: BorderStyle.solid,
-                              color: Colors.grey[200]),
-                          child: Category(
-                            name: merchants[index]['name'],
-                            id: merchants[index]['_id'],
-                            width: screenWidth,
-                            height: 150.0,
-                            network: merchants[index]['media'] != null
-                                ? merchants[index]['media']['src'][0]
-                                : null,
-                          ),
+                        return OfferCard(
+                          image: merchants[index]['media'] != null
+                              ? merchants[index]['media']['src'][0]
+                              : null,
+                          name: merchants[index]['name'],
+                          address: merchants[index]['address'],
+                          contact: merchants[index]['contact'],
                         );
                       }, //
                     ),
                   ),
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-                  Padding(padding: EdgeInsets.all(10.0),),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                  ),
                   Follow(),
-                  Padding(padding: EdgeInsets.all(10.0),),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                  ),
                 ]
- ////////////////////////////////  ERROR MESSAGE WHEN NOT CONNECTED TO THE INTERNET ////////////////////               
+              ////////////////////////////////  ERROR MESSAGE WHEN NOT CONNECTED TO THE INTERNET ////////////////////
               : <Widget>[
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -151,7 +151,10 @@ class MerchantsPage extends StatelessWidget {
                           padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                           child: Column(
                             children: <Widget>[
-                              Image.asset('assets/images/error.png', width: screenWidth*0.80,),
+                              Image.asset(
+                                'assets/images/error.png',
+                                width: screenWidth * 0.80,
+                              ),
                               FancyText(
                                 text: 'Error ocurred! Try again later.',
                                 textColor: errorColor,

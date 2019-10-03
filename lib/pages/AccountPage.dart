@@ -52,6 +52,26 @@ class AccountPage extends StatelessWidget {
           height: 20.0,
           child: ListTile(
             leading: Icon(
+              Icons.bookmark,
+              color: buttonColor,
+            ),
+            title: Text(
+              'Favourites',
+              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
+            ),
+            trailing: Icon(
+              CupertinoIcons.right_chevron,
+              color: buttonColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(12.0),
+        ),
+        Container(
+          height: 20.0,
+          child: ListTile(
+            leading: Icon(
               CupertinoIcons.heart_solid,
               color: buttonColor,
             ),

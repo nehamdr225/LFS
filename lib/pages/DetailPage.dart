@@ -34,14 +34,16 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: ListView(
         children: <Widget>[
-          Container( // Carousel
+          Container(
+            // Carousel
             height: 300.0,
             child: FCarousel(asset: false, src: merchant['media']['src']),
           ),
           Padding(
             padding: EdgeInsets.all(5.0),
           ),
-          Padding( // Name
+          Padding(
+            // Name
             padding: const EdgeInsets.fromLTRB(15.0, 8.0, 8.0, 2.0),
             child: FancyText(
               text: widget.name,
@@ -50,17 +52,19 @@ class _DetailPageState extends State<DetailPage> {
               size: 22,
             ),
           ),
-          Padding( // category
+          Padding(
+            // category
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
-              text: 'Category', //merchant['categories'],
+              text: merchant['category'].replaceAll(";", ", "),
               textColor: textColor,
               fontFamily: 'Crimson',
               textAlign: TextAlign.start,
               size: 16,
             ),
           ),
-          Padding( // rating
+          Padding(
+            // rating
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,11 +76,16 @@ class _DetailPageState extends State<DetailPage> {
                       label: Row(
                         children: <Widget>[
                           Text('4.8'),
-                          Icon(Icons.star, color: textColor,),
+                          Icon(
+                            Icons.star,
+                            color: textColor,
+                          ),
                         ],
                       ),
                     ),
-                    Padding(padding: EdgeInsets.all(2.0),),
+                    Padding(
+                      padding: EdgeInsets.all(2.0),
+                    ),
                     FancyText(
                       text: '55 people rated',
                       size: 14.0,
@@ -94,7 +103,8 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
           ),
-          Padding( // about title
+          Padding(
+            // about title
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               text: 'ABOUT', //merchant['categories'],
@@ -103,7 +113,8 @@ class _DetailPageState extends State<DetailPage> {
               size: 18,
             ),
           ),
-          Padding( // about detail
+          Padding(
+            // about detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 0.0),
             child: FancyText(
               text:
@@ -115,8 +126,10 @@ class _DetailPageState extends State<DetailPage> {
               size: 16,
             ),
           ),
+
           Services(),
-          Padding( // opening hours title
+          
+          Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               text: 'Opening Hours',
@@ -125,17 +138,19 @@ class _DetailPageState extends State<DetailPage> {
               textAlign: TextAlign.start,
             ),
           ),
-          Padding( // opening hours detail
+          Padding(
+            // opening hours detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: 'Open Now (8am-12am)',
+              text: 'Open Now (10 am- 8 pm)',
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
             ),
           ),
-          Padding( // address title
+          Padding(
+            // address title
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               text: 'Address',
@@ -144,21 +159,21 @@ class _DetailPageState extends State<DetailPage> {
               textAlign: TextAlign.start,
             ),
           ),
-          Padding( // address detail
+          Padding(
+            // address detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: 'Dev Narayan Marg, 1, Kathmandu, Nepal',
+              text: merchant['address'],
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
             ),
           ),
           Container(
-            height: 300.0, 
-            decoration: BoxDecoration(border: Border.all()),
-            child: GoogleMaps()
-          ),
+              height: 300.0,
+              decoration: BoxDecoration(border: Border.all()),
+              child: GoogleMaps()),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Follow(),
