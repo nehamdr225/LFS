@@ -140,7 +140,7 @@ class _DetailPageState extends State<DetailPage> {
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: 'Open Now (8am-12am)',
+              text: 'Open Now (10 am- 8 pm)',
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
@@ -161,7 +161,7 @@ class _DetailPageState extends State<DetailPage> {
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: 'Dev Narayan Marg, 1, Kathmandu, Nepal',
+              text: merchant['address'],
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
