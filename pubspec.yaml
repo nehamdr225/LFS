@@ -76,6 +76,9 @@ flutter:
     - family: Crimson
       fonts:
         - asset: assets/fonts/Crimson_Pro/CrimsonPro-Regular.ttf
+    - family: Helvetica
+      fonts:
+        - asset: assets/fonts/HELR45W.ttf
 
   #   - family: Trajan Pro
   #     fonts:

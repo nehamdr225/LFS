@@ -11,32 +11,27 @@ class BottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: BottomNavigationBar(
+        selectedItemColor: primary,
         type: BottomNavigationBarType.fixed,
         currentIndex: index,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(
-            icon: IconTheme(
-              child: Icon(Icons.category),
-              data: IconThemeData(color: primary),
-            ),
-            title: Text('Category'),
+            activeIcon: Icon(Icons.category, color: primary),
+            icon: Icon(Icons.category, color: secondary,),
+            title: Text('Category', style: TextStyle(fontFamily: 'Helvetica'),),
           ),
           BottomNavigationBarItem(
-            icon: IconTheme(
-              child: Icon(Icons.home),
-              data: IconThemeData(color: primary),
-            ),
-            title: Text('Home'),
+            activeIcon: Icon(Icons.home, color: primary),
+            icon: Icon(Icons.home, color: secondary,),
+
+            title: Text('Home',style: TextStyle(fontFamily: 'Helvetica'),),
           ),
           BottomNavigationBarItem(
-            icon: IconTheme(
-              child: Icon(CupertinoIcons.profile_circled),
-              data: IconThemeData(
-                color: primary,
-              ),
-            ),
-            title: Text('Account'),
+            activeIcon: Icon(CupertinoIcons.profile_circled, color: primary),
+            icon: Icon(CupertinoIcons.profile_circled, color: secondary,),
+            
+            title: Text('Account', style: TextStyle(fontFamily: 'Helvetica'),),
           ),
         ],
       ),

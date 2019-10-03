@@ -1,5 +1,6 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
+import 'package:LFS/widget/atoms/FLogo.dart';
 import 'package:LFS/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +25,18 @@ class SignupView extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
+            title: Text('Sign-Up', style: TextStyle(color: primary, fontFamily: 'Helvetica'),),
+            backgroundColor: lfsWhite,
             elevation: 2.0,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: lfsWhite,
         resizeToAvoidBottomPadding: false,
         body: Align(
           alignment: Alignment.center,
@@ -41,6 +46,10 @@ class SignupView extends StatelessWidget {
             padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
+                 FLogo(
+                  height: 70.0,
+                  width: 150.0,
+                ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
                 ),

@@ -36,7 +36,9 @@ class Category extends StatelessWidget {
                 width: width,
                 child: ListTile(
                   title: network != null
-                      ? Image.network(
+                      ? 
+                      
+                      Image.network(
                           network,
                           width: width,
                           height: height,
@@ -49,7 +51,7 @@ class Category extends StatelessWidget {
                       name,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontFamily: 'Bree', fontSize: 15.0, color: primary),
+                          fontFamily: 'Bree', fontSize: 15.0, color: textColor),
                     ),
                   ),
                 )),

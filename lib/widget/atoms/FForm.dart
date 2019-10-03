@@ -7,10 +7,10 @@ class FForm extends StatelessWidget {
   final TextInputType type;
   final Function onChanged;
   final style = TextStyle(
-      fontFamily: 'Crimson',
+      fontFamily: 'Helvetica',
       fontWeight: FontWeight.bold,
-      fontSize: 18,
-      color: Colors.black54);
+      fontSize: 15,
+      color: primary);
   FForm({this.text, this.type, this.obscure: false, this.onChanged});
 
   @override
@@ -26,6 +26,10 @@ class FForm extends StatelessWidget {
               ? EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0)
               : null,
           hintText: text,
+          hintStyle: TextStyle(
+              fontFamily: 'Helvetica',
+              fontSize: 12,
+              color: Colors.black54),
           labelStyle: style,
           labelText: text,
           focusedBorder:

@@ -1,3 +1,4 @@
+import 'package:LFS/pages/ProductPage.dart';
 import 'package:LFS/widget/HomeWidgets/Category.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
@@ -25,6 +26,7 @@ class MerchantsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+        
           children: merchants.length != 0
               ? <Widget>[
                 ////////////////////  TOP HORIZONTAL SCROLLER   ////////////////////////////////////
@@ -35,7 +37,7 @@ class MerchantsPage extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
                           text: 'Recommendations',
-                          textColor: primary,
+                          textColor: textColor,
                           size: 20.0,
                           textAlign: TextAlign.center,
                         ),
@@ -43,8 +45,12 @@ class MerchantsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
+                          onTap: (){
+                        Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductsPage()));
+                      },
                           text: 'View All',
-                          textColor: primary,
+                          textColor: textColor,
                           size: 10.0,
                           textAlign: TextAlign.right,
                         ),
@@ -84,7 +90,7 @@ class MerchantsPage extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
                     child: FancyText(
                       text: 'Best $type Offers & Discounts',
-                      textColor: primary,
+                      textColor: textColor,
                       size: 20.0,
                       textAlign: TextAlign.start,
                     ),
@@ -92,8 +98,12 @@ class MerchantsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
                     child: FancyText(
+                      onTap: (){
+                        Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductsPage()));
+                      },
                       text: 'View All Offers',
-                      textColor: primary,
+                      textColor: textColor,
                       size: 10.0,
                       textAlign: TextAlign.right,
                     ),
@@ -126,8 +136,10 @@ class MerchantsPage extends StatelessWidget {
                     ),
                   ),
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-                  Padding(padding: EdgeInsets.all(60.0),),
+
+                  Padding(padding: EdgeInsets.all(10.0),),
                   Follow(),
+                  Padding(padding: EdgeInsets.all(10.0),),
                 ]
  ////////////////////////////////  ERROR MESSAGE WHEN NOT CONNECTED TO THE INTERNET ////////////////////               
               : <Widget>[

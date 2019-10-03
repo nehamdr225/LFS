@@ -19,7 +19,7 @@ class AccountPage extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   radius: 40.0,
-                  backgroundColor: secondary,
+                  backgroundColor: primary,
                   child: Text('LFS',
                       style:
                           TextStyle(fontFamily: 'Bree', color: Colors.white)),
@@ -30,12 +30,12 @@ class AccountPage extends StatelessWidget {
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.0, color: primary),
+                    side: BorderSide(width: 1.0, color: buttonColor),
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   ),
                   onPressed: () {},
                   child: Text('Login / Signup',
-                      style: TextStyle(fontFamily: 'Bree', color: primary)),
+                      style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
                   //child: Image.asset('assets/images/SocialMedia/merchantFAB.png', height: 30.0, width: 30.0,),
                 ),
               ],
@@ -52,16 +52,16 @@ class AccountPage extends StatelessWidget {
           height: 20.0,
           child: ListTile(
             leading: Icon(
-              CupertinoIcons.heart,
-              color: primary,
+              CupertinoIcons.heart_solid,
+              color: buttonColor,
             ),
             title: Text(
               'Rate us',
-              style: TextStyle(color: primary, fontFamily: 'Crimson'),
+              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
             ),
             trailing: Icon(
               CupertinoIcons.right_chevron,
-              color: primary,
+              color: buttonColor,
             ),
             onTap: (){
               AlertDialog(
@@ -86,16 +86,16 @@ class AccountPage extends StatelessWidget {
           height: 20.0,
           child: ListTile(
             leading: Icon(
-              CupertinoIcons.heart_solid,
-              color: primary,
+              Icons.thumb_up,
+              color: buttonColor,
             ),
             title: Text(
               'Like',
-              style: TextStyle(color: primary, fontFamily: 'Crimson'),
+              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
             ),
             trailing: Icon(
               CupertinoIcons.right_chevron,
-              color: primary,
+              color: buttonColor,
             ),
           ),
         ),
@@ -107,15 +107,15 @@ class AccountPage extends StatelessWidget {
           child: ListTile(
             leading: Icon(
               CupertinoIcons.share_solid,
-              color: primary,
+              color: buttonColor,
             ),
             title: Text(
               'Share',
-              style: TextStyle(color: primary, fontFamily: 'Crimson'),
+              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
             ),
             trailing: Icon(
               CupertinoIcons.right_chevron,
-              color: primary,
+              color: buttonColor,
             ),
           ),
         )

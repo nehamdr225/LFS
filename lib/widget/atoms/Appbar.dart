@@ -1,5 +1,6 @@
 import 'package:LFS/constants/colors.dart';
-import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/widget/atoms/FLogo.dart';
+//import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,15 +16,17 @@ class FAppbar extends StatelessWidget {
       child: AppBar(
         backgroundColor: lfsWhite,
         leading: leadingChoice == true
-            ? FancyText(
-                text: 'LFS',
-                textColor: primary,
-                textAlign: TextAlign.center,
-                fontFamily: 'Crimson',
-                size: 28.0,
-              )
+            ? FLogo()
+
+            // FancyText(
+            //     text: 'LFS',
+            //     textColor: primary,
+            //     textAlign: TextAlign.center,
+            //     fontFamily: 'Crimson',
+            //     size: 28.0,
+            //   )
             : IconButton(
-                icon: Icon(CupertinoIcons.back),
+                icon: Icon(CupertinoIcons.back, color: primary,),
                 onPressed: (){
                   Navigator.pop(context);
                 },
