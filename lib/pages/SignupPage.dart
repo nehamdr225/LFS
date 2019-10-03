@@ -10,8 +10,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _PageState extends State<SignUpPage> {
-  String name, email, password;
-  String nameErr, emailErr, passwordErr, signupErr;
+  String name, email, password, cardId;
+  String nameErr, emailErr, passwordErr, signupErr, cardIdErr;
   @override
   Widget build(BuildContext context) {
     var setName = (data) {
@@ -51,6 +51,18 @@ class _PageState extends State<SignUpPage> {
         });
     };
 
+    var setCardID = (id) {
+      if (id != cardId && id != null)
+        setState(() {
+          cardId = id;
+          cardIdErr = null;
+        });
+      else
+        setState(() {
+          cardIdErr = "Card ID is not valid!";
+        });
+    };
+
     var signupUser = () async {
       var message = await signup(email, password, name);
       if (message['error'] != null)
@@ -63,14 +75,15 @@ class _PageState extends State<SignUpPage> {
     };
 
     return SignupView(
-      emailErr: emailErr,
-      passwordErr: passwordErr,
-      setEmail: setEmail,
-      setPassword: setPassword,
-      setName: setName,
-      signupErr: signupErr,
-      signupUser: signupUser,
-      nameErr: nameErr,
-    );
+        emailErr: emailErr,
+        passwordErr: passwordErr,
+        setEmail: setEmail,
+        setPassword: setPassword,
+        setName: setName,
+        signupErr: signupErr,
+        signupUser: signupUser,
+        nameErr: nameErr,
+        setCardId: setCardID,
+        cardIdErr: cardIdErr);
   }
 }

@@ -1,61 +1,30 @@
+import 'package:LFS/constants/categories.dart';
 import 'package:LFS/pages/MerchantsPage.dart';
 import 'package:LFS/widget/atoms/Cards.dart';
+
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: <Widget>[
-        Cards(
-          image: 'assets/images/CategoryPage/hotel.jpg',
-          text: 'Hotels',
-          height: 203.0,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MerchantsPage(type: 'Hotel')),
-            );
-          },
-        ),
-        Cards(
-          image: 'assets/images/CategoryPage/Restaurant.jpg',
-          text: 'Restaurants',
-          height: 240.0,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MerchantsPage(type: 'Restaurant')),
-            );
-          },
-        ),
-        Cards(
-          image: 'assets/images/CategoryPage/shoppingMall.jpg',
-          text: 'Shopping Malls',
-          height: 197.0,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MerchantsPage(type: 'Shopping Malls')),
-            );
-          },
-        ),
-        Cards(
-          image: 'assets/images/categoryPics/lfsMovieHall.jpg',
-          text: 'Movie Halls',
-          height: 260.0,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MerchantsPage(type: 'Movie')),
-            );
-          },
-        ),
-      ],
+      children: CATEGORIES
+          .map(
+            (category) => Cards(
+              image: category["image"],
+              text: category["name"],
+              height: 200.0,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MerchantsPage(type: category["type"])),
+                );
+              },
+            ),
+          )
+          .toList(),
     );
   }
 }

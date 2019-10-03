@@ -15,7 +15,7 @@ class MerchantsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    final merchants = Provider.of<MerchantsModel>(context).merchants;
+    final merchants = Provider.of<MerchantsModel>(context).category(type);
     // print(type);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -62,7 +62,7 @@ class MerchantsPage extends StatelessWidget {
                     width: 150.0,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
                         return Card(
@@ -113,7 +113,7 @@ class MerchantsPage extends StatelessWidget {
                     width: screenWidth,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
                         return Card(

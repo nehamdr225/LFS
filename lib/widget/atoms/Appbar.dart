@@ -14,20 +14,16 @@ class FAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: AppBar(
+        elevation: 0.0,
         backgroundColor: lfsWhite,
         leading: leadingChoice == true
             ? FLogo()
-
-            // FancyText(
-            //     text: 'LFS',
-            //     textColor: primary,
-            //     textAlign: TextAlign.center,
-            //     fontFamily: 'Crimson',
-            //     size: 28.0,
-            //   )
             : IconButton(
-                icon: Icon(CupertinoIcons.back, color: primary,),
-                onPressed: (){
+                icon: Icon(
+                  CupertinoIcons.back,
+                  color: primary,
+                ),
+                onPressed: () {
                   Navigator.pop(context);
                 },
               ),

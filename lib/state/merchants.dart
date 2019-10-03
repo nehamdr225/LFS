@@ -23,6 +23,8 @@ class MerchantsModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  category(String cat) => _merchants
-      .where((card) => card["category"].split(";").any((el) => el == cat));
+  // category(String cat) => _merchants
+  //     .where((card) => card["category"].split(";").any((el) => el == cat));
+  category(String cat) =>
+      _merchants.where((card) => card["category"].contains(cat)).toList();
 }

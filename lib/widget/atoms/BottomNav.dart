@@ -9,29 +9,39 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const helvetica = TextStyle(fontFamily: 'Helvetica');
     return Container(
       child: BottomNavigationBar(
+        elevation: 1.0,
+        backgroundColor: Colors.white,
         selectedItemColor: primary,
+        selectedIconTheme: IconThemeData(color: primary),
+        unselectedIconTheme: IconThemeData(color: secondary),
+        unselectedItemColor: secondary,
         type: BottomNavigationBarType.fixed,
         currentIndex: index,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.category, color: primary),
-            icon: Icon(Icons.category, color: secondary,),
-            title: Text('Category', style: TextStyle(fontFamily: 'Helvetica'),),
+            icon: Icon(Icons.category),
+            title: Text(
+              'Category',
+              style: helvetica,
+            ),
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home, color: primary),
-            icon: Icon(Icons.home, color: secondary,),
-
-            title: Text('Home',style: TextStyle(fontFamily: 'Helvetica'),),
+            icon: Icon(Icons.home),
+            title: Text(
+              'Home',
+              style: helvetica,
+            ),
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(CupertinoIcons.profile_circled, color: primary),
-            icon: Icon(CupertinoIcons.profile_circled, color: secondary,),
-            
-            title: Text('Account', style: TextStyle(fontFamily: 'Helvetica'),),
+            icon: Icon(CupertinoIcons.profile_circled),
+            title: Text(
+              'Account',
+              style: helvetica,
+            ),
           ),
         ],
       ),
