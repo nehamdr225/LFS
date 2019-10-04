@@ -17,12 +17,12 @@ const List CATEGORIES = const [
   {
     "name": "Education Center",
     "image": "assets/images/categoryPics/lfsCollege.jpg",
-    "type": "Movie"
+    "type": "Education"
   },
   {
     "name": "Fitness",
     "image": "assets/images/categoryPics/lfsGym.jpg",
-    "type": "Movie"
+    "type": "Health"
   },
   {
     "name": "Movie Halls",
@@ -32,6 +32,6 @@ const List CATEGORIES = const [
   {
     "name": "Night Clubs",
     "image": "assets/images/categoryPics/lfsNightClub.jpg",
-    "type": "Movie"
+    "type": "Nightlife"
   }
 ];
