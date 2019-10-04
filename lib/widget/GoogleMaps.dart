@@ -21,7 +21,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
       draggable: true,
       infoWindow: InfoWindow(title: widget.name),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-      position: LatLng(double.parse(widget.location[0]) , double.parse(widget.location[1])),
+      position: LatLng(
+          double.parse(widget.location[0]), double.parse(widget.location[1])),
     ));
   }
 
@@ -29,7 +30,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Widget build(BuildContext context) {
     return GoogleMap(
       initialCameraPosition: CameraPosition(
-        target: LatLng(double.parse(widget.location[0]), double.parse(widget.location[1])),
+        target: LatLng(
+            double.parse(widget.location[0]), double.parse(widget.location[1])),
         zoom: 15,
       ),
       markers: Set.from(allMarkers),
@@ -47,7 +49,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
   movetoLocation() {
     _controller.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
-          target: LatLng(28.2333333, 83.9833333),
+          target: LatLng(double.parse(widget.location[0]),
+              double.parse(widget.location[1])),
           zoom: 12.0,
           bearing: 45.0,
           tilt: 45.0),
