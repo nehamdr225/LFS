@@ -15,7 +15,22 @@ const List CATEGORIES = const [
     "type": "Malls"
   },
   {
+    "name": "Educational Institutes",
+    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "type": "Movie"
+  },
+  {
+    "name": "Entertainment/ Fitness",
+    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "type": "Movie"
+  },
+  {
     "name": "Movie Halls",
+    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "type": "Movie"
+  },
+  {
+    "name": "Night Clubs",
     "image": "assets/images/categoryPics/lfsMovieHall.jpg",
     "type": "Movie"
   }

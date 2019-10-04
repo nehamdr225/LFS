@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
   final network;
-  final String src, name, id;
+  final String src, name, id, address;
   final caption;
   final height;
   final width;
+  final contact;
 
   Category(
       {this.caption,
       this.src,
+      this.contact,
+      this.address,
       this.id,
       this.name,
       this.network = false,
@@ -27,7 +30,7 @@ class Category extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => DetailPage(name: name, id: id),
+                  builder: (context) => DetailPage(name: name, id: id, address: address,contact: contact,),
                 ),
               );
             },

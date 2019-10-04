@@ -1,3 +1,4 @@
+
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/GoogleMaps.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
@@ -5,15 +6,16 @@ import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/state/merchants.dart';
-import 'package:LFS/widget/atoms/Services.dart';
+//import 'package:LFS/widget/atoms/Services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
-  final String name, id;
+  final String name, id, address;
+  final contact;
 
-  DetailPage({this.name, this.id});
+  DetailPage({this.name, this.id, this.address, this.contact});
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -126,10 +128,11 @@ class _DetailPageState extends State<DetailPage> {
               size: 16,
             ),
           ),
-
-          Services(),
-          
+          // Container(
+          //   height:100.0,
+          //   child: Services()),
           Padding(
+            // opening hours title
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               text: 'Opening Hours',
@@ -143,12 +146,13 @@ class _DetailPageState extends State<DetailPage> {
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: 'Open Now (10 am- 8 pm)',
+              text: 'Open Now (8am-12am)',
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
             ),
           ),
+          
           Padding(
             // address title
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
@@ -164,7 +168,7 @@ class _DetailPageState extends State<DetailPage> {
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: FancyText(
               fontFamily: 'Crimson',
-              text: merchant['address'],
+              text: widget.address,
               size: 16.0,
               textColor: textColor,
               textAlign: TextAlign.start,
@@ -173,7 +177,29 @@ class _DetailPageState extends State<DetailPage> {
           Container(
               height: 300.0,
               decoration: BoxDecoration(border: Border.all()),
-              child: GoogleMaps()),
+              child: GoogleMaps()
+          ),
+          Padding(
+            // address title
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
+            child: FancyText(
+              text: 'Contact Us',
+              size: 16.0,
+              textColor: textColor,
+              textAlign: TextAlign.start,
+            ),
+          ),
+          Padding(
+            // address detail
+            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+            child: FancyText(
+              fontFamily: 'Crimson',
+              text: widget.contact,
+              size: 16.0,
+              textColor: textColor,
+              textAlign: TextAlign.start,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Follow(),

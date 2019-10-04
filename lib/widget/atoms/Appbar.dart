@@ -1,4 +1,5 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/pages/SearchPage.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
 //import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,7 +34,14 @@ class FAppbar extends StatelessWidget {
               Icons.search,
               color: primary,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SearchPage()
+                  ),
+                );
+            },
             splashColor: splash,
           ),
           heart == true

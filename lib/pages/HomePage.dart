@@ -16,8 +16,9 @@ class HomePage extends StatelessWidget {
         Container(
             height: 400,
             child: FCarousel(asset: true, src: [
-              'assets/images/categoryPics/lfsHotels.png',
-              'assets/images/categoryPics/lfsRestaurants.jpg'
+              'assets/images/FeaturedPhotos/dining park.jpg',
+              'assets/images/FeaturedPhotos/hotel imperical pics.jpg'
+              'assets/images/FeaturedPhotos/times square restaurant.png'
             ])),
             Padding(padding: EdgeInsets.all(8.0),),
         Options(),
