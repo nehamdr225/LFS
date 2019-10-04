@@ -30,7 +30,7 @@ class Category extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => DetailPage(name: name, id: id, address: address,contact: contact,),
+                  builder: (context) => DetailPage(id: id),
                 ),
               );
             },
@@ -39,8 +39,7 @@ class Category extends StatelessWidget {
                 width: width,
                 child: ListTile(
                   title: network != null
-                      ?    
-                      Image.network(
+                      ? Image.network(
                           network,
                           width: width,
                           height: height,

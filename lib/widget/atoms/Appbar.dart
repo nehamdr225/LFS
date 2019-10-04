@@ -8,54 +8,55 @@ import 'package:flutter/material.dart';
 class FAppbar extends StatelessWidget {
   final heart;
   final leadingChoice;
-  const FAppbar({Key key, this.leadingChoice: true, this.heart: false})
+  final search;
+  const FAppbar(
+      {Key key,
+      this.leadingChoice: true,
+      this.search: true,
+      this.heart: false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AppBar(
-        elevation: 0.0,
-        backgroundColor: lfsWhite,
-        leading: leadingChoice == true
-            ? FLogo()
-            : IconButton(
+    return AppBar(
+      elevation: 0.0,
+      backgroundColor: lfsWhite,
+      leading: leadingChoice == true
+          ? FLogo()
+          : IconButton(
+              icon: Icon(
+                CupertinoIcons.back,
+                color: primary,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+      actions: <Widget>[
+        search == true ? IconButton(
+          icon: Icon(
+            Icons.search,
+            color: primary,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPage()),
+            );
+          },
+          splashColor: splash,
+        ): Text(' '),
+        heart == true
+            ? IconButton(
                 icon: Icon(
-                  CupertinoIcons.back,
+                  Icons.favorite_border,
                   color: primary,
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: primary,
-            ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SearchPage()
-                  ),
-                );
-            },
-            splashColor: splash,
-          ),
-          heart == true
-              ? IconButton(
-                  icon: Icon(
-                    Icons.favorite_border,
-                    color: primary,
-                  ),
-                  onPressed: () {},
-                  splashColor: splash,
-                )
-              : Text('')
-        ],
-      ),
+                onPressed: () {},
+                splashColor: splash,
+              )
+            : Text('')
+      ],
     );
   }
 }

@@ -7,7 +7,7 @@ const lfsWhite = const Color(0xffffffff);
 const bgColor = const Color(0xfff0f3f6);
 const errorColor = const Color(0xffc5032b);
 const splash = Colors.black12;
-const textColor = Color(0xff778094);
+const textColor = Colors.black87; //||Color(0xff778094);
 const buttonColor = Color(0xff72bb46);
 
 const deepBlue = Color.fromRGBO(40, 40, 150, 0.8);

@@ -8,17 +8,23 @@ class OfferCard extends StatelessWidget {
   final id;
   final address;
   final contact;
-  OfferCard({this.image, this.name, this.address, this.contact,this.id,});
+  OfferCard({
+    this.image,
+    this.name,
+    this.address,
+    this.contact,
+    this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => DetailPage(name: name, id: id, address: address, contact: contact),
-                ),
-              );
+          MaterialPageRoute(
+            builder: (context) => DetailPage(id: id),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(left: 5, right: 5),

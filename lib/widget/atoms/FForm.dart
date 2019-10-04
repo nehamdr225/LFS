@@ -20,6 +20,7 @@ class FForm extends StatelessWidget {
       autofocus: false,
       obscureText: obscure,
       onChanged: onChanged,
+      style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
           icon: type == TextInputType.phone ? Icon(Icons.call) : null,
           contentPadding: type == TextInputType.phone
@@ -27,9 +28,7 @@ class FForm extends StatelessWidget {
               : null,
           hintText: text,
           hintStyle: TextStyle(
-              fontFamily: 'Helvetica',
-              fontSize: 12,
-              color: Colors.black54),
+              fontFamily: 'Helvetica', fontSize: 12, color: Colors.black54),
           labelStyle: style,
           labelText: text,
           focusedBorder:
