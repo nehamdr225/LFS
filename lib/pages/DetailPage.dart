@@ -153,7 +153,10 @@ class _DetailPageState extends State<DetailPage> {
           Container(
               height: 300.0,
               decoration: BoxDecoration(border: Border.all()),
-              child: GoogleMaps()),
+              child: GoogleMaps(
+                name: merchant["name"],
+                location: merchant["location"],
+              )),
           Padding(
             // address title
             padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
