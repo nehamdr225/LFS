@@ -9,6 +9,7 @@ import 'package:LFS/state/merchants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 class DetailPage extends StatefulWidget {
   final String id;
@@ -19,10 +20,23 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  getPosition() async {
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return position;
+  }
+
+  getDistance(List user, List merchant) async {
+    double distanceInMeters = await Geolocator()
+        .distanceBetween(user[0], user[1], merchant[0], merchant[1]);
+        return distanceInMeters;
+  }
+
   @override
   Widget build(BuildContext context) {
     final merchant = Provider.of<MerchantsModel>(context).one(widget.id);
-    print(merchant);
+    // print(merchant);
+    getPosition().then((data) => print(data));
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
