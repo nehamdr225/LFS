@@ -12,7 +12,7 @@ class FCarousel extends StatelessWidget {
       this.asset = true});
   @override
   Widget build(BuildContext context) {
-    print(src);
+    // print(src);
     return Carousel(
       boxFit: BoxFit.cover,
       images: src

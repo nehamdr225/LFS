@@ -32,15 +32,14 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final merchant = Provider.of<MerchantsModel>(context).one(widget.id);
-    // print(merchant);
-    getPosition()
-        .then((data) => getDistance(data, merchant["location"]).then((dist) {
-              if (dist.toString() != distance)
-                setState(() {
-                  distance = dist.toString();
-                });
-            }));
-    print(distance);
+    if (merchant["location"].isNotEmpty && merchant["location"] != null)
+      getPosition()
+          .then((data) => getDistance(data, merchant["location"]).then((dist) {
+                if (dist.toString() != distance)
+                  setState(() {
+                    distance = dist.toString();
+                  });
+              }));
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
@@ -157,14 +156,21 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             // opening hours detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: FancyText(
-              fontFamily: 'Crimson',
-              text: '8am-12am',
-              size: 16.0,
-              textColor: primary,
-              textAlign: TextAlign.start,
-            ),
-          ),
+            child: Row(children: [
+                Icon(
+                  Icons.timer,
+                  size: 16,
+                  color: deepBlue,
+                ),
+                FancyText(
+                  text: "8 am - 12 pm",
+                  textColor: textColor,
+                  fontFamily: 'Crimson',
+                  textAlign: TextAlign.start,
+                  size: 16,
+                ),
+              ],
+          ),),
 
           Padding(
             // address title
@@ -179,21 +185,43 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             // address detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: FancyText(
-              fontFamily: 'Crimson',
-              text: merchant["address"],
-              size: 16.0,
-              textColor: primary,
-              textAlign: TextAlign.start,
-            ),
+            child: Row(children: [
+                Icon(
+                  Icons.location_on,
+                  size: 16,
+                  color: deepBlue,
+                ),
+                FancyText(
+                  text: merchant["address"],
+                  textColor: textColor,
+                  fontFamily: 'Crimson',
+                  textAlign: TextAlign.start,
+                  size: 16,
+                ),
+              ],)
           ),
           Container(
-              height: 300.0,
-              decoration: BoxDecoration(border: Border.all()),
-              child: GoogleMaps(
-                name: merchant["name"],
-                location: merchant["location"],
-              )),
+              height: merchant["location"] != null &&
+                      merchant["location"].isNotEmpty
+                  ? 300.0
+                  : 0.0,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset.fromDirection(1, 2),
+                    blurRadius: 1),
+                    BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset.fromDirection(-1, 2),
+                    blurRadius: 1)
+              ]),
+              child: merchant["location"] != null &&
+                      merchant["location"].isNotEmpty
+                  ? GoogleMaps(
+                      name: merchant["name"],
+                      location: merchant["location"],
+                    )
+                  : Text("")),
           Padding(
             // address title
             padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
@@ -207,13 +235,20 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             // address detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: FancyText(
-              fontFamily: 'Crimson',
-              text: merchant['contact'],
-              size: 16.0,
-              textColor: textColor,
-              textAlign: TextAlign.start,
-            ),
+            child: Row(children: [
+                Icon(
+                  Icons.call,
+                  size: 16,
+                  color: deepBlue,
+                ),
+                FancyText(
+                  text: merchant["contact"],
+                  textColor: textColor,
+                  fontFamily: 'Crimson',
+                  textAlign: TextAlign.start,
+                  size: 16,
+                ),
+              ],)
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),

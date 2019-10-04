@@ -17,7 +17,6 @@ class MerchantsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     final merchants = Provider.of<MerchantsModel>(context).category(type);
-    // print(type);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -69,7 +68,6 @@ class MerchantsPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: merchants.length >= 5 ? 5 : merchants.length,
                       itemBuilder: (BuildContext context, int index) {
-                        // print(merchants[index]['media']);
                         return Card(
                           elevation: 3.0,
                           child: Category(
@@ -121,7 +119,6 @@ class MerchantsPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: merchants.length >= 5 ? 5 : merchants.length,
                       itemBuilder: (BuildContext context, int index) {
-                        // print(merchants[index]['media']);
                         return OfferCard(
                           image: merchants[index]['media'] != null
                               ? merchants[index]['media']['src'][0]

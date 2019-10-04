@@ -40,7 +40,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
     );
   }
 
-  void mapCreated(controller) {
+  void mapCreated(GoogleMapController controller) {
     setState(() {
       _controller = controller;
     });

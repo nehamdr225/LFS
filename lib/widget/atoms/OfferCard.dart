@@ -52,7 +52,7 @@ class OfferCard extends StatelessWidget {
               children: <Widget>[
                 Align(
                   child: Row(children: [
-                    Icon(Icons.local_offer, color: Colors.white,),
+                    Icon(Icons.local_offer, color: Colors.white, size: 16 ),
                     Text(" 5% OFF ",
                         style: TextStyle(
                           fontSize: 18,
@@ -66,6 +66,7 @@ class OfferCard extends StatelessWidget {
                     Icon(
                       Icons.location_on,
                       color: Colors.white,
+                      size: 16
                     ),
                     Text(
                       address,
@@ -79,6 +80,7 @@ class OfferCard extends StatelessWidget {
                     Icon(
                       Icons.call,
                       color: Colors.white,
+                      size: 16
                     ),
                     Text(
                       contact,
