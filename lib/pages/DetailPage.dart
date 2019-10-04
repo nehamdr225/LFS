@@ -20,23 +20,27 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  getPosition() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    return position;
-  }
+  var distance = "N/A";
+  getPosition() async => await Geolocator()
+      .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-  getDistance(List user, List merchant) async {
-    double distanceInMeters = await Geolocator()
-        .distanceBetween(user[0], user[1], merchant[0], merchant[1]);
-        return distanceInMeters;
-  }
+  getDistance(Position user, List merchant) async =>
+      await Geolocator().distanceBetween(user.latitude, user.longitude,
+          double.parse(merchant[0]), double.parse(merchant[1])) /
+      1000;
 
   @override
   Widget build(BuildContext context) {
     final merchant = Provider.of<MerchantsModel>(context).one(widget.id);
     // print(merchant);
-    getPosition().then((data) => print(data));
+    getPosition()
+        .then((data) => getDistance(data, merchant["location"]).then((dist) {
+              if (dist.toString() != distance)
+                setState(() {
+                  distance = dist.toString();
+                });
+            }));
+    print(distance);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
@@ -77,6 +81,25 @@ class _DetailPageState extends State<DetailPage> {
               size: 16,
             ),
           ),
+          Padding(
+              // category
+              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+              child: Row(children: [
+                Icon(
+                  Icons.location_on,
+                  size: 16,
+                  color: deepBlue,
+                ),
+                FancyText(
+                  text: distance != "N/A"
+                      ? "${double.parse(distance).toStringAsFixed(2)} km"
+                      : distance,
+                  textColor: textColor,
+                  fontFamily: 'Crimson',
+                  textAlign: TextAlign.start,
+                  size: 16,
+                ),
+              ])),
           // Padding(
           //   // rating
           //   padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
