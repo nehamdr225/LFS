@@ -8,13 +8,14 @@ class OfferCard extends StatelessWidget {
   final id;
   final address;
   final contact;
-  OfferCard({
-    this.image,
-    this.name,
-    this.address,
-    this.contact,
-    this.id,
-  });
+  final padding;
+  OfferCard(
+      {this.image,
+      this.name,
+      this.address,
+      this.contact,
+      this.id,
+      this.padding: 5.0});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class OfferCard extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.only(left: 5, right: 5),
+        margin: EdgeInsets.only(left: padding, right: padding),
         width: MediaQuery.of(context).size.width - 20,
         height: 200.0,
         decoration: BoxDecoration(
@@ -41,34 +42,53 @@ class OfferCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Align(
-              child: Text(" 5% OFF ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    backgroundColor: buttonColor,
-                  )),
-              alignment: Alignment.topCenter,
-            ),
-            Align(
               child: Text(
                 name,
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(fontSize: 28),
               ),
               alignment: Alignment.topCenter,
             ),
-            Align(
-              child: Text(
-                address,
-                style: TextStyle(fontSize: 16),
-              ),
-              alignment: Alignment.center,
-            ),
-            Align(
-              child: Text(
-                contact,
-                style: TextStyle(fontSize: 16),
-              ),
-              alignment: Alignment.center,
-            ),
+            Column(
+              children: <Widget>[
+                Align(
+                  child: Row(children: [
+                    Icon(Icons.local_offer, color: Colors.white,),
+                    Text(" 5% OFF ",
+                        style: TextStyle(
+                          fontSize: 18,
+                          backgroundColor: buttonColor,
+                        ))
+                  ]),
+                  alignment: Alignment.topLeft,
+                ),
+                Align(
+                  child: Row(children: [
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      address,
+                      style: TextStyle(fontSize: 18),
+                    )
+                  ]),
+                  alignment: Alignment.bottomLeft,
+                ),
+                Align(
+                  child: Row(children: [
+                    Icon(
+                      Icons.call,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      contact,
+                      style: TextStyle(fontSize: 18),
+                    )
+                  ]),
+                  alignment: Alignment.bottomLeft,
+                ),
+              ],
+            )
           ],
         ),
       ),

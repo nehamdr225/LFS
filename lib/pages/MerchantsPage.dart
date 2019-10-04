@@ -37,7 +37,7 @@ class MerchantsPage extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
                         child: FancyText(
                           text: 'Recommendations',
-                          textColor: textColor,
+                          textColor: deepBlue,
                           size: 20.0,
                           textAlign: TextAlign.center,
                         ),
@@ -49,12 +49,14 @@ class MerchantsPage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ProductsPage()//type: type,)
+                                    builder: (context) => ProductsPage(
+                                          type: type,
+                                        ) //type: type,)
                                     ));
                           },
                           text: 'View All',
-                          textColor: textColor,
-                          size: 10.0,
+                          textColor: primary,
+                          size: 12.0,
                           textAlign: TextAlign.right,
                         ),
                       ),
@@ -65,15 +67,11 @@ class MerchantsPage extends StatelessWidget {
                     width: 150.0,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: merchants.length,
+                      itemCount: merchants.length >= 5 ? 5 : merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
                         return Card(
-                          elevation: 2.0,
-                          shape: Border.all(
-                              width: 1.0,
-                              style: BorderStyle.solid,
-                              color: Colors.grey[200]),
+                          elevation: 3.0,
                           child: Category(
                             name: merchants[index]['name'],
                             id: merchants[index]['_id'],
@@ -92,8 +90,8 @@ class MerchantsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
                     child: FancyText(
-                      text: 'Best $type Offers & Discounts',
-                      textColor: textColor,
+                      text: '$type Offers & Discounts',
+                      textColor: deepBlue,
                       size: 20.0,
                       textAlign: TextAlign.start,
                     ),
@@ -105,21 +103,23 @@ class MerchantsPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProductsPage()//type: type,)
+                                builder: (context) => ProductsPage(
+                                      type: type,
+                                      offerCard: true,
+                                    ) //type: type,)
                                 ));
                       },
-                      text: 'View All Offers',
-                      textColor: textColor,
-                      size: 10.0,
+                      text: 'View All',
+                      textColor: primary,
+                      size: 12.0,
                       textAlign: TextAlign.right,
                     ),
                   ),
                   Container(
                     height: 200,
-                    width: screenWidth,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: merchants.length,
+                      itemCount: merchants.length >= 5 ? 5 : merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         // print(merchants[index]['media']);
                         return OfferCard(
@@ -134,55 +134,6 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////  MID HORIZONTAL SCROLLER  ////////////////////////////////////////////
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
-                    child: FancyText(
-                      text: '5% Discounts',
-                      textColor: textColor,
-                      size: 20.0,
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
-                    child: FancyText(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductsPage()//type: type,)
-                            ));
-                      },
-                      text: 'View All Offers',
-                      textColor: textColor,
-                      size: 10.0,
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                  Container(
-                    height: 200,
-                    width: screenWidth,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: merchants.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        // print(merchants[index]['media']);
-                        return OfferCard(
-                          image: merchants[index]['media'] != null
-                              ? merchants[index]['media']['src'][0]
-                              : null,
-                          name: merchants[index]['name'],
-                          id: merchants[index]['_id'],
-                          address: merchants[index]['address'],
-                          contact: merchants[index]['contact'],
-                        );
-                      }, //
-                    ),
-                  ),
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
                   Padding(
                     padding: EdgeInsets.all(10.0),
                   ),
@@ -219,56 +170,3 @@ class MerchantsPage extends StatelessWidget {
     );
   }
 }
-// ///////////////////////////////  MID HORIZONTAL SCROLLER  ////////////////////////////////////////////
-//                   Padding(
-//                     padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
-//                     child: FancyText(
-//                       text: 'Best $type Offers & Discounts',
-//                       textColor: textColor,
-//                       size: 20.0,
-//                       textAlign: TextAlign.start,
-//                     ),
-//                   ),
-//                   Padding(
-//                     padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
-//                     child: FancyText(
-//                       onTap: (){
-//                         Navigator.push(context,
-//                         MaterialPageRoute(builder: (context) => ProductsPage()));
-//                       },
-//                       text: 'View All Offers',
-//                       textColor: buttonColor,
-//                       size: 10.0,
-//                       textAlign: TextAlign.right,
-//                     ),
-//                   ),
-//                   Container(
-//                     height: 200.0,
-//                     width: screenWidth,
-//                     child: ListView.builder(
-//                       scrollDirection: Axis.horizontal,
-//                       itemCount: merchants.length,
-//                       itemBuilder: (BuildContext context, int index) {
-//                         // print(merchants[index]['media']);
-//                         return Card(
-//                           elevation: 2.0,
-//                           shape: Border.all(
-//                               width: 1.0,
-//                               style: BorderStyle.solid,
-//                               color: Colors.grey[200]),
-//                           child: Category(
-//                             name: merchants[index]['name'],
-//                             id: merchants[index]['_id'],
-//                             width: screenWidth,
-//                             height: 150.0,
-//address: merchants[index]['address'],
-//
-//                             network: merchants[index]['media'] != null
-//                                 ? merchants[index]['media']['src'][0]
-//                                 : null,
-//                           ),
-//                         );
-//                       }, //
-//                     ),
-//                   ),
-// ///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -52,7 +52,7 @@ class Category extends StatelessWidget {
                       name,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontFamily: 'Bree', fontSize: 15.0, color: textColor),
+                          fontFamily: 'Bree', fontSize: 14.0, color: textColor),
                     ),
                   ),
                 )),
