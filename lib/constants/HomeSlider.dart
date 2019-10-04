@@ -14,5 +14,17 @@ const Main = [
   {
     "name": "Shopping Malls",
     "src": "assets/images/categoryPics/lfsShoppingMall.jpg"
+  },
+  {
+    "name": "Educational Center",
+    "src": "assets/images/categoryPics/lfsCollege.jpg"
+  },
+  {
+    "name": "Fitness",
+    "src": "assets/images/categoryPics/lfsGym.jpg"
+  },
+  {
+    "name": "Night Clubs",
+    "src": "assets/images/categoryPics/lfsNightClub.jpg"
   }
 ];

@@ -1,7 +1,7 @@
 const List CATEGORIES = const [
   {
     "name": "Hotels",
-    "image": 'assets/images/CategoryPage/hotel.jpg',
+    "image": "assets/images/CategoryPage/hotel.jpg",
     "type": "Hotel"
   },
   {
@@ -15,13 +15,13 @@ const List CATEGORIES = const [
     "type": "Malls"
   },
   {
-    "name": "Educational Institutes",
-    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "name": "Education Center",
+    "image": "assets/images/categoryPics/lfsCollege.jpg",
     "type": "Movie"
   },
   {
-    "name": "Entertainment/ Fitness",
-    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "name": "Fitness",
+    "image": "assets/images/categoryPics/lfsGym.jpg",
     "type": "Movie"
   },
   {
@@ -31,7 +31,7 @@ const List CATEGORIES = const [
   },
   {
     "name": "Night Clubs",
-    "image": "assets/images/categoryPics/lfsMovieHall.jpg",
+    "image": "assets/images/categoryPics/lfsNightClub.jpg",
     "type": "Movie"
   }
 ];

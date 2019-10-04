@@ -2,6 +2,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Follow extends StatelessWidget {
   @override
@@ -21,6 +22,7 @@ class Follow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             InkWell(
+              onTap: _launchURL,
               child: Image.asset(
                 'assets/images/SocialMedia/fb.png',
                 height: 30.0,
@@ -52,5 +54,13 @@ class Follow extends StatelessWidget {
         )
       ],
     );
+  }
+}
+_launchURL() async {
+  const url = 'https://facebook.com/LFS-card-105008720895276/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }

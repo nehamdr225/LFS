@@ -9,41 +9,25 @@ class AccountPage extends StatelessWidget {
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Container(
-            height: 100.0,
-            child: Row(
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 40.0,
-                  backgroundColor: primary,
-                  child: Text('LFS',
-                      style:
-                          TextStyle(fontFamily: 'Bree', color: Colors.white)),
-                  //child: Image.asset(image,),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                ),
-                FlatButton(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.0, color: buttonColor),
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                  ),
-                  onPressed: () {},
-                  child: Text('Login / Signup',
-                      style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
-                  //child: Image.asset('assets/images/SocialMedia/merchantFAB.png', height: 30.0, width: 30.0,),
-                ),
-              ],
-            ),
-          ),
+        Image.asset('assets/images/logopetals.png'),
+        FancyText(
+          text: 'LFS Card',
+          textAlign: TextAlign.center,
+          textColor: textColor,
+          size: 24.0,
         ),
-        Divider(
-          thickness: 1.0,
+        Padding(padding: EdgeInsets.all(12.0),),
+        FlatButton(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1.0, color: buttonColor),
+            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+          ),
+          onPressed: () {},
+          child: Text('Login / Signup',
+              style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
+          //child: Image.asset('assets/images/SocialMedia/merchantFAB.png', height: 30.0, width: 30.0,),
         ),
         Padding(
           padding: EdgeInsets.all(12.0),
@@ -66,13 +50,13 @@ class AccountPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(15.0),
         ),
         Container(
           height: 20.0,
           child: ListTile(
             leading: Icon(
-              CupertinoIcons.heart_solid,
+              Icons.star,
               color: buttonColor,
             ),
             title: Text(
@@ -83,7 +67,7 @@ class AccountPage extends StatelessWidget {
               CupertinoIcons.right_chevron,
               color: buttonColor,
             ),
-            onTap: (){
+            onTap: () {
               AlertDialog(
                 elevation: 2.0,
                 title: FancyText(
@@ -91,16 +75,13 @@ class AccountPage extends StatelessWidget {
                   textColor: primary,
                   size: 18.0,
                 ),
-                actions: <Widget>[
-                  RateUs()
-                ],
-              
+                actions: <Widget>[RateUs()],
               );
             },
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(15.0),
         ),
         Container(
           height: 20.0,
@@ -120,7 +101,7 @@ class AccountPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(15.0),
         ),
         Container(
           height: 20.0,

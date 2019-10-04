@@ -16,9 +16,9 @@ class HomePage extends StatelessWidget {
         Container(
             height: 400,
             child: FCarousel(asset: true, src: [
-              'assets/images/FeaturedPhotos/dining park.jpg',
-              'assets/images/FeaturedPhotos/hotel imperical pics.jpg'
-              'assets/images/FeaturedPhotos/times square restaurant.png'
+              'assets/images/FeaturedPhotos/DiningPark.jpg',
+              //'assets/images/FeaturedPhotos/HotelImperialPics.jpg'
+              'assets/images/FeaturedPhotos/TimesSquareRestro.PNG'
             ])),
             Padding(padding: EdgeInsets.all(8.0),),
         Options(),
@@ -34,6 +34,7 @@ class HomePage extends StatelessWidget {
         Container(
           child: HorizontalList(),
         ),
+        Padding(padding: EdgeInsets.all(8.0),),
         Follow(),
       ],
     );

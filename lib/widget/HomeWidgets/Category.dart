@@ -39,8 +39,7 @@ class Category extends StatelessWidget {
                 width: width,
                 child: ListTile(
                   title: network != null
-                      ? 
-                      
+                      ?    
                       Image.network(
                           network,
                           width: width,

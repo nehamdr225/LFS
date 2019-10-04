@@ -10,7 +10,7 @@ class HorizontalList extends StatelessWidget {
       width: 150.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 4,
+        itemCount: 7,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             elevation: 2.0,
