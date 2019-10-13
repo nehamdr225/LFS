@@ -22,7 +22,6 @@ class FCarousel extends StatelessWidget {
       animationCurve: Curves.ease,
       autoplay: true,
       dotSize: 6.0,
-
       overlayShadowColors: Color(0xff0d47a1),
       dotBgColor: Colors.transparent,
       indicatorBgPadding: 12.0,

@@ -9,11 +9,13 @@ class FAppbar extends StatelessWidget {
   final heart;
   final leadingChoice;
   final search;
+  final searchBar;
   const FAppbar(
       {Key key,
       this.leadingChoice: true,
       this.search: true,
-      this.heart: false})
+      this.heart: false,
+      this.searchBar})
       : super(key: key);
 
   @override
@@ -32,20 +34,41 @@ class FAppbar extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+      title: searchBar != null
+          ? TextField(
+              autofocus: true,
+              onChanged: (String h) {
+                print(h);
+              },
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  hintText: "Find offers and discounts!",
+                  hintStyle: TextStyle(
+                      fontFamily: 'Helvetica',
+                      fontSize: 12,
+                      color: Colors.black54),
+                  // labelStyle: ,
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: primary))),
+            )
+          : null,
       actions: <Widget>[
-        search == true ? IconButton(
-          icon: Icon(
-            Icons.search,
-            color: primary,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchPage()),
-            );
-          },
-          splashColor: splash,
-        ): Text(' '),
+        search == true
+            ? IconButton(
+                icon: Icon(
+                  Icons.search,
+                  color: primary,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchPage()),
+                  );
+                },
+                splashColor: splash,
+              )
+            : Text(' '),
         heart == true
             ? IconButton(
                 icon: Icon(

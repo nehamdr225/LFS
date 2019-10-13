@@ -23,6 +23,7 @@ class MerchantsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
           children: merchants.length != 0
               ? <Widget>[
                   InfoNavBar(type: type, text: "Recommendations"),

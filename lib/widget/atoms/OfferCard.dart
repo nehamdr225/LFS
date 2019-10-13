@@ -1,14 +1,10 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/DetailPage.dart';
+import 'package:LFS/widget/atoms/IconLabel.dart';
 import 'package:flutter/material.dart';
 
 class OfferCard extends StatelessWidget {
-  final image;
-  final name;
-  final id;
-  final address;
-  final contact;
-  final padding;
+  final image, name, id, address, contact, padding;
   OfferCard(
       {this.image,
       this.name,
@@ -50,45 +46,10 @@ class OfferCard extends StatelessWidget {
             ),
             Column(
               children: <Widget>[
-                Align(
-                  child: Row(children: [
-                    Icon(Icons.local_offer, color: Colors.white, size: 16 ),
-                    Text(" 5% OFF ",
-                        style: TextStyle(
-                          fontSize: 18,
-                          backgroundColor: buttonColor,
-                        ))
-                  ]),
-                  alignment: Alignment.topLeft,
-                ),
-                Align(
-                  child: Row(children: [
-                    Icon(
-                      Icons.location_on,
-                      color: Colors.white,
-                      size: 16
-                    ),
-                    Text(
-                      address,
-                      style: TextStyle(fontSize: 18),
-                    )
-                  ]),
-                  alignment: Alignment.bottomLeft,
-                ),
-                Align(
-                  child: Row(children: [
-                    Icon(
-                      Icons.call,
-                      color: Colors.white,
-                      size: 16
-                    ),
-                    Text(
-                      contact,
-                      style: TextStyle(fontSize: 18),
-                    )
-                  ]),
-                  alignment: Alignment.bottomLeft,
-                ),
+                IconLabel(
+                    text: " 5% OFF ", icon: Icons.local_offer, bg: buttonColor),
+                IconLabel(text: address, icon: Icons.location_on),
+                IconLabel(text: contact, icon: Icons.call),
               ],
             )
           ],
