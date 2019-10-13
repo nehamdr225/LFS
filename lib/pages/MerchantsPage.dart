@@ -1,21 +1,18 @@
-import 'package:LFS/pages/ProductPage.dart';
 import 'package:LFS/widget/HomeWidgets/Category.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
-import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/widget/atoms/InfoNavBar.dart';
 import 'package:LFS/widget/atoms/OfferCard.dart';
-// import 'package:LFS/widget/atoms/FText.dart';
+import 'package:LFS/widget/atoms/connectivityError.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:LFS/constants/colors.dart';
 
 class MerchantsPage extends StatelessWidget {
   final String type;
   MerchantsPage({this.type});
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     final merchants = Provider.of<MerchantsModel>(context).category(type);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -28,39 +25,7 @@ class MerchantsPage extends StatelessWidget {
       body: ListView(
           children: merchants.length != 0
               ? <Widget>[
-                  ////////////////////  TOP HORIZONTAL SCROLLER   ////////////////////////////////////
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
-                        child: FancyText(
-                          text: 'Recommendations',
-                          textColor: deepBlue,
-                          size: 20.0,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
-                        child: FancyText(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ProductsPage(
-                                          type: type,
-                                        ) //type: type,)
-                                    ));
-                          },
-                          text: 'View All',
-                          textColor: primary,
-                          size: 12.0,
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                    ],
-                  ),
+                  InfoNavBar(type: type, text: "Recommendations"),
                   Container(
                     height: 120.0,
                     width: 150.0,
@@ -83,35 +48,11 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////  MID HORIZONTAL SCROLLER  ////////////////////////////////////////////
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 25.0, 10.0, 15.0),
-                    child: FancyText(
-                      text: '$type Offers & Discounts',
-                      textColor: deepBlue,
-                      size: 20.0,
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 15.0),
-                    child: FancyText(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductsPage(
-                                      type: type,
-                                      offerCard: true,
-                                    ) //type: type,)
-                                ));
-                      },
-                      text: 'View All',
-                      textColor: primary,
-                      size: 12.0,
-                      textAlign: TextAlign.right,
-                    ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  InfoNavBar(
+                    type: type,
+                    text: "$type Offers & Discounts",
+                    offerCard: true,
                   ),
                   Container(
                     height: 200,
@@ -141,28 +82,7 @@ class MerchantsPage extends StatelessWidget {
                 ]
               ////////////////////////////////  ERROR MESSAGE WHEN NOT CONNECTED TO THE INTERNET ////////////////////
               : <Widget>[
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                'assets/images/error.png',
-                                width: screenWidth * 0.80,
-                              ),
-                              FancyText(
-                                text: 'Error ocurred! Try again later.',
-                                textColor: errorColor,
-                                size: 20.0,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        )
-                      ])
+                  ConnError(),
                 ]),
     );
   }
