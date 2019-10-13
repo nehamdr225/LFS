@@ -6,16 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FAppbar extends StatelessWidget {
-  final heart;
-  final leadingChoice;
-  final search;
-  final searchBar;
+  final heart, leadingChoice, search, searchBar, title;
   const FAppbar(
       {Key key,
       this.leadingChoice: true,
       this.search: true,
       this.heart: false,
-      this.searchBar})
+      this.searchBar,
+      this.title})
       : super(key: key);
 
   @override
@@ -23,6 +21,7 @@ class FAppbar extends StatelessWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: lfsWhite,
+      centerTitle: true,
       leading: leadingChoice == true
           ? FLogo()
           : IconButton(
@@ -52,7 +51,13 @@ class FAppbar extends StatelessWidget {
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: primary))),
             )
-          : null,
+          : title != null
+              ? Text(
+                  title,
+                  style: TextStyle(
+                      color: primary, fontFamily: "Helvetica", fontSize: 16),
+                )
+              : null,
       actions: <Widget>[
         search == true
             ? IconButton(

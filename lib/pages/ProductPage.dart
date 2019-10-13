@@ -19,6 +19,7 @@ class ProductsPage extends StatelessWidget {
           preferredSize: Size.fromHeight(50.0),
           child: FAppbar(
             leadingChoice: false,
+            title: offerCard == false ? "$type Merchants": "$type Offers",
           ),
         ),
         body: offerCard == false

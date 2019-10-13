@@ -20,10 +20,10 @@ class MerchantsPage extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: FAppbar(
           leadingChoice: false,
+          title: type,
         ),
       ),
       body: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
           children: merchants.length != 0
               ? <Widget>[
                   InfoNavBar(type: type, text: "Recommendations"),

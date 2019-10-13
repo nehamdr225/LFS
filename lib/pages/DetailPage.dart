@@ -46,6 +46,7 @@ class _DetailPageState extends State<DetailPage> {
         child: FAppbar(
           leadingChoice: false,
           heart: true,
+          title: merchant["name"],
         ),
         preferredSize: Size.fromHeight(40),
       ),
