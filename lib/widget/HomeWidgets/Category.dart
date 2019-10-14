@@ -1,5 +1,6 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/DetailPage.dart';
+import 'package:LFS/pages/NearYouPage.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
@@ -61,11 +62,11 @@ class Category extends StatelessWidget {
         padding: EdgeInsets.all(2.0),
         child: InkWell(
           onTap: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) => CategoryPage(text: name),
-            //   ),
-            //);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => NearYouPage(type: name),
+              ),
+            );
           },
           child: Container(
               width: 150.0,

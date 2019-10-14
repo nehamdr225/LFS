@@ -5,7 +5,8 @@ import 'package:LFS/state/merchants.dart';
 import 'package:provider/provider.dart';
 
 class ConnError extends StatefulWidget {
-  ConnError({Key key}) : super(key: key);
+  final error;
+  ConnError({Key key, this.error}) : super(key: key);
 
   _ConnErrorState createState() => _ConnErrorState();
 }
@@ -40,7 +41,9 @@ class _ConnErrorState extends State<ConnError> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FancyText(
-              text: 'Error ocurred! Try again later.',
+              text: widget.error != null
+                  ? widget.error
+                  : 'Error ocurred! Try again later.',
               textColor: Colors.black54,
               size: 16.0,
               textAlign: TextAlign.center,

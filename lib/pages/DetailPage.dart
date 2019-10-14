@@ -5,7 +5,6 @@ import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/state/merchants.dart';
-//import 'package:LFS/widget/atoms/Services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -157,7 +156,8 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             // opening hours detail
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: Row(children: [
+            child: Row(
+              children: [
                 Icon(
                   Icons.timer,
                   size: 16,
@@ -171,7 +171,8 @@ class _DetailPageState extends State<DetailPage> {
                   size: 16,
                 ),
               ],
-          ),),
+            ),
+          ),
 
           Padding(
             // address title
@@ -184,23 +185,24 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
           Padding(
-            // address detail
-            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: Row(children: [
-                Icon(
-                  Icons.location_on,
-                  size: 16,
-                  color: deepBlue,
-                ),
-                FancyText(
-                  text: merchant["address"],
-                  textColor: textColor,
-                  fontFamily: 'Crimson',
-                  textAlign: TextAlign.start,
-                  size: 16,
-                ),
-              ],)
-          ),
+              // address detail
+              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    size: 16,
+                    color: deepBlue,
+                  ),
+                  FancyText(
+                    text: merchant["address"],
+                    textColor: textColor,
+                    fontFamily: 'Crimson',
+                    textAlign: TextAlign.start,
+                    size: 16,
+                  ),
+                ],
+              )),
           Container(
               height: merchant["location"] != null &&
                       merchant["location"].isNotEmpty
@@ -211,7 +213,7 @@ class _DetailPageState extends State<DetailPage> {
                     color: Colors.black12,
                     offset: Offset.fromDirection(1, 2),
                     blurRadius: 1),
-                    BoxShadow(
+                BoxShadow(
                     color: Colors.black12,
                     offset: Offset.fromDirection(-1, 2),
                     blurRadius: 1)
@@ -234,23 +236,24 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
           Padding(
-            // address detail
-            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: Row(children: [
-                Icon(
-                  Icons.call,
-                  size: 16,
-                  color: deepBlue,
-                ),
-                FancyText(
-                  text: merchant["contact"],
-                  textColor: textColor,
-                  fontFamily: 'Crimson',
-                  textAlign: TextAlign.start,
-                  size: 16,
-                ),
-              ],)
-          ),
+              // address detail
+              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.call,
+                    size: 16,
+                    color: deepBlue,
+                  ),
+                  FancyText(
+                    text: merchant["contact"],
+                    textColor: textColor,
+                    fontFamily: 'Crimson',
+                    textAlign: TextAlign.start,
+                    size: 16,
+                  ),
+                ],
+              )),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Follow(),
