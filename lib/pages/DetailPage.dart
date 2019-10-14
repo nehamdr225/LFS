@@ -1,18 +1,18 @@
-import 'package:LFS/constants/colors.dart';
-import 'package:LFS/widget/GoogleMaps.dart';
-import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
-import 'package:LFS/widget/atoms/FancyText.dart';
-import 'package:LFS/state/merchants.dart';
+import 'package:LFS/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:LFS/widget/GoogleMaps.dart';
+import 'package:LFS/state/merchants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
+
 
 class DetailPage extends StatefulWidget {
   final String id;
-
   DetailPage({this.id});
   @override
   _DetailPageState createState() => _DetailPageState();

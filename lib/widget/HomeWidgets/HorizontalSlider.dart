@@ -1,6 +1,7 @@
 import 'package:LFS/constants/categories.dart';
 import 'package:LFS/pages/NearYouPage.dart';
-import 'package:LFS/widget/atoms/Cards.dart';
+//import 'package:LFS/widget/atoms/Cards.dart';
+import 'package:LFS/widget/atoms/Listtiles.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalList extends StatelessWidget {
@@ -8,18 +9,18 @@ class HorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 200.0,
-        width: 150.0,
+        width: 250.0 ,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: CATEGORIES
               .map(
-                (category) => Cards(
+                (category) => Listtiles(
                   image: category["image"],
                   text: category["name"],
-                  height: 200.0,
-                  width: 150.0,
+                  height: 150.0,
+                  width: 300.0,
                   margin: 5.0,
-                  fontSize: 28.0,
+                  fontSize: 18.0,
                   onTap: () {
                     Navigator.push(
                       context,

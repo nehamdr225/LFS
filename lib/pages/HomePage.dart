@@ -20,10 +20,10 @@ class HomePage extends StatelessWidget {
               //'assets/images/FeaturedPhotos/HotelImperialPics.jpg'
               'assets/images/FeaturedPhotos/TimesSquareRestro.PNG'
             ])),
-            Padding(padding: EdgeInsets.all(8.0),),
+        Padding(padding: EdgeInsets.all(8.0),),
         Options(),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: FancyText(
             text: 'Near You',
             textColor: textColor,

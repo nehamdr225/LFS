@@ -6,20 +6,44 @@ import 'package:LFS/widget/atoms/connectivityError.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:LFS/state/merchants.dart';
-// import 'package:LFS/state/user.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:LFS/state/user.dart';
 
 class NearYouPage extends StatefulWidget {
   final String type;
-  NearYouPage({Key key, this.type}) : super(key: key);
+  final String id;
+  
+  NearYouPage({Key key, this.type, this.id}) : super(key: key);
 
   _NearYouPageState createState() => _NearYouPageState();
 }
 
 class _NearYouPageState extends State<NearYouPage> {
+  var distance = "N/A";
+  getPosition() async => await Geolocator()
+      .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+  getDistance(Position user, List merchant) async =>
+      await Geolocator().distanceBetween(user.latitude, user.longitude,
+          double.parse(merchant[0]), double.parse(merchant[1])) /
+      1000;
+
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     // final userLocation = Provider.of<UserModel>(context).location;
+    // print(userLocation);
     var merchants = Provider.of<MerchantsModel>(context).category(widget.type);
+    //final merchant = Provider.of<MerchantsModel>(context).one(widget.id);
+    
+    // List nearYou = [ ];   
+    // if (merchant["location"].isNotEmpty && merchant["location"] != null)
+    //   getPosition()
+    //       .then((data) => getDistance(data, merchant["location"]).then((dist) {
+    //             nearYou.add(dist);
+    //           })); 
+    // nearYou.sort();
+    // print(nearYou);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -33,15 +57,15 @@ class _NearYouPageState extends State<NearYouPage> {
       body: ListView(
           children: merchants.length != 0
               ? <Widget>[
-                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(padding: EdgeInsets.all(5.0)),
                   InfoNavBar(
                       type: widget.type,
-                      text: "${widget.type} Offers & Discounts",
+                      text: "${widget.type} Near You",
                       offerCard: true),
                   Container(
-                    height: 200,
+                    height: screenHeight-240,
                     child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.vertical,
                       itemCount: merchants.length >= 5 ? 5 : merchants.length,
                       itemBuilder: (BuildContext context, int index) {
                         return OfferCard(
