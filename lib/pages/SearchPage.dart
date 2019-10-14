@@ -1,4 +1,5 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/pages/DetailPage.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:LFS/state/merchants.dart';
@@ -49,27 +50,48 @@ class _SearchPageState extends State<SearchPage> {
           padding: EdgeInsets.symmetric(vertical: 20.0),
           children: searchResult.length > 0
               ? searchResult.map((result) {
-                  return Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(result["name"]),
-                          Text(result["address"])
-                        ],
-                      )
-                    ],
-                  );
+                  return ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailPage(id: result["_id"])),
+                        );
+                      },
+                      leading: CircleAvatar(
+                        child: Icon(
+                          Icons.help_outline,
+                          size: 22,
+                          color: Colors.white,
+                        ),
+                        radius: 12.0,
+                        backgroundColor: deepBlue,
+                      ),
+                      trailing: Icon(Icons.arrow_forward_ios, size: 14),
+                      title: Text(
+                        result["name"],
+                        style: TextStyle(
+                            color: textColor, fontFamily: "Helvetica"),
+                      ),
+                      subtitle: Text(
+                        result["address"],
+                        style: TextStyle(
+                            color: textColor, fontFamily: "Helvetica"),
+                      ));
                 }).toList()
               : [
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      "Did not find any matches!",
-                      style: TextStyle(
-                        color: textColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    )
-                  ])
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Did not find any matches!",
+                        style: TextStyle(
+                            color: textColor, fontFamily: "Helvetica"),
+                        textAlign: TextAlign.center,
+                      )
+                    ],
+                  )
                 ],
         )));
   }
