@@ -6,14 +6,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FAppbar extends StatelessWidget {
-  final heart, leadingChoice, search, searchBar, title;
+  final heart, leadingChoice, search, searchBar, title, searchController;
   const FAppbar(
       {Key key,
       this.leadingChoice: true,
       this.search: true,
       this.heart: false,
       this.searchBar,
-      this.title})
+      this.title,
+      this.searchController})
       : super(key: key);
 
   @override
@@ -36,8 +37,8 @@ class FAppbar extends StatelessWidget {
       title: searchBar != null
           ? TextField(
               autofocus: true,
-              onChanged: (String h) {
-                print(h);
+              onChanged: (value) {
+                searchController(value);
               },
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
