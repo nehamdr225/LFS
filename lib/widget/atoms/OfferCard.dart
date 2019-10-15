@@ -55,7 +55,7 @@ class OfferCard extends StatelessWidget {
                           text: "$distance km",
                           icon: Icons.local_taxi,
                         )
-                      : null,
+                      : Text(""),
                   IconLabel(
                       text: " 5% OFF ",
                       icon: Icons.local_offer,

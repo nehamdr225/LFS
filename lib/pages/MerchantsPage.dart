@@ -69,6 +69,7 @@ class MerchantsPage extends StatelessWidget {
                           id: merchants[index]['_id'],
                           address: merchants[index]['address'],
                           contact: merchants[index]['contact'],
+                          distance: null,
                         );
                       }, //
                     ),
