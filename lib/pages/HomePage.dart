@@ -1,4 +1,4 @@
-import 'package:LFS/constants/colors.dart' ;
+import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/HomeWidgets/CircleOpts.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/HomeWidgets/HorizontalSlider.dart';
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
               //'assets/images/FeaturedPhotos/HotelImperialPics.jpg'
               'assets/images/FeaturedPhotos/TimesSquareRestro.PNG'
             ])),
-        Padding(padding: EdgeInsets.all(8.0),),
+        Padding(padding: EdgeInsets.all(8.0)),
         Options(),
         Padding(
           padding: const EdgeInsets.all(10.0),
@@ -31,11 +31,10 @@ class HomePage extends StatelessWidget {
             size: 20.0,
           ),
         ),
-        Container(
-          child: HorizontalList(),
-        ),
-        Padding(padding: EdgeInsets.all(8.0),),
+        Container(child: HorizontalList()),
+        Padding(padding: EdgeInsets.all(8.0)),
         Follow(),
+        Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
       ],
     );
   }

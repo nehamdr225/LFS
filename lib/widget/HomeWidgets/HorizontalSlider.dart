@@ -9,7 +9,7 @@ class HorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 200.0,
-        width: 250.0 ,
+        width: 200.0 ,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: CATEGORIES
@@ -18,7 +18,7 @@ class HorizontalList extends StatelessWidget {
                   image: category["image"],
                   text: category["name"],
                   height: 150.0,
-                  width: 300.0,
+                  // width: 300.0,
                   margin: 5.0,
                   fontSize: 18.0,
                   onTap: () {
