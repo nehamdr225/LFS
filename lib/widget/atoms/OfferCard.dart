@@ -4,14 +4,15 @@ import 'package:LFS/widget/atoms/IconLabel.dart';
 import 'package:flutter/material.dart';
 
 class OfferCard extends StatelessWidget {
-  final image, name, id, address, contact, padding;
+  final image, name, id, address, contact, padding, distance;
   OfferCard(
       {this.image,
       this.name,
       this.address,
       this.contact,
       this.id,
-      this.padding: 5.0});
+      this.padding: 5.0,
+      this.distance});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class OfferCard extends StatelessWidget {
                 image:
                     NetworkImage(image) ?? AssetImage("assets/images/logo.png"),
                 fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)),
+                colorFilter:
+                    ColorFilter.mode(Colors.black45, BlendMode.darken)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -48,8 +50,16 @@ class OfferCard extends StatelessWidget {
               ),
               Column(
                 children: <Widget>[
+                  distance != null
+                      ? IconLabel(
+                          text: "$distance km",
+                          icon: Icons.local_taxi,
+                        )
+                      : null,
                   IconLabel(
-                      text: " 5% OFF ", icon: Icons.local_offer, bg: buttonColor),
+                      text: " 5% OFF ",
+                      icon: Icons.local_offer,
+                      bg: buttonColor),
                   IconLabel(text: address, icon: Icons.location_on),
                   IconLabel(text: contact, icon: Icons.call),
                 ],

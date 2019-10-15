@@ -36,8 +36,10 @@ class MerchantsModel extends ChangeNotifier {
     var pos = await getPosition();
     if (pos == null) return null;
     for (var merchant in merchants) {
-      var distance = await getDistance(pos, merchant["location"]);
-      filters.add([merchant["_id"], distance]);
+      if (merchant["location"] != null && merchant["location"].length > 0) {
+        var distance = await getDistance(pos, merchant["location"]);
+        filters.add([merchant["_id"], distance]);
+      }
     }
     filters.sort((a, b) {
       return a[1].compareTo(b[1]);
