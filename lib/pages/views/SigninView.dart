@@ -1,7 +1,6 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
-import 'package:LFS/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
 
 class SigninView extends StatelessWidget {
@@ -24,9 +23,16 @@ class SigninView extends StatelessWidget {
           child: AppBar(
             backgroundColor: lfsWhite,
             elevation: 2.0,
-            title: Text('Sign-In', style: TextStyle(color: primary, fontFamily: 'Helvetica'),),
+            title: Text(
+              'Sign In',
+              style: TextStyle(color: primary, fontFamily: 'Helvetica'),
+            ),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 18,
+                color: primary,
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -40,7 +46,7 @@ class SigninView extends StatelessWidget {
           child: Container(
             height: 600.0,
             width: screenWidth * 0.95,
-            padding: EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
                 FLogo(
@@ -51,6 +57,8 @@ class SigninView extends StatelessWidget {
                   padding: EdgeInsets.all(10.0),
                 ),
                 FForm(
+                    autofocus: true,
+                    icon: Icon(Icons.mail_outline),
                     type: TextInputType.emailAddress,
                     text: "Email",
                     onChanged: setEmail),
@@ -62,6 +70,7 @@ class SigninView extends StatelessWidget {
                     : Text(''),
                 SizedBox(height: 15.0),
                 FForm(
+                    icon: Icon(Icons.vpn_key),
                     type: TextInputType.text,
                     text: "Password",
                     obscure: true,
@@ -76,11 +85,14 @@ class SigninView extends StatelessWidget {
                 loginErr != null
                     ? Text(loginErr, style: TextStyle(color: Colors.red))
                     : Text(''),
-                FRaisedButton(
-                  text: "Sign-in",
-                  width: 160.0,
-                  bg: primary,
-                  color: Colors.white,
+                RaisedButton(
+                  child: Text(
+                    "Sign In",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Helvetica",
+                        fontSize: 18),
+                  ),
                   onPressed: loginUser,
                 ),
                 SizedBox(height: 30.0),

@@ -2,7 +2,6 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/pages/SignupPage.dart';
-import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/widget/atoms/UnderlinedText.dart';
 // import 'package:LFS/widget/atoms/Logo.dart';
@@ -27,52 +26,69 @@ class UserPrompt extends StatelessWidget {
         ),
         Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              //Logo(),
-              FancyText(
-                text: "LFS",
-                textColor: primary,
-                size: 32.0,
-              ),
-
-              SizedBox(
-                height: 300.0,
-              ),
-              Container(
-                  color: Colors.transparent,
-                  child: Column(
-                    children: <Widget>[
-                      FButton(
-                          text: "Sign-in",
-                          textColor: lfsWhite,
-                          color: primary,
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignInPage()));
-                          }),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 14.0),
-                      ),
-                      FButton(
-                          text: "Sign-up",
-                          textColor: textColor,
-                          color: lfsWhite,
-                          info: '',
-                          onTap: null,
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()));
-                          }),
-                    ],
-                  )),
               Padding(
-                padding: EdgeInsets.only(bottom: 14.0),
+                child: FancyText(
+                  text: "LFS",
+                  textColor: primary,
+                  size: 32.0,
+                ),
+                padding: EdgeInsets.only(top: 80),
+              ),
+              Padding(
+                child: Container(
+                    color: Colors.transparent,
+                    child: Column(
+                      children: <Widget>[
+                        OutlineButton(
+                            textColor: Colors.white,
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 3.0),
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                  fontSize: 26.0,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2,
+                                  wordSpacing: 4),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInPage()));
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 30.0),
+                        ),
+                        OutlineButton(
+                            textColor: Colors.white,
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 3.0),
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  fontSize: 26.0,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2,
+                                  wordSpacing: 4),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpPage()));
+                            }),
+                      ],
+                    )),
+                padding: EdgeInsets.only(top: 200),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 100.0),
               ),
               UnderlinedText(
                 text: "Continue without sign-in",
@@ -83,10 +99,7 @@ class UserPrompt extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => NavigationPage()));
                 },
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 28.0),
-              ),
+              )
             ],
           ),
         ),
