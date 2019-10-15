@@ -24,13 +24,14 @@ class _SearchPageState extends State<SearchPage> {
     final merchants = Provider.of<MerchantsModel>(context).merchants;
 
     void search(String query) {
-      // print(query);
-      List result = merchants.where((merchant) {
-        return merchant["name"].toLowerCase().contains(query.toLowerCase()) ||
-            merchant["address"].toLowerCase().contains(query.toLowerCase()) ||
-            merchant["category"].toLowerCase().contains(query.toLowerCase());
-      }).toList();
-      if (result != null && result.length > 0)
+      List result = [];
+      if (query.length > 0)
+        result = merchants.where((merchant) {
+          return merchant["name"].toLowerCase().contains(query.toLowerCase()) ||
+              merchant["address"].toLowerCase().contains(query.toLowerCase()) ||
+              merchant["category"].toLowerCase().contains(query.toLowerCase());
+        }).toList();
+      if (result != null)
         setState(() {
           searchResult = result;
         });

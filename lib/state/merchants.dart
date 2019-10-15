@@ -1,6 +1,7 @@
 // import './store.dart';
 import 'package:LFS/helpers/api.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MerchantsModel extends ChangeNotifier {
   MerchantsModel() {
@@ -17,9 +18,31 @@ class MerchantsModel extends ChangeNotifier {
 
   Map one(id) => _merchants.firstWhere((merchant) => merchant["_id"] == id);
 
+  getDistance(Position user, List merchant) async =>
+      await Geolocator().distanceBetween(user.latitude, user.longitude,
+          double.parse(merchant[0]), double.parse(merchant[1])) /
+      1000;
+
+  getPosition() async => await Geolocator()
+      .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
   set merchants(List data) {
     _merchants.addAll(data);
     notifyListeners();
+  }
+
+  location(merchants) async {
+    var filters = [];
+    var pos = await getPosition();
+    if (pos == null) return null;
+    for (var merchant in merchants) {
+      var distance = await getDistance(pos, merchant["location"]);
+      filters.add([merchant["_id"], distance]);
+    }
+    filters.sort((a, b) {
+      return a[1].compareTo(b[1]);
+    });
+    return filters;
   }
 
   category(String cat) =>
