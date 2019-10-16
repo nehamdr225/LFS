@@ -22,7 +22,7 @@ class UserModel extends ChangeNotifier {
     });
   }
 
-  Map state = {"user": {}, "token": null, "location": null};
+  Map state = {"user": {}, "token": null, "location": null, "favourites": []};
 
   String get token => state["token"];
   Map get user => state["user"];
@@ -31,6 +31,8 @@ class UserModel extends ChangeNotifier {
     userLocation();
     return state["location"];
   }
+
+  List get favourites => state["favourites"];
 
   set token(String token) {
     if (token != state["token"]) {
@@ -49,6 +51,37 @@ class UserModel extends ChangeNotifier {
   set location(loc) {
     if (loc != null && loc != location) {
       state["location"] = loc;
+      notifyListeners();
+    }
+  }
+
+  favourite(List ids) {
+    if (ids != null && ids.length > 0) {
+      int idsError = 0;
+      ids.forEach((id) {
+        if (state["favourites"] == null) state["favourites"] = [];
+        if (!state["favourites"].contains(id)) {
+          state["favourites"].add(id);
+        } else {
+          idsError += 1;
+        }
+      });
+      if (idsError == ids.length) return "error";
+      notifyListeners();
+    }
+  }
+
+  removeFromFav(List ids) {
+    if (ids != null && ids.length > 0) {
+      ids.forEach((id) {
+        if (state["favourites"] == null) {
+          state["favourites"] = [];
+          return;
+        }
+        if (state["favourites"].contains(id)) {
+          state["favourites"].remove(id);
+        }
+      });
       notifyListeners();
     }
   }

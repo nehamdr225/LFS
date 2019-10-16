@@ -10,7 +10,6 @@ import 'package:LFS/state/merchants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class DetailPage extends StatefulWidget {
   final String id;
   DetailPage({this.id});
@@ -20,33 +19,39 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   var distance = "N/A";
-  getPosition() async => await Geolocator()
+  Future<Position> getPosition() async => await Geolocator()
       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-  getDistance(Position user, List merchant) async =>
+  Future<double> getDistance(Position user, List merchant) async =>
       await Geolocator().distanceBetween(user.latitude, user.longitude,
           double.parse(merchant[0]), double.parse(merchant[1])) /
       1000;
 
   @override
   Widget build(BuildContext context) {
-    final merchant = Provider.of<MerchantsModel>(context).one(widget.id);
+    final Map<String, dynamic> merchant =
+        Provider.of<MerchantsModel>(context).one(widget.id);
+
     if (merchant["location"].isNotEmpty && merchant["location"] != null)
-      getPosition()
-          .then((data) => getDistance(data, merchant["location"]).then((dist) {
-                if (dist.toString() != distance)
-                  setState(() {
-                    distance = dist.toString();
-                  });
-              }));
+      getPosition().then(
+        (Position data) => getDistance(data, merchant["location"]).then(
+          (double dist) {
+            if (dist.toString() != distance)
+              setState(() {
+                distance = dist.toString();
+              });
+          },
+        ),
+      );
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
         child: FAppbar(
-          leadingChoice: false,
-          heart: true,
-          title: merchant["name"],
-        ),
+            leadingChoice: false,
+            heart: true,
+            title: merchant["name"],
+            id: widget.id),
         preferredSize: Size.fromHeight(40),
       ),
       body: ListView(

@@ -4,7 +4,6 @@ import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/pages/SignupPage.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/widget/atoms/UnderlinedText.dart';
-// import 'package:LFS/widget/atoms/Logo.dart';
 import 'package:flutter/material.dart';
 
 class UserPrompt extends StatelessWidget {
@@ -61,9 +60,7 @@ class UserPrompt extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => SignInPage()));
                             }),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 30.0),
-                        ),
+                        Padding(padding: EdgeInsets.only(bottom: 30.0)),
                         OutlineButton(
                             textColor: Colors.white,
                             borderSide:
@@ -87,9 +84,7 @@ class UserPrompt extends StatelessWidget {
                     )),
                 padding: EdgeInsets.only(top: 200),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 100.0),
-              ),
+              Padding(padding: EdgeInsets.only(bottom: 100.0)),
               UnderlinedText(
                 text: "Continue without sign-in",
                 size: 18.0,

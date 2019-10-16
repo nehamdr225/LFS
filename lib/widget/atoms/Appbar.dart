@@ -4,21 +4,50 @@ import 'package:LFS/widget/atoms/FLogo.dart';
 //import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:LFS/state/user.dart';
+import 'package:provider/provider.dart';
 
 class FAppbar extends StatelessWidget {
-  final heart, leadingChoice, search, searchBar, title, searchController;
-  const FAppbar(
-      {Key key,
-      this.leadingChoice: true,
-      this.search: true,
-      this.heart: false,
-      this.searchBar,
-      this.title,
-      this.searchController})
-      : super(key: key);
+  final heart, leadingChoice, search, searchBar, title, searchController, id;
+
+  const FAppbar({
+    Key key,
+    this.leadingChoice: true,
+    this.search: true,
+    this.heart: false,
+    this.searchBar,
+    this.title,
+    this.searchController,
+    this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final UserModel user = Provider.of<UserModel>(context);
+
+    final snackBar = (text, label, onPressed) => SnackBar(
+          backgroundColor: deepBlue,
+          duration: Duration(seconds: 2),
+          content: Text(text, style: TextStyle(fontSize: 16)),
+          action: SnackBarAction(
+            label: label,
+            textColor: Colors.white,
+            onPressed: onPressed,
+          ),
+        );
+    void addToFavourites() {
+      final status = user.favourite([id]);
+      final removeFromFavs = (ids) => user.removeFromFav(ids);
+      /* Show snackbar containing error message in Scaffold! */
+      if (status == "error") {
+        Scaffold.of(context).showSnackBar(snackBar(
+            "Already in favourites!", "Remove", () => removeFromFavs([id])));
+      } else {
+        Scaffold.of(context).showSnackBar(snackBar(
+            "Added item to favourites!", "Undo", () => removeFromFavs([id])));
+      }
+    }
+
     return AppBar(
       elevation: 0.0,
       backgroundColor: lfsWhite,
@@ -81,7 +110,7 @@ class FAppbar extends StatelessWidget {
                   Icons.favorite_border,
                   color: primary,
                 ),
-                onPressed: () {},
+                onPressed: addToFavourites,
                 splashColor: splash,
               )
             : Text('')
