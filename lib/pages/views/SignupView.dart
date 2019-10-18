@@ -1,11 +1,21 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
+
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
-  final String nameErr, emailErr, passwordErr, signupErr, cardIdErr;
-  final Function setName, setEmail, setPassword, signupUser, setCardId;
+  final String nameErr,
+      emailErr,
+      passwordErr,
+      signupErr,
+      cardIdErr,
+      verifyCardErr,
+      cardId;
+  final Function setName, setEmail, setPassword, setCardId;
+  final Function signupUser, verifyUser, setVerifyCardErr;
+  final bool isVerifying, isCardValid;
+
   SignupView(
       {this.nameErr,
       this.emailErr,
@@ -16,12 +26,18 @@ class SignupView extends StatelessWidget {
       this.setPassword,
       this.signupUser,
       this.cardIdErr,
-      this.setCardId});
+      this.setCardId,
+      this.verifyUser,
+      this.verifyCardErr,
+      this.isVerifying,
+      this.setVerifyCardErr,
+      this.isCardValid,
+      this.cardId});
 
   @override
   Widget build(BuildContext context) {
-    bool isCardValid = false;
-    var screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -62,12 +78,13 @@ class SignupView extends StatelessWidget {
                         width: 150.0,
                       ),
                       FForm(
-                        icon: Icon(Icons.card_membership),
-                        type: TextInputType.text,
-                        text: "Card ID",
-                        onChanged: (String id) {},
-                        autofocus: false,
-                      ),
+                          icon: Icon(Icons.card_membership),
+                          type: TextInputType.text,
+                          text: "Card ID",
+                          onChanged: setCardId,
+                          autofocus: false,
+                          error: cardIdErr,
+                          value: cardId),
                       Padding(
                         padding: EdgeInsets.all(10.0),
                       ),
@@ -86,13 +103,15 @@ class SignupView extends StatelessWidget {
                           : Text(''),
                       SizedBox(height: 15.0),
                       FForm(
-                          icon: Icon(
-                            Icons.mail_outline,
-                            color: navColor,
-                          ),
-                          type: TextInputType.emailAddress,
-                          text: "Email",
-                          onChanged: setEmail),
+                        icon: Icon(
+                          Icons.mail_outline,
+                          color: navColor,
+                        ),
+                        type: TextInputType.emailAddress,
+                        text: "Email",
+                        onChanged: setEmail,
+                        autofocus: false,
+                      ),
                       emailErr != null
                           ? Text(
                               emailErr,
@@ -101,11 +120,13 @@ class SignupView extends StatelessWidget {
                           : Text(''),
                       SizedBox(height: 15.0),
                       FForm(
-                          icon: Icon(Icons.vpn_key),
-                          type: TextInputType.text,
-                          text: "Password",
-                          obscure: true,
-                          onChanged: setPassword),
+                        icon: Icon(Icons.vpn_key),
+                        type: TextInputType.text,
+                        text: "Password",
+                        obscure: true,
+                        onChanged: setPassword,
+                        autofocus: false,
+                      ),
                       passwordErr != null
                           ? Text(
                               passwordErr,
@@ -126,17 +147,6 @@ class SignupView extends StatelessWidget {
                         onPressed: signupUser,
                       ),
                       SizedBox(height: 30.0),
-                      // FancyText(
-                      //     text: "Already have an account?",
-                      //     color: Colors.deepPurple[900],
-                      //     decoration: TextDecoration.underline,
-                      //     size: 15.0,
-                      //     onTap: () {
-                      //       Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(builder: (context) => SigninPage()),
-                      //       );
-                      //     })
                     ]
                   : <Widget>[
                       Padding(
@@ -146,14 +156,16 @@ class SignupView extends StatelessWidget {
                         height: 70.0,
                         width: 150.0,
                       ),
-                      Padding(padding: EdgeInsets.all(10.0)),
+                      Padding(padding: EdgeInsets.all(20.0)),
                       FForm(
-                        autofocus: true,
-                        icon: Icon(Icons.card_membership),
-                        type: TextInputType.text,
-                        text: "Card ID",
-                        onChanged: (String id) {},
-                      ),
+                          autofocus: true,
+                          icon: Icon(Icons.card_membership),
+                          type: TextInputType.text,
+                          text: "Card ID",
+                          onChanged: setCardId,
+                          error: cardIdErr,
+                          verifyCardErr: verifyCardErr,
+                          setVerifyCardErr: setVerifyCardErr),
                       Padding(padding: EdgeInsets.all(10.0)),
                       RaisedButton(
                         child: Text(
@@ -163,8 +175,9 @@ class SignupView extends StatelessWidget {
                               fontFamily: "Helvetica",
                               fontSize: 18),
                         ),
-                        onPressed: () {},
-                      )
+                        onPressed: isVerifying == false ? verifyUser : null,
+                      ),
+                      Padding(padding: EdgeInsets.all(10.0)),
                     ],
             ),
           ),

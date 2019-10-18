@@ -31,12 +31,22 @@ login(String email, String password) async {
   }
 }
 
-signup(String email, String password, String name) async {
+verifyCard(String cardId) async {
+  try {
+    var response = await fetch(uri: '$URL/users/card/verify/$cardId');
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+signup(String email, String password, String name, String cardId) async {
   try {
     var response = await fetch(uri: '$URL/users/signup', method: "POST", body: {
       'email': email,
       'password': password,
       'name': name,
+      'card_id': cardId
     });
     return response;
   } catch (err) {
@@ -87,7 +97,6 @@ Map<String, String> headers = {
 };
 
 fetch({uri, method: "GET", body: ''}) async {
-  print("called");
   try {
     print(uri);
     switch (method) {

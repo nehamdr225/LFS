@@ -1,10 +1,10 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/SearchPage.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
-//import 'package:LFS/widget/atoms/FancyText.dart';
+import 'package:LFS/state/user.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:LFS/state/user.dart';
 import 'package:provider/provider.dart';
 
 class FAppbar extends StatelessWidget {
