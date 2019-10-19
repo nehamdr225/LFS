@@ -1,6 +1,6 @@
 import 'package:LFS/helpers/api.dart';
 import 'package:LFS/helpers/validators.dart';
-import 'package:LFS/pages/SigninPage.dart';
+import 'package:LFS/pages/ActivationPage.dart';
 import 'package:LFS/pages/views/SignupView.dart';
 
 import 'package:flutter/material.dart';
@@ -19,39 +19,39 @@ class _PageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final setName = (data) {
-      if (nameValidator(data) && data != name)
+      if (nameValidator(data) && data != name && data != null)
         setState(() {
           name = data;
           nameErr = null;
         });
-      else if (emailErr != null)
+      else {
         setState(() {
-          nameErr = "name is not valid!";
+          nameErr = "Name is not valid!";
         });
+      }
     };
 
     final setEmail = (data) {
-      if (emailValidator(data) && data != email)
+      if (emailValidator(data) && data != email && data != null)
         setState(() {
           email = data;
           emailErr = null;
         });
-      else if (emailErr != null)
+      else
         setState(() {
-          emailErr = "email is not valid!";
+          emailErr = "Email is not valid!";
         });
     };
 
     final setPassword = (data) {
-      // pwdValidator(data) &&
-      if (data != password && data.length >= 8)
+      if (pwdValidator(data) && data != password && data.length >= 8)
         setState(() {
           password = data;
           passwordErr = null;
         });
-      else if (passwordErr != null)
+      else
         setState(() {
-          passwordErr = "Password not valid!";
+          passwordErr = "Password not valid! (hint: p@55worD)";
         });
     };
 
@@ -69,23 +69,24 @@ class _PageState extends State<SignUpPage> {
 
     final signupUser = () async {
       final message = await signup(email, password, name, cardId);
+      print(message);
       if (message['error'] != null)
         setState(() {
           signupErr = message['error'];
         });
       else
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignInPage()));
+          context,
+          MaterialPageRoute(builder: (context) => Activation()),
+        );
     };
 
     final verifyUser = () async {
-      print(cardId);
       if (cardId != null && cardId.length > 5) {
         setState(() {
           isVerifying = true;
         });
         final message = await verifyCard(cardId);
-        print(message);
         if (message['error'] != null) {
           setState(() {
             verifyCardErr = "Error Verifying CardID!";

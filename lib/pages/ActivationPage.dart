@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:LFS/pages/ChangePwdPage.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
 import 'package:LFS/widget/atoms/FText.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
@@ -11,7 +10,7 @@ class Activation extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Center(
-                  child: Container(
+          child: Container(
             //height: 300.0,
             width: screenWidth * 0.80,
             child: Column(
@@ -21,7 +20,6 @@ class Activation extends StatelessWidget {
                 FText(
                   text: 'Activation Code',
                   font: 'Bree',
-
                 ),
                 Padding(
                   padding: EdgeInsets.all(14.0),
@@ -45,10 +43,7 @@ class Activation extends StatelessWidget {
                 ),
                 FButton(
                   text: 'Submit',
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CPassword()));
-                  },
+                  onPressed: () {},
                   onTap: null,
                   info: 'Resend Code',
                 )

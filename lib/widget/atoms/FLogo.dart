@@ -12,7 +12,6 @@ class FLogo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Container(
-            // padding: EdgeInsets.only(left: 10.0),
             alignment: Alignment.topCenter,
             child: Image.asset(
               'assets/images/logo.png',
