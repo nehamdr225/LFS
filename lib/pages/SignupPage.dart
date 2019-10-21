@@ -5,6 +5,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
+import 'package:LFS/widget/atoms/FancyText.dart';
 
 import 'package:flutter/material.dart';
 
@@ -249,6 +250,19 @@ class _PageState extends State<SignUpPage> {
                                   isVerifying == false ? verifyUser : null,
                             )
                           : CircularProgressIndicator(),
+                    ),
+                    FancyText(
+                      text: "Already have your code? Enter here",
+                      textAlign: TextAlign.center,
+                      textColor: primary,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Activation()),
+                        );
+                      },
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                     verifyCardErr != null

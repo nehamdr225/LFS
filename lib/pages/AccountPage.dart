@@ -3,12 +3,16 @@ import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+//import 'package:provider/provider.dart';
+//import 'package:LFS/state/user.dart';
 
 class AccountPage extends StatelessWidget {
   final image;
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
+    // final Map<String, dynamic> merchant =
+    //     Provider.of<UserModel>(context).user;
     return Column(
       children: <Widget>[
         Image.asset('assets/images/logopetals.png'),
@@ -18,17 +22,41 @@ class AccountPage extends StatelessWidget {
           textColor: textColor,
           size: 24.0,
         ),
-        Padding(padding: EdgeInsets.all(12.0),),
-        FlatButton(
-          shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.0, color: buttonColor),
-            borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          ),
-          onPressed: () {},
-          child: Text('Login / Signup',
-              style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
-          //child: Image.asset('assets/images/SocialMedia/merchantFAB.png', height: 30.0, width: 30.0,),
+        Padding(
+          padding: EdgeInsets.all(12.0),
         ),
+        Row( // Circular Avatar
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(padding: EdgeInsets.all(12.0),),
+            CircleAvatar(
+              radius: 24.0,
+              backgroundColor: Colors.grey[200],
+              child: Text(
+                'N',
+                style: TextStyle(
+                    fontFamily: 'Bree', fontSize: 20.0, color: primary),
+              ), //put initials of a user insted of 'N'
+            ),
+            Padding(padding: EdgeInsets.all(12.0),),            
+            Text(
+              'Name',
+              style:
+                  TextStyle(fontFamily: 'Bree', fontSize: 20.0, color: primary),
+            ), //put full name of a user insted of 'Name'
+          ],
+        ),
+        // FlatButton(
+        //   shape: RoundedRectangleBorder(
+        //     side: BorderSide(width: 1.0, color: buttonColor),
+        //     borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        //   ),
+        //   onPressed: () {},
+        //   child: Text('Login / Signup',
+        //       style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
+
+        // ),
         Padding(
           padding: EdgeInsets.all(12.0),
         ),
