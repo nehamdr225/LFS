@@ -11,7 +11,8 @@ class UserModel extends ChangeNotifier {
         getUser(localToken).then((result) {
           if (result == "token expired") {
             delKeyVal("token").then(() {
-              token = null;
+              state['token'] = null;
+              notifyListeners();
               return;
             });
           }

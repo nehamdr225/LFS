@@ -40,6 +40,24 @@ verifyCard(String cardId) async {
   }
 }
 
+confirmLink(String userId) async {
+  try {
+    final response = await fetch(uri: '$URL/users/verify/resend/$userId');
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+activateUser(code, id) async {
+  try {
+    final response = await fetch(uri: '$URL/users/verify/$id/by/$code');
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
 signup(String email, String password, String name, String cardId) async {
   try {
     var response = await fetch(uri: '$URL/users/signup', method: "POST", body: {
@@ -76,7 +94,7 @@ getOffersByCategory({category = "Hotels", result = 10, page = 1}) async {
 getUser(token) async {
   if (headers['X-Access-Token'] == null) updateAccessToken(token);
   try {
-    var response = await fetch(uri: "$URL/user");
+    var response = await fetch(uri: "$URL/users");
     if (response['message'] != null) return "token expired";
     return response['result'];
   } catch (err) {

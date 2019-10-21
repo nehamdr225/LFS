@@ -1,7 +1,10 @@
 import 'package:LFS/helpers/api.dart';
 import 'package:LFS/helpers/validators.dart';
 import 'package:LFS/pages/ActivationPage.dart';
-import 'package:LFS/pages/views/SignupView.dart';
+import 'package:LFS/constants/colors.dart';
+import 'package:LFS/widget/atoms/Appbar.dart';
+import 'package:LFS/widget/atoms/FForm.dart';
+import 'package:LFS/widget/atoms/FLogo.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,9 +15,11 @@ class SignUpPage extends StatefulWidget {
 
 class _PageState extends State<SignUpPage> {
   String name, email, password, cardId;
-  String nameErr, emailErr, passwordErr, signupErr, cardIdErr, verifyCardErr;
+  String nameErr, emailErr, passwordErr, signupErr;
+  String cardIdErr, verifyCardErr, mailErr, userId;
   bool isVerifying = false;
   bool isCardValid = false;
+  bool isRegistering = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,17 +73,34 @@ class _PageState extends State<SignUpPage> {
     };
 
     final signupUser = () async {
-      final message = await signup(email, password, name, cardId);
-      print(message);
-      if (message['error'] != null)
+      if (emailValidator(email) &&
+          pwdValidator(password) &&
+          nameValidator(name) &&
+          cardIdValidator(cardId)) {
         setState(() {
-          signupErr = message['error'];
+          isRegistering = true;
         });
-      else
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Activation()),
-        );
+        final message = await signup(email, password, name, cardId);
+        print(message['error']);
+        if (message['error'] != null)
+          setState(() {
+            signupErr = message['error'];
+            isRegistering = false;
+          });
+        else if (message['mailErr'] != null)
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Activation(
+                    mailErr: message['mailErr'], user: message['id'])),
+          );
+        else
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Activation(user: message['id'])),
+          );
+      }
     };
 
     final verifyUser = () async {
@@ -106,27 +128,126 @@ class _PageState extends State<SignUpPage> {
       });
     };
 
-    final setVerifyCardErr = (data) => setState(() {
-          verifyCardErr = data;
-        });
-
-    return SignupView(
-      emailErr: emailErr,
-      passwordErr: passwordErr,
-      setEmail: setEmail,
-      setPassword: setPassword,
-      setName: setName,
-      signupErr: signupErr,
-      signupUser: signupUser,
-      nameErr: nameErr,
-      setCardId: setCardID,
-      cardIdErr: cardIdErr,
-      verifyUser: verifyUser,
-      verifyCardErr: verifyCardErr,
-      isVerifying: isVerifying,
-      setVerifyCardErr: setVerifyCardErr,
-      isCardValid: isCardValid,
-      cardId: cardId,
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: FAppbar(
+            search: false,
+            leadingChoice: false,
+            title: 'Sign Up',
+          )),
+      backgroundColor: lfsWhite,
+      resizeToAvoidBottomPadding: false,
+      body: Align(
+        alignment: Alignment.center,
+        child: Container(
+          child: ListView(
+            children: isCardValid == true
+                ? <Widget>[
+                    Padding(padding: EdgeInsets.only(top: 10)),
+                    FLogo(
+                      height: 70.0,
+                      width: 150.0,
+                    ),
+                    FForm(
+                        autofocus: true,
+                        icon: Icon(Icons.card_membership),
+                        text: 'Card ID',
+                        onChanged: setCardID,
+                        error: cardIdErr,
+                        value: cardId),
+                    FForm(
+                      icon: Icon(Icons.person_outline),
+                      text: 'Name',
+                      onChanged: setName,
+                      error: nameErr,
+                      autofocus: false,
+                    ),
+                    FForm(
+                      icon: Icon(
+                        Icons.mail_outline,
+                        color: navColor,
+                      ),
+                      type: TextInputType.emailAddress,
+                      text: 'Email',
+                      error: emailErr,
+                      onChanged: setEmail,
+                      autofocus: false,
+                    ),
+                    FForm(
+                      icon: Icon(Icons.vpn_key),
+                      type: TextInputType.visiblePassword,
+                      text: 'Password',
+                      obscure: true,
+                      onChanged: setPassword,
+                      error: passwordErr,
+                      autofocus: false,
+                    ),
+                    Container(
+                      width: 200.0,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.only(top: 20),
+                      child: RaisedButton(
+                        child: Text(
+                          'Register Now',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Helvetica',
+                              fontSize: 18),
+                        ),
+                        onPressed: isRegistering == false ? signupUser : null,
+                      ),
+                    ),
+                    signupErr != null
+                        ? Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              signupErr,
+                              style: TextStyle(
+                                color: errorColor,
+                                fontFamily: 'Helvetica',
+                              ),
+                            ))
+                        : Text("")
+                  ]
+                : <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                    FLogo(
+                      height: 70.0,
+                      width: 150.0,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                    FForm(
+                      autofocus: true,
+                      icon: Icon(Icons.card_membership),
+                      text: 'Card ID',
+                      onChanged: setCardID,
+                      error: cardIdErr,
+                    ),
+                    Container(
+                      width: 200.0,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.only(top: 20),
+                      child: RaisedButton(
+                        child: Text(
+                          'Verify Card',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Helvetica',
+                              fontSize: 18),
+                        ),
+                        onPressed: isVerifying == false ? verifyUser : null,
+                      ),
+                    ),
+                  ],
+          ),
+        ),
+      ),
     );
   }
 }
