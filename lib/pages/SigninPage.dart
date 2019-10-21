@@ -113,16 +113,18 @@ class _PageState extends State<SignInPage> {
             Container(
               width: 200.0,
               alignment: Alignment.center,
-              child: RaisedButton(
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Helvetica",
-                      fontSize: 18),
-                ),
-                onPressed: isSigningIn == false ? loginUser : null,
-              ),
+              child: isSigningIn == false
+                  ? RaisedButton(
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Helvetica",
+                            fontSize: 18),
+                      ),
+                      onPressed: isSigningIn == false ? loginUser : null,
+                    )
+                  : CircularProgressIndicator(),
             ),
             loginErr != null
                 ? Text(

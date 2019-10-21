@@ -188,16 +188,19 @@ class _PageState extends State<SignUpPage> {
                       width: 200.0,
                       alignment: Alignment.center,
                       padding: EdgeInsets.only(top: 20),
-                      child: RaisedButton(
-                        child: Text(
-                          'Register Now',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Helvetica',
-                              fontSize: 18),
-                        ),
-                        onPressed: isRegistering == false ? signupUser : null,
-                      ),
+                      child: isRegistering == false
+                          ? RaisedButton(
+                              child: Text(
+                                'Register Now',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Helvetica',
+                                    fontSize: 18),
+                              ),
+                              onPressed:
+                                  isRegistering == false ? signupUser : null,
+                            )
+                          : CircularProgressIndicator(),
                     ),
                     signupErr != null
                         ? Align(
@@ -233,17 +236,32 @@ class _PageState extends State<SignUpPage> {
                       width: 200.0,
                       alignment: Alignment.center,
                       padding: EdgeInsets.only(top: 20),
-                      child: RaisedButton(
-                        child: Text(
-                          'Verify Card',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Helvetica',
-                              fontSize: 18),
-                        ),
-                        onPressed: isVerifying == false ? verifyUser : null,
-                      ),
+                      child: isVerifying == false
+                          ? RaisedButton(
+                              child: Text(
+                                'Verify Card',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Helvetica',
+                                    fontSize: 18),
+                              ),
+                              onPressed:
+                                  isVerifying == false ? verifyUser : null,
+                            )
+                          : CircularProgressIndicator(),
                     ),
+                    Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                    verifyCardErr != null
+                        ? Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              verifyCardErr,
+                              style: TextStyle(
+                                color: errorColor,
+                                fontFamily: 'Helvetica',
+                              ),
+                            ))
+                        : Text("")
                   ],
           ),
         ),

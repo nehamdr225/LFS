@@ -40,7 +40,7 @@ verifyCard(String cardId) async {
   }
 }
 
-confirmLink(String userId) async {
+confirmLinkResend(String userId) async {
   try {
     final response = await fetch(uri: '$URL/users/verify/resend/$userId');
     return response;

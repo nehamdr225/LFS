@@ -15,8 +15,50 @@ class Activation extends StatefulWidget {
 class _ActivationState extends State<Activation> {
   String activationCode, activationErr;
   bool isActivating = false;
+  bool isRecentActive = false;
+  String mailErr;
   @override
   Widget build(BuildContext context) {
+    resendCode() async {
+      setState(() {
+        isRecentActive = true;
+      });
+      final response = await confirmLinkResend(widget.user);
+      print(response);
+      if (response['error'] != null)
+        setState(() {
+          mailErr = response['error'];
+          isRecentActive = false;
+        });
+      else if (response['mailErr'] != null)
+        setState(() {
+          mailErr = response['mailErr'];
+          isRecentActive = false;
+        });
+      else
+        setState(() {
+          mailErr = "Activation code has been re-sent.";
+          isRecentActive = false;
+        });
+    }
+
+    confirmActivationCode() async {
+      setState(() {
+        isActivating = true;
+      });
+      final result = await activateUser(activationCode, widget.user);
+      if (result['error'] != null)
+        setState(() {
+          isActivating = false;
+          activationErr = result['err'];
+        });
+      else
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SignInPage()),
+        );
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -35,7 +77,9 @@ class _ActivationState extends State<Activation> {
               child: Text(
                 widget.mailErr != null
                     ? widget.mailErr
-                    : 'An activation code was sent to your email address.',
+                    : mailErr != null
+                        ? mailErr
+                        : 'An activation code was sent to your email address.',
                 style: TextStyle(
                   fontFamily: 'Helvetica',
                   color: textColor,
@@ -67,40 +111,33 @@ class _ActivationState extends State<Activation> {
             Container(
               width: 200.0,
               alignment: Alignment.center,
-              child: RaisedButton(
-                child: Text(
-                  "Confirm",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Helvetica",
-                      fontSize: 16),
-                ),
-                onPressed: () async {
-                  setState(() {
-                    isActivating = true;
-                  });
-                  final result =
-                      await activateUser(activationCode, widget.user);
-                  if (result['error'] != null)
-                    setState(() {
-                      isActivating = false;
-                      activationErr = result['err'];
-                    });
-                  else
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignInPage()),
-                    );
-                },
-              ),
+              child: isActivating == false
+                  ? RaisedButton(
+                      child: Text(
+                        "Confirm",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Helvetica",
+                            fontSize: 16),
+                      ),
+                      onPressed:
+                          isActivating == false ? confirmActivationCode : null,
+                    )
+                  : CircularProgressIndicator(),
             ),
-            FlatButton(
-              child: Text(
-                'Resend Code',
-              ),
-              onPressed: () {
-                confirmLink(widget.user);
-              },
+            Container(
+              width: 200.0,
+              alignment: Alignment.center,
+              child: isRecentActive == false
+                  ? FlatButton(
+                      child: Text(
+                        'Resend Code',
+                        style:
+                            TextStyle(fontFamily: "Helvetica", fontSize: 16.0),
+                      ),
+                      onPressed: isRecentActive == false ? resendCode : null,
+                    )
+                  : CircularProgressIndicator(),
             )
           ],
         ),
