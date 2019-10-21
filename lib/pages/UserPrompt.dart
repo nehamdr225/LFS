@@ -13,17 +13,21 @@ class UserPrompt extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Stack(children: <Widget>[
-        Container(
+      resizeToAvoidBottomInset: false,
+      body: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: screenHeight,
+          minWidth: screenWidth,
+        ),
+        child: Container(
           height: screenHeight,
           width: screenWidth,
           decoration: new BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
-                fit: BoxFit.fitHeight),
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.fitHeight,
+            ),
           ),
-        ),
-        Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,7 +102,7 @@ class UserPrompt extends StatelessWidget {
             ],
           ),
         ),
-      ]),
+      ),
     );
   }
 }

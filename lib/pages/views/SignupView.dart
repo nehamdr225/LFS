@@ -44,7 +44,7 @@ class SignupView extends StatelessWidget {
           child: FAppbar(
             search: false,
             leadingChoice: false,
-            title: "Sign Up",
+            title: 'Sign Up',
           )),
       backgroundColor: lfsWhite,
       resizeToAvoidBottomPadding: false,
@@ -61,7 +61,7 @@ class SignupView extends StatelessWidget {
                     ),
                     FForm(
                         icon: Icon(Icons.card_membership),
-                        text: "Card ID",
+                        text: 'Card ID',
                         onChanged: setCardId,
                         autofocus: false,
                         error: cardIdErr,
@@ -69,10 +69,10 @@ class SignupView extends StatelessWidget {
                     FForm(
                       autofocus: true,
                       icon: Icon(Icons.person_outline),
-                      text: "Name",
+                      text: 'Name',
                       onChanged: setName,
                       error: nameErr,
-                      value: null,
+                      value: '',
                     ),
                     FForm(
                       icon: Icon(
@@ -80,7 +80,7 @@ class SignupView extends StatelessWidget {
                         color: navColor,
                       ),
                       type: TextInputType.emailAddress,
-                      text: "Email",
+                      text: 'Email',
                       error: emailErr,
                       onChanged: setEmail,
                       autofocus: false,
@@ -88,7 +88,7 @@ class SignupView extends StatelessWidget {
                     FForm(
                       icon: Icon(Icons.vpn_key),
                       type: TextInputType.visiblePassword,
-                      text: "Password",
+                      text: 'Password',
                       obscure: true,
                       onChanged: setPassword,
                       error: passwordErr,
@@ -100,10 +100,10 @@ class SignupView extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20),
                       child: RaisedButton(
                         child: Text(
-                          "Register Now",
+                          'Register Now',
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: "Helvetica",
+                              fontFamily: 'Helvetica',
                               fontSize: 18),
                         ),
                         onPressed: signupUser,
@@ -124,7 +124,7 @@ class SignupView extends StatelessWidget {
                     FForm(
                       autofocus: true,
                       icon: Icon(Icons.card_membership),
-                      text: "Card ID",
+                      text: 'Card ID',
                       onChanged: setCardId,
                       error: cardIdErr,
                     ),
@@ -134,10 +134,10 @@ class SignupView extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20),
                       child: RaisedButton(
                         child: Text(
-                          "Verify Card",
+                          'Verify Card',
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: "Helvetica",
+                              fontFamily: 'Helvetica',
                               fontSize: 18),
                         ),
                         onPressed: isVerifying == false ? verifyUser : null,
