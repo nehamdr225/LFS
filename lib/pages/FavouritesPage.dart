@@ -1,3 +1,4 @@
+import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/state/user.dart';
 import 'package:LFS/state/merchants.dart';
@@ -16,7 +17,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
   Widget build(BuildContext context) {
     final MerchantsModel merchants = Provider.of<MerchantsModel>(context);
     final List favourites = Provider.of<UserModel>(context).favourites;
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
@@ -27,25 +27,76 @@ class _FavouritesPageState extends State<FavouritesPage> {
         ),
       ),
       body: ListView(
-        children: <Widget>[
-          favourites.length > 0
-              ? favourites.map((fav) {
-                  final merchant = merchants.one(fav);
-                  return Row(
-                    children: <Widget>[
-                      Text(merchant['name']),
-                      Text(merchant['address'])
+        children: favourites.length > 0
+            ? favourites.map((fav) {
+                final merchant = merchants.one(fav);
+                return Container(
+                  margin: EdgeInsets.only(top: 15),
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset.fromDirection(1, 1),
+                          blurRadius: 1),
+                      BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset.fromDirection(-1, 1),
+                          blurRadius: 1)
                     ],
-                  );
-                })
-              : Align(
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(3.0),
+                        child: Image.network(merchant['media']['src'][0]),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Icon(
+                              Icons.remove_circle_outline,
+                              color: errorColor,
+                            ),
+                            Text(
+                              merchant['name'],
+                              style: TextStyle(
+                                  fontFamily: "Helvetica",
+                                  color: textColor,
+                                  fontSize: 16.0),
+                            ),
+                            Text(
+                              merchant['address'],
+                              style: TextStyle(
+                                  fontFamily: "Helvetica",
+                                  color: textColor,
+                                  fontSize: 16.0),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              }).toList()
+            : <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
                   alignment: Alignment.center,
                   child: Text(
                     "Your favourites list is empty.",
-                    style: TextStyle(fontFamily: "Helvetica"),
+                    style: TextStyle(
+                        fontFamily: "Helvetica",
+                        color: textColor,
+                        fontSize: 16.0),
                   ),
                 ),
-        ],
+              ],
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/constants/colors.dart' as colors;
+import 'package:LFS/pages/EditProfilePage.dart';
 import 'package:LFS/pages/FavouritesPage.dart';
 // import 'package:LFS/widget/atoms/FancyText.dart';
 // import 'package:LFS/widget/atoms/RateUs.dart';
@@ -89,7 +90,13 @@ class AccountPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfilePage()),
+                        );
+                      },
                     ),
                   )
                 ],
