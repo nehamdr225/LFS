@@ -1,7 +1,7 @@
 import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/state/cards.dart';
 import 'package:LFS/state/merchants.dart';
-import 'package:LFS/state/store.dart';
+// import 'package:LFS/state/store.dart';
 import 'package:LFS/state/user.dart';
 import 'package:LFS/state/theme.dart';
 import 'package:LFS/pages/UserPrompt.dart';
@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await delKeyVal("token");
+  // await delKeyVal("token");
   runApp(BootStrapper());
 }
 

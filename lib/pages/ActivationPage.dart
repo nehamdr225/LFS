@@ -19,12 +19,11 @@ class _ActivationState extends State<Activation> {
   String mailErr;
   @override
   Widget build(BuildContext context) {
-    resendCode() async {
+    Future<void> resendCode() async {
       setState(() {
         isRecentActive = true;
       });
-      final response = await confirmLinkResend(widget.user);
-      print(response);
+      final response = await activationCodeResend(widget.user);
       if (response['error'] != null)
         setState(() {
           mailErr = response['error'];
@@ -42,7 +41,7 @@ class _ActivationState extends State<Activation> {
         });
     }
 
-    confirmActivationCode() async {
+    Future<void> confirmActivationCode() async {
       setState(() {
         isActivating = true;
       });

@@ -1,152 +1,202 @@
 import 'package:LFS/constants/colors.dart';
-import 'package:LFS/widget/atoms/FancyText.dart';
-import 'package:LFS/widget/atoms/RateUs.dart';
+import 'package:LFS/constants/colors.dart' as colors;
+import 'package:LFS/pages/FavouritesPage.dart';
+// import 'package:LFS/widget/atoms/FancyText.dart';
+// import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:provider/provider.dart';
-//import 'package:LFS/state/user.dart';
+import 'package:provider/provider.dart';
+import 'package:LFS/state/user.dart';
 
 class AccountPage extends StatelessWidget {
   final image;
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
-    // final Map<String, dynamic> merchant =
-    //     Provider.of<UserModel>(context).user;
+    final Map<String, dynamic> user = Provider.of<UserModel>(context).user;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Image.asset('assets/images/logopetals.png'),
-        FancyText(
-          text: 'LFS Card',
-          textAlign: TextAlign.center,
-          textColor: textColor,
-          size: 24.0,
-        ),
-        Padding(
-          padding: EdgeInsets.all(12.0),
-        ),
-        Row( // Circular Avatar
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+        Column(
           children: <Widget>[
-            Padding(padding: EdgeInsets.all(12.0),),
-            CircleAvatar(
-              radius: 24.0,
-              backgroundColor: Colors.grey[200],
-              child: Text(
-                'N',
-                style: TextStyle(
-                    fontFamily: 'Bree', fontSize: 20.0, color: primary),
-              ), //put initials of a user insted of 'N'
-            ),
-            Padding(padding: EdgeInsets.all(12.0),),            
-            Text(
-              'Name',
-              style:
-                  TextStyle(fontFamily: 'Bree', fontSize: 20.0, color: primary),
-            ), //put full name of a user insted of 'Name'
+            Container(
+              child: Column(
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 50.0,
+                    child: user['media'] != null
+                        ? Image.network(user['media'])
+                        : Text(
+                            user['name'].split(' ').reduce((a, b) {
+                              return '${a[0]} ${b[0]}';
+                            }),
+                            style: TextStyle(
+                              fontFamily: "Helvetica",
+                              fontSize: 24.0,
+                              letterSpacing: 4.0,
+                            ),
+                          ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Text(
+                        user['name'],
+                        style: TextStyle(
+                            color: colors.navColor,
+                            fontFamily: "Helvetica",
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
+                      child: Text(
+                        user['email'],
+                        style: TextStyle(
+                            color: colors.navColor,
+                            fontFamily: "Helvetica",
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.0),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 130.0,
+                    padding: EdgeInsets.only(top: 10.0),
+                    alignment: Alignment.center,
+                    child: FlatButton(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Icon(
+                            Icons.settings,
+                            size: 16.0,
+                          ),
+                          Text(
+                            "Edit Profile",
+                            style: TextStyle(
+                              fontFamily: "Helvetica",
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onPressed: () {},
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
-        // FlatButton(
-        //   shape: RoundedRectangleBorder(
-        //     side: BorderSide(width: 1.0, color: buttonColor),
-        //     borderRadius: BorderRadius.all(Radius.circular(30.0)),
-        //   ),
-        //   onPressed: () {},
-        //   child: Text('Login / Signup',
-        //       style: TextStyle(fontFamily: 'Bree', color: buttonColor)),
-
-        // ),
-        Padding(
-          padding: EdgeInsets.all(12.0),
-        ),
-        Container(
-          height: 20.0,
-          child: ListTile(
-            leading: Icon(
-              Icons.bookmark,
-              color: buttonColor,
-            ),
-            title: Text(
-              'Favourites',
-              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
-            ),
-            trailing: Icon(
-              CupertinoIcons.right_chevron,
-              color: buttonColor,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-        ),
-        Container(
-          height: 20.0,
-          child: ListTile(
-            leading: Icon(
-              Icons.star,
-              color: buttonColor,
-            ),
-            title: Text(
-              'Rate us',
-              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
-            ),
-            trailing: Icon(
-              CupertinoIcons.right_chevron,
-              color: buttonColor,
-            ),
-            onTap: () {
-              AlertDialog(
-                elevation: 2.0,
-                title: FancyText(
-                  text: 'Rate Us',
-                  textColor: primary,
-                  size: 18.0,
+        Column(
+          children: <Widget>[
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.favorite,
+                  color: errorColor,
                 ),
-                actions: <Widget>[RateUs()],
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-        ),
-        Container(
-          height: 20.0,
-          child: ListTile(
-            leading: Icon(
-              Icons.thumb_up,
-              color: buttonColor,
+                title: Text(
+                  'Favourites',
+                  style: TextStyle(
+                      color: textColor,
+                      fontFamily: 'Helvetica',
+                      fontSize: 15.0),
+                ),
+                trailing: Icon(
+                  CupertinoIcons.right_chevron,
+                  color: navColor,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FavouritesPage()),
+                  );
+                },
+              ),
             ),
-            title: Text(
-              'Like',
-              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.star_border,
+                  color: buttonColor,
+                ),
+                title: Text(
+                  'Rate us',
+                  style: TextStyle(
+                      color: textColor,
+                      fontFamily: 'Helvetica',
+                      fontSize: 15.0),
+                ),
+                trailing: Icon(
+                  CupertinoIcons.right_chevron,
+                  color: navColor,
+                ),
+                onTap: () {
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (context) => AlertDialog(
+                  //           elevation: 2.0,
+                  //           title: FancyText(
+                  //             text: 'Rate Us',
+                  //             textColor: primary,
+                  //             size: 18.0,
+                  //           ),
+                  //           actions: <Widget>[RateUs()],
+                  //         ));
+                },
+              ),
             ),
-            trailing: Icon(
-              CupertinoIcons.right_chevron,
-              color: buttonColor,
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.thumb_up,
+                  color: deepBlue,
+                ),
+                title: Text(
+                  'Like',
+                  style: TextStyle(
+                      color: textColor,
+                      fontFamily: 'Helvetica',
+                      fontSize: 15.0),
+                ),
+                trailing: Icon(
+                  CupertinoIcons.right_chevron,
+                  color: navColor,
+                ),
+                onTap: () {},
+              ),
             ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-        ),
-        Container(
-          height: 20.0,
-          child: ListTile(
-            leading: Icon(
-              CupertinoIcons.share_solid,
-              color: buttonColor,
-            ),
-            title: Text(
-              'Share',
-              style: TextStyle(color: textColor, fontFamily: 'Crimson'),
-            ),
-            trailing: Icon(
-              CupertinoIcons.right_chevron,
-              color: buttonColor,
-            ),
-          ),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.share_solid,
+                  color: Colors.amber,
+                ),
+                title: Text(
+                  'Share',
+                  style: TextStyle(
+                      color: textColor,
+                      fontFamily: 'Helvetica',
+                      fontSize: 15.0),
+                ),
+                trailing: Icon(
+                  CupertinoIcons.right_chevron,
+                  color: navColor,
+                ),
+                onTap: () {},
+              ),
+            )
+          ],
         )
       ],
     );

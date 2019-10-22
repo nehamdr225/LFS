@@ -40,9 +40,10 @@ verifyCard(String cardId) async {
   }
 }
 
-confirmLinkResend(String userId) async {
+activationCodeResend(String userId) async {
   try {
-    final response = await fetch(uri: '$URL/users/verify/resend/$userId');
+    final response = await fetch(uri:'$URL/users/resend/activation/$userId');
+    print(response);
     return response;
   } catch (err) {
     return {"error": err};
