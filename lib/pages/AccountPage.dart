@@ -14,7 +14,7 @@ class AccountPage extends StatelessWidget {
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> user = Provider.of<UserModel>(context).user;
+    final user = Provider.of<UserModel>(context).user;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[

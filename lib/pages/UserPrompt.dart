@@ -1,9 +1,7 @@
 import 'package:LFS/constants/colors.dart';
-import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/pages/SignupPage.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
-import 'package:LFS/widget/atoms/UnderlinedText.dart';
 import 'package:flutter/material.dart';
 
 class UserPrompt extends StatelessWidget {
@@ -88,17 +86,6 @@ class UserPrompt extends StatelessWidget {
                     )),
                 padding: EdgeInsets.only(top: 200),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 100.0)),
-              UnderlinedText(
-                text: "Continue without sign-in",
-                size: 18.0,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NavigationPage()));
-                },
-              )
             ],
           ),
         ),

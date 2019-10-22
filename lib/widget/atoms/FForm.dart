@@ -13,6 +13,7 @@ class FForm extends StatelessWidget {
       fontWeight: FontWeight.bold,
       fontSize: 15,
       color: primary);
+  final bool readOnly;
 
   FForm(
       {this.text,
@@ -22,17 +23,17 @@ class FForm extends StatelessWidget {
       this.autofocus,
       this.icon,
       this.error,
-      this.value});
+      this.value,
+      this.readOnly: false});
 
   @override
   Widget build(BuildContext context) {
-    print(value);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
       child: TextField(
-        controller: value != null
-            ? TextEditingController.fromValue(TextEditingValue(text: value))
-            : null,
+        readOnly: readOnly,
+        controller:
+            value != null ? new TextEditingController(text: value) : null,
         keyboardType: type,
         autofocus: autofocus,
         obscureText: obscure,
