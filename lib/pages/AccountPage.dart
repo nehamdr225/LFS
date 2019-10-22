@@ -16,7 +16,7 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context).user;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Column(
           children: <Widget>[
@@ -39,7 +39,7 @@ class AccountPage extends StatelessWidget {
                           ),
                   ),
                   Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
@@ -54,7 +54,7 @@ class AccountPage extends StatelessWidget {
                     ),
                   ),
                   Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.center,
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
