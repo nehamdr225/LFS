@@ -9,6 +9,7 @@ import 'package:LFS/widget/GoogleMaps.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
   final String id;
@@ -240,25 +241,52 @@ class _DetailPageState extends State<DetailPage> {
               textAlign: TextAlign.start,
             ),
           ),
-          Padding(
-              // address detail
-              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.call,
-                    size: 16,
-                    color: deepBlue,
-                  ),
-                  FancyText(
-                    text: merchant["contact"],
-                    textColor: textColor,
-                    fontFamily: 'Crimson',
-                    textAlign: TextAlign.start,
-                    size: 16,
-                  ),
-                ],
-              )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                // address detail
+                padding: const EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.call,
+                      size: 16,
+                      color: deepBlue,
+                    ),
+                    FancyText(
+                      text: merchant["contact"],
+                      textColor: textColor,
+                      fontFamily: 'Crimson',
+                      textAlign: TextAlign.start,
+                      size: 16,
+                    ),
+                  ],
+                ),
+              ),
+              FlatButton(
+                onPressed: () async {
+                  final url = 'tel://${merchant["contact"]}';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    print('Could not launch $url');
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Icon(Icons.call),
+                    Text(
+                      "Call now",
+                      style: TextStyle(fontFamily: "Helvetica"),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Follow(),

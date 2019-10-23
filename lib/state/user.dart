@@ -9,23 +9,32 @@ class UserModel extends ChangeNotifier {
       if (localToken != null && localToken != state["token"]) {
         state["token"] = localToken;
         getUser(localToken).then((result) {
+          print(result);
           if (result == "token expired") {
             delKeyVal("token").then(() {
               state['token'] = null;
               notifyListeners();
-              return;
             });
           } else if (result['nerror'] != null) {
             print("Not connected to internet!");
-          } else
+          } else {
+            print(result);
             user = result;
+            if (result["favourites"].length > 0)
+              state["favourites"].addAll(result["favourites"]);
+            notifyListeners();
+          }
         });
-        notifyListeners();
       }
     });
   }
 
-  Map state = {"user": {}, "token": null, "location": null, "favourites": []};
+  Map<String, dynamic> state = {
+    "user": {},
+    "token": null,
+    "location": null,
+    "favourites": []
+  };
 
   String get token => state["token"];
   Map get user => state["user"];
@@ -58,34 +67,26 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  favourite(List ids) {
-    if (ids != null && ids.length > 0) {
-      int idsError = 0;
-      ids.forEach((id) {
-        if (state["favourites"] == null) state["favourites"] = [];
-        if (!state["favourites"].contains(id)) {
-          state["favourites"].add(id);
-        } else {
-          idsError += 1;
-        }
+  favourite(String id) {
+    if (id != null && id.length > 0) {
+      if (!favourites.contains(id)) {
+        state["favourites"].add(id);
+      } else
+        return "error";
+      // notifyListeners();
+      setFavourites(id, token).then((response) {
+        print(response);
       });
-      if (idsError == ids.length) return "error";
-      notifyListeners();
     }
   }
 
-  removeFromFav(List ids) {
-    if (ids != null && ids.length > 0) {
-      ids.forEach((id) {
-        if (state["favourites"] == null) {
-          state["favourites"] = [];
-          return;
-        }
-        if (state["favourites"].contains(id)) {
-          state["favourites"].remove(id);
-        }
+  void removeFromFav(String id) {
+    if (id != null && id.length > 0 && favourites.length > 0) {
+      if (favourites.contains(id)) state["favourites"].remove(id);
+      deleteFavourites(id, token).then((response) {
+        print(response);
       });
-      notifyListeners();
+      // notifyListeners();
     }
   }
 
@@ -97,7 +98,7 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  userDistance(List merchant) async {
+  Future<dynamic> userDistance(List merchant) async {
     try {
       return await getDistance(location, merchant);
     } catch (err) {
@@ -105,10 +106,10 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  getPosition() async => await Geolocator()
+  Future<Position> getPosition() async => await Geolocator()
       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-  getDistance(Position user, List merchant) async =>
+  Future<double> getDistance(Position user, List merchant) async =>
       await Geolocator().distanceBetween(user.latitude, user.longitude,
           double.parse(merchant[0]), double.parse(merchant[1])) /
       1000;

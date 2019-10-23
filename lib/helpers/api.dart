@@ -111,10 +111,21 @@ getMerchants() async {
   }
 }
 
-setFavourites(ids) async {
+setFavourites(id, token) async {
   try {
+    if (headers['X-Access-Token'] == null) updateAccessToken(token);
     return await fetch(
-        uri: "$URL/users/favourites", method: "POST", body: {'ids': ids});
+        uri: "$URL/users/update/favourites", method: "PUT", body: {'id': id});
+  } catch (err) {
+    return {"error": "Error ocurred"};
+  }
+}
+
+deleteFavourites(id, token) async {
+  try {
+    if (headers['X-Access-Token'] == null) updateAccessToken(token);
+    return await fetch(
+        uri: "$URL/users/remove/favourites/$id", method: "DELETE");
   } catch (err) {
     return {"error": "Error ocurred"};
   }
@@ -143,12 +154,16 @@ fetch({uri, method: "GET", body: ''}) async {
         var response =
             await http.put(uri, headers: headers, body: json.encode(body));
         return json.decode(response.body);
+      case "DELETE":
+        var response = await http.delete(uri, headers: headers);
+        return json.decode(response.body);
+        break;
       default:
         var response = await http.get(uri, headers: headers);
         return json.decode(response.body);
     }
   } catch (err) {
-    throw err;
+    return {'error': err};
   }
 }
 

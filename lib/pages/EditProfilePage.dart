@@ -55,28 +55,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               },
             ),
           ),
-          FForm(
-            value: isEditingMail == false ? user['email'] : null,
-            autofocus: false,
-            readOnly: isEditingMail == false ? true : false,
-          ),
-          Container(
-            width: 200.0,
-            padding: EdgeInsets.only(right: 10.0),
-            alignment: Alignment.centerRight,
-            child: RaisedButton(
-              splashColor: Colors.black12,
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.white, fontFamily: "Helvetica"),
-              ),
-              onPressed: () {
-                setState(() {
-                  isEditingMail = !isEditingMail;
-                });
-              },
-            ),
-          ),
         ],
       ),
     );

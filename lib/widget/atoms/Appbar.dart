@@ -35,7 +35,7 @@ class FAppbar extends StatelessWidget {
           ),
         );
     void addToFavourites() {
-      final status = user.favourite([id]);
+      final status = user.favourite(id);
       final removeFromFavs = (ids) => user.removeFromFav(ids);
       /* Show snackbar containing error message in Scaffold! */
       if (status == "error") {

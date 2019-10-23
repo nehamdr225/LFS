@@ -1,6 +1,7 @@
 import 'package:LFS/pages/NavigationPage.dart';
 import 'package:LFS/state/cards.dart';
 import 'package:LFS/state/merchants.dart';
+import 'package:LFS/state/store.dart';
 // import 'package:LFS/state/store.dart';
 import 'package:LFS/state/user.dart';
 import 'package:LFS/state/theme.dart';
@@ -13,10 +14,13 @@ import 'package:provider/provider.dart';
 main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // await delKeyVal("token");
-  runApp(BootStrapper());
+
+  runApp(BootStrapper(token: await getValue("token")));
 }
 
 class BootStrapper extends StatelessWidget {
+  final String token;
+  BootStrapper({this.token});
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -26,15 +30,16 @@ class BootStrapper extends StatelessWidget {
         ChangeNotifierProvider(builder: (context) => UserModel()),
         ChangeNotifierProvider(builder: (context) => CardsModel())
       ],
-      child: LfsApp(),
+      child: LfsApp(token: token),
     );
   }
 }
 
 class LfsApp extends StatelessWidget {
+  final String token;
+  LfsApp({this.token});
   @override
   Widget build(BuildContext context) {
-    final token = Provider.of<UserModel>(context).token;
     final theme = Provider.of<FTheme>(context).getTheme();
     return MaterialApp(
       home: token != null ? NavigationPage() : UserPrompt(),
