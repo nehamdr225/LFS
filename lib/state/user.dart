@@ -15,8 +15,10 @@ class UserModel extends ChangeNotifier {
               notifyListeners();
               return;
             });
-          }
-          user = result;
+          } else if (result['nerror'] != null) {
+            print("Not connected to internet!");
+          } else
+            user = result;
         });
         notifyListeners();
       }

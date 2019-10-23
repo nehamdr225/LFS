@@ -81,25 +81,31 @@ class _PageState extends State<SignUpPage> {
           isRegistering = true;
         });
         final message = await signup(email, password, name, cardId);
-        print(message['error']);
         if (message['error'] != null)
           setState(() {
             signupErr = message['error'];
             isRegistering = false;
           });
-        else if (message['mailErr'] != null)
+        else if (message['mailErr'] != null) {
+          setState(() {
+            isRegistering = false;
+          });
           Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => Activation(
                     mailErr: message['mailErr'], user: message['id'])),
           );
-        else
+        } else {
+          setState(() {
+            isRegistering = false;
+          });
           Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => Activation(user: message['id'])),
           );
+        }
       }
     };
 

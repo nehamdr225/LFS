@@ -59,6 +59,9 @@ class _PageState extends State<SignInPage> {
             getUser(token['token']).then((userData) {
               user.user = userData;
             });
+            setState(() {
+              isSigningIn = false;
+            });
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => NavigationPage()));
           } else

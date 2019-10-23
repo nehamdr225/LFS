@@ -16,90 +16,102 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context).user;
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Column(
           children: <Widget>[
             Container(
               child: Column(
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 50.0,
-                    child: user['media'] != null
-                        ? Image.network(user['media'])
-                        : Text(
-                            user['name'].split(' ').reduce((a, b) {
-                              return '${a[0]} ${b[0]}';
-                            }),
-                            style: TextStyle(
-                              fontFamily: "Helvetica",
-                              fontSize: 24.0,
-                              letterSpacing: 4.0,
+                children: user.length > 0
+                    ? <Widget>[
+                        CircleAvatar(
+                          radius: 50.0,
+                          child: user['media'] != null
+                              ? Image.network(user['media'])
+                              : Text(
+                                  user['name'].split(' ').reduce((a, b) {
+                                    return '${a[0]} ${b[0]}';
+                                  }),
+                                  style: TextStyle(
+                                    fontFamily: "Helvetica",
+                                    fontSize: 24.0,
+                                    letterSpacing: 4.0,
+                                  ),
+                                ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            child: Text(
+                              user['name'],
+                              style: TextStyle(
+                                  color: colors.navColor,
+                                  fontFamily: "Helvetica",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20.0),
                             ),
                           ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: Text(
-                        user['name'],
-                        style: TextStyle(
-                            color: colors.navColor,
-                            fontFamily: "Helvetica",
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20.0),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
-                      child: Text(
-                        user['email'],
-                        style: TextStyle(
-                            color: colors.navColor,
-                            fontFamily: "Helvetica",
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14.0),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 130.0,
-                    padding: EdgeInsets.only(top: 10.0),
-                    alignment: Alignment.center,
-                    child: FlatButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Icon(
-                            Icons.settings,
-                            size: 16.0,
-                          ),
-                          Text(
-                            "Edit Profile",
-                            style: TextStyle(
-                              fontFamily: "Helvetica",
-                              fontSize: 16.0,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0.0, horizontal: 10.0),
+                            child: Text(
+                              user['email'],
+                              style: TextStyle(
+                                  color: colors.navColor,
+                                  fontFamily: "Helvetica",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14.0),
+                              textAlign: TextAlign.right,
                             ),
                           ),
-                        ],
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EditProfilePage()),
-                        );
-                      },
-                    ),
-                  )
-                ],
+                        ),
+                        Container(
+                          width: 130.0,
+                          padding: EdgeInsets.only(top: 10.0),
+                          alignment: Alignment.center,
+                          child: FlatButton(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.settings,
+                                  size: 16.0,
+                                ),
+                                Text(
+                                  "Edit Profile",
+                                  style: TextStyle(
+                                    fontFamily: "Helvetica",
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfilePage()),
+                              );
+                            },
+                          ),
+                        )
+                      ]
+                    : <Widget>[
+                        Container(
+                          height: 200.0,
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 80,
+                            width: 80.0,
+                            child: CircularProgressIndicator(),
+                          ),
+                        )
+                      ],
               ),
             )
           ],

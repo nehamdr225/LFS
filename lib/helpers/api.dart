@@ -42,7 +42,7 @@ verifyCard(String cardId) async {
 
 activationCodeResend(String userId) async {
   try {
-    final response = await fetch(uri:'$URL/users/resend/activation/$userId');
+    final response = await fetch(uri: '$URL/users/resend/activation/$userId');
     print(response);
     return response;
   } catch (err) {
@@ -99,13 +99,22 @@ getUser(token) async {
     if (response['message'] != null) return "token expired";
     return response['result'];
   } catch (err) {
-    return err;
+    return {"nerror": "Network error"};
   }
 }
 
 getMerchants() async {
   try {
     return await fetch(uri: "$URL/merchants");
+  } catch (err) {
+    return {"error": "Error ocurred"};
+  }
+}
+
+setFavourites(ids) async {
+  try {
+    return await fetch(
+        uri: "$URL/users/favourites", method: "POST", body: {'ids': ids});
   } catch (err) {
     return {"error": "Error ocurred"};
   }

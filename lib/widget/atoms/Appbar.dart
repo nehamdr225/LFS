@@ -1,6 +1,5 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/SearchPage.dart';
-import 'package:LFS/widget/atoms/FLogo.dart';
 import 'package:LFS/state/user.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -53,7 +52,14 @@ class FAppbar extends StatelessWidget {
       backgroundColor: lfsWhite,
       centerTitle: true,
       leading: leadingChoice == true
-          ? FLogo()
+          ? Container(
+              padding: EdgeInsets.symmetric(vertical: 3.0),
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/images/logopetals.png',
+                fit: BoxFit.fill,
+              ),
+            )
           : IconButton(
               icon: Icon(
                 CupertinoIcons.back,
