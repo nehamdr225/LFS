@@ -14,6 +14,7 @@ class FRaisedButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
+        elevation: 0.0,
           color: bg,
           child: Text(
             text,

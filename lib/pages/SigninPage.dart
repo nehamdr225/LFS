@@ -113,6 +113,17 @@ class _PageState extends State<SignInPage> {
               autofocus: false,
               error: passwordErr,
             ),
+            ListTile(
+              // leading: Checkbox(
+              //   checkColor: primary,
+              //   value: value: product.isCheck, onChanged: (bool value) {
+              //setState(() {
+               // product.isCheck = value;
+             // });
+            //}
+              // ),
+              title: Text('Remember Password', style:TextStyle(fontFamily: 'Bree', color: textColor), textAlign: TextAlign.center,),
+            ),
             Container(
               width: 200.0,
               alignment: Alignment.center,

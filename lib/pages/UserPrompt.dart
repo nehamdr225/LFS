@@ -39,6 +39,7 @@ class UserPrompt extends StatelessWidget {
                 ),
                 padding: EdgeInsets.only(top: 80),
               ),
+              Padding(padding: EdgeInsets.all(50.0),),
               Container(
                   color: Colors.transparent,
                   child: Column(

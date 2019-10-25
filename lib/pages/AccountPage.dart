@@ -2,6 +2,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/constants/colors.dart' as colors;
 import 'package:LFS/pages/EditProfilePage.dart';
 import 'package:LFS/pages/FavouritesPage.dart';
+import 'package:LFS/widget/atoms/RaisedButton.dart';
 // import 'package:LFS/widget/atoms/FancyText.dart';
 // import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class AccountPage extends StatelessWidget {
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     final user = Provider.of<UserModel>(context).user;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -216,7 +218,17 @@ class AccountPage extends StatelessWidget {
               ),
             )
           ],
-        )
+        ),
+        FRaisedButton(
+          shape: true,
+          text: "Logout",
+          color: Colors.red[900],
+          bg: Colors.white,
+          width: screenWidth-50.0,
+          height: 50.0,
+          onPressed: (){},
+        ),
+        Padding(padding: EdgeInsets.only(bottom: 0.0),)
       ],
     );
   }

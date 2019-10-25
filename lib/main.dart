@@ -13,8 +13,7 @@ import 'package:provider/provider.dart';
 
 main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // await delKeyVal("token");
-
+  await delKeyVal("token");
   runApp(BootStrapper(token: await getValue("token")));
 }
 
