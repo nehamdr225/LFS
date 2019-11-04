@@ -19,11 +19,11 @@ class UserModel extends ChangeNotifier {
             print("Not connected to internet!");
           } else {
             print(result);
-            user = result;
+            state["user"] = result;
             if (result["favourites"].length > 0)
               state["favourites"].addAll(result["favourites"]);
-            notifyListeners();
           }
+          notifyListeners();
         });
       }
     });
@@ -113,4 +113,12 @@ class UserModel extends ChangeNotifier {
       await Geolocator().distanceBetween(user.latitude, user.longitude,
           double.parse(merchant[0]), double.parse(merchant[1])) /
       1000;
+
+  void logOut() {
+    logout().then((result) {
+      state["user"] = {};
+      state["token"] = null;
+      notifyListeners();
+    });
+  }
 }

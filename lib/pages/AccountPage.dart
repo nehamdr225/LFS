@@ -2,7 +2,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/constants/colors.dart' as colors;
 import 'package:LFS/pages/EditProfilePage.dart';
 import 'package:LFS/pages/FavouritesPage.dart';
-import 'package:LFS/widget/atoms/RaisedButton.dart';
+import 'package:LFS/pages/UserPrompt.dart';
 // import 'package:LFS/widget/atoms/FancyText.dart';
 // import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
@@ -15,23 +15,31 @@ class AccountPage extends StatelessWidget {
   AccountPage({this.image});
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-    final user = Provider.of<UserModel>(context).user;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final user = Provider.of<UserModel>(context);
+    final userData = user.user;
+
+    void userCleanup() {
+      user.logOut();
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => UserPrompt()),
+          (Route<dynamic> route) => false);
+    }
+
+    return ListView(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Column(
           children: <Widget>[
             Container(
               child: Column(
-                children: user.length > 0
+                children: userData.length > 0
                     ? <Widget>[
                         CircleAvatar(
                           radius: 50.0,
-                          child: user['media'] != null
-                              ? Image.network(user['media'])
+                          child: userData['media'] != null
+                              ? Image.network(userData['media'])
                               : Text(
-                                  user['name'].split(' ').reduce((a, b) {
+                                  userData['name'].split(' ').reduce((a, b) {
                                     return '${a[0]} ${b[0]}';
                                   }),
                                   style: TextStyle(
@@ -47,7 +55,7 @@ class AccountPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 10.0),
                             child: Text(
-                              user['name'],
+                              userData['name'],
                               style: TextStyle(
                                   color: colors.navColor,
                                   fontFamily: "Helvetica",
@@ -62,7 +70,7 @@ class AccountPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 vertical: 0.0, horizontal: 10.0),
                             child: Text(
-                              user['email'],
+                              userData['email'],
                               style: TextStyle(
                                   color: colors.navColor,
                                   fontFamily: "Helvetica",
@@ -219,16 +227,21 @@ class AccountPage extends StatelessWidget {
             )
           ],
         ),
-        FRaisedButton(
-          shape: true,
-          text: "Logout",
-          color: Colors.red[900],
-          bg: Colors.white,
-          width: screenWidth-50.0,
-          height: 50.0,
-          onPressed: (){},
+        Container(
+          alignment: Alignment.center,
+          child: RaisedButton(
+            color: errorColor,
+            child: Text(
+              "Logout",
+              style: TextStyle(
+                  color: Colors.white, fontFamily: "Helvetica", fontSize: 16.0),
+            ),
+            onPressed: userCleanup,
+          ),
         ),
-        Padding(padding: EdgeInsets.only(bottom: 0.0),)
+        Padding(
+          padding: EdgeInsets.only(bottom: 0.0),
+        )
       ],
     );
   }

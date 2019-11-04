@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:LFS/constants/colors.dart' as consts;
 
-
 class FTheme with ChangeNotifier {
   ThemeData darkTheme = ThemeData.dark();
   ThemeData _themeData;
@@ -43,7 +42,7 @@ class FTheme with ChangeNotifier {
           ),
         )
         .apply(
-            fontFamily: 'Crimson',
+            fontFamily: 'Helvetica',
             displayColor: color,
             bodyColor: consts.lfsWhite);
   }
