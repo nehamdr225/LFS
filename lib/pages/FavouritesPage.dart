@@ -13,8 +13,59 @@ class FavouritesPage extends StatefulWidget {
 }
 
 class _FavouritesPageState extends State<FavouritesPage> {
+  Future _neverSatisfied(onPressed) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rewind and remember'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'Are you sure you want to delete this?',
+                  style: TextStyle(color: textColor),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancel',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                  )),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            RaisedButton(
+              color: errorColor,
+              child: Text(
+                'Delete',
+                style: TextStyle(color: lfsWhite, fontSize: 16.0),
+              ),
+              onPressed: () {
+                onPressed();
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // PopupMenuButton(
+    //   // onSelected: (result) { setState(() { _selection = result; }); },
+    //   itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+    //     const PopupMenuItem(value: '', child: Text('Working')),
+    //     const PopupMenuItem(value: '', child: Text('Being')),
+    //   ],
+    // );
     final MerchantsModel merchants = Provider.of<MerchantsModel>(context);
     final user = Provider.of<UserModel>(context);
     final favourites = user.favourites;
@@ -83,8 +134,10 @@ class _FavouritesPageState extends State<FavouritesPage> {
                         icon: Icon(
                           Icons.remove_circle_outline,
                         ),
-                        onPressed: () {
-                          user.removeFromFav(merchant['_id']);
+                        onPressed: () async {
+                          await _neverSatisfied(() {
+                            user.removeFromFav(merchant['_id']);
+                          });
                         },
                       )
                     ],
