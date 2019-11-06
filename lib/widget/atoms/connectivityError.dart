@@ -25,7 +25,7 @@ class _ConnErrorState extends State<ConnError> {
           icon = Icons.blur_circular;
           isRefreshing = true;
         });
-        getMerchants().then((data) {
+        getMerchants(1).then((data) {
           if (data["result"] != null) {
             merchants.merchants = data["result"];
           }

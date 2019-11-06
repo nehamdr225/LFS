@@ -103,9 +103,9 @@ getUser(token) async {
   }
 }
 
-getMerchants() async {
+getMerchants(page) async {
   try {
-    return await fetch(uri: "$URL/merchants");
+    return await fetch(uri: "$URL/merchants/$page");
   } catch (err) {
     return {"error": "Error ocurred"};
   }

@@ -80,13 +80,15 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  void removeFromFav(String id) {
+  removeFromFav(String id) {
     if (id != null && id.length > 0 && favourites.length > 0) {
-      if (favourites.contains(id)) state["favourites"].remove(id);
       deleteFavourites(id, token).then((response) {
-        print(response);
+        if (response["result"] != null) {
+          if (favourites.contains(id)) state["favourites"].remove(id);
+          notifyListeners();
+          return response;
+        }
       });
-      // notifyListeners();
     }
   }
 

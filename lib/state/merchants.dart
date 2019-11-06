@@ -6,8 +6,10 @@ import 'package:geolocator/geolocator.dart';
 class MerchantsModel extends ChangeNotifier {
   MerchantsModel() {
     //Cache data locally and retrieve if not network
-    getMerchants().then((data) {
+    getMerchants(_page).then((data) {
       if (data["result"] != null) {
+        print(data["count"]);
+        maxCount = data["count"];
         merchants = data["result"];
       }
     });
@@ -15,8 +17,14 @@ class MerchantsModel extends ChangeNotifier {
 
   List _merchants = [];
   List get merchants => _merchants;
-
+  int _page = 1;
+  int _maxCount;
   Map one(id) => _merchants.firstWhere((merchant) => merchant["_id"] == id);
+  get maxCount => _maxCount;
+  set maxCount(count) {
+    _maxCount = count;
+    notifyListeners();
+  }
 
   getDistance(Position user, List merchant) async =>
       await Geolocator().distanceBetween(user.latitude, user.longitude,
@@ -27,7 +35,16 @@ class MerchantsModel extends ChangeNotifier {
       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
   set merchants(List data) {
-    _merchants.addAll(data);
+    if (_merchants.length > 0)
+      data.forEach((el) {
+        final check =
+            _merchants.any((merchant) => merchant['_id'] == el['_id']);
+        if (!check) _merchants.add(el);
+      });
+    else {
+      _merchants.addAll(data);
+    }
+
     notifyListeners();
   }
 
@@ -49,4 +66,20 @@ class MerchantsModel extends ChangeNotifier {
 
   category(String cat) =>
       _merchants.where((card) => card["category"].contains(cat)).toList();
+
+  String refresh() {
+    if (maxCount != null && _page * 15 <= maxCount) {
+      _page++;
+      getMerchants(_page).then((result) {
+        print(result);
+        if (result['result'].length > 0) {
+          merchants = result['result'];
+          notifyListeners();
+          return "success";
+        }
+        return "done";
+      });
+    }
+    return "done";
+  }
 }

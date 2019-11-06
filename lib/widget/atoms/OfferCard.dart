@@ -31,6 +31,8 @@ class OfferCard extends StatelessWidget {
           width: MediaQuery.of(context).size.width - 20,
           height: 200.0,
           decoration: BoxDecoration(
+            color: Colors.black12,
+            backgroundBlendMode: BlendMode.darken,
             image: DecorationImage(
                 image:
                     NetworkImage(image) ?? AssetImage("assets/images/logo.png"),

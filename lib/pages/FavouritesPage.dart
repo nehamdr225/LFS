@@ -16,7 +16,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
   @override
   Widget build(BuildContext context) {
     final MerchantsModel merchants = Provider.of<MerchantsModel>(context);
-    final List favourites = Provider.of<UserModel>(context).favourites;
+    final user = Provider.of<UserModel>(context);
+    final favourites = user.favourites;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
@@ -54,15 +55,11 @@ class _FavouritesPageState extends State<FavouritesPage> {
                         child: Image.network(merchant['media']['src'][0]),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 10.0),
+                        padding: EdgeInsets.only(left: 10.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
-                            Icon(
-                              Icons.remove_circle_outline,
-                              color: errorColor,
-                            ),
                             Text(
                               merchant['name'],
                               style: TextStyle(
@@ -76,9 +73,19 @@ class _FavouritesPageState extends State<FavouritesPage> {
                                   fontFamily: "Helvetica",
                                   color: textColor,
                                   fontSize: 16.0),
-                            )
+                            ),
                           ],
                         ),
+                      ),
+                      IconButton(
+                        color: errorColor,
+                        splashColor: primary,
+                        icon: Icon(
+                          Icons.remove_circle_outline,
+                        ),
+                        onPressed: () {
+                          user.removeFromFav(merchant['_id']);
+                        },
                       )
                     ],
                   ),
