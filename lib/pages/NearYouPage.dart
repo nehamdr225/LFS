@@ -1,4 +1,5 @@
 import 'package:LFS/widget/atoms/Appbar.dart';
+import 'package:LFS/widget/atoms/BottomLoader.dart';
 import 'package:LFS/widget/atoms/OfferCard.dart';
 import 'package:LFS/widget/atoms/connectivityError.dart';
 import 'package:flutter/material.dart';
@@ -55,19 +56,23 @@ class _NearYouPageState extends State<NearYouPage> {
             ? filtered.length > 0
                 ? ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemCount: filtered.length,
+                    itemCount: filtered.length + 1,
                     itemBuilder: (BuildContext context, int index) {
-                      var nearMerchant = getEachMerchant(filtered[index][0]);
-                      return OfferCard(
-                          image: nearMerchant['media'] != null
-                              ? nearMerchant['media']['src'][0]
-                              : null,
-                          name: nearMerchant['name'],
-                          id: nearMerchant['_id'],
-                          address: nearMerchant['address'],
-                          contact: nearMerchant['contact'],
-                          padding: 0.0,
-                          distance: filtered[index][1].toStringAsFixed(2));
+                      final nearMerchant = index < filtered.length
+                          ? getEachMerchant(filtered[index][0])
+                          : {};
+                      return index == filtered.length
+                          ? BottomLoader()
+                          : OfferCard(
+                              image: nearMerchant['media'] != null
+                                  ? nearMerchant['media']['src'][0]
+                                  : null,
+                              name: nearMerchant['name'],
+                              id: nearMerchant['_id'],
+                              address: nearMerchant['address'],
+                              contact: nearMerchant['contact'],
+                              padding: 0.0,
+                              distance: filtered[index][1].toStringAsFixed(2));
                     }, //
                   )
                 : Container(

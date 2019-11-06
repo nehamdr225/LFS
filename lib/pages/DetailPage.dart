@@ -1,9 +1,9 @@
+import 'package:LFS/constants/colors.dart' as colors;
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
-import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:LFS/widget/GoogleMaps.dart';
 import 'package:LFS/state/merchants.dart';
@@ -46,7 +46,7 @@ class _DetailPageState extends State<DetailPage> {
       );
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[50],
       appBar: PreferredSize(
         child: FAppbar(
             leadingChoice: false,
@@ -65,6 +65,28 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: EdgeInsets.all(5.0),
           ),
+          Container(
+              alignment: Alignment.center,
+              width: 200.0,
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                IconButton(
+                  onPressed: () async {
+                    final url = 'tel://${merchant["contact"]}';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      print('Could not launch $url');
+                    }
+                  },
+                  color: colors.primary,
+                  icon: Icon(
+                    Icons.call,
+                    size: 28.0,
+                  ),
+                  tooltip: "Call us Now",
+                ),
+              ])),
           Padding(
             // Name
             padding: const EdgeInsets.fromLTRB(15.0, 8.0, 8.0, 2.0),
@@ -73,6 +95,7 @@ class _DetailPageState extends State<DetailPage> {
               textColor: textColor,
               textAlign: TextAlign.left,
               size: 22,
+              fontFamily: 'Helvetica',
             ),
           ),
           Padding(
@@ -81,7 +104,7 @@ class _DetailPageState extends State<DetailPage> {
             child: FancyText(
               text: merchant['category'].replaceAll(";", ", "),
               textColor: primary,
-              fontFamily: 'Crimson',
+              fontFamily: 'Helvetica',
               textAlign: TextAlign.start,
               size: 16,
             ),
@@ -100,7 +123,7 @@ class _DetailPageState extends State<DetailPage> {
                       ? "${double.parse(distance).toStringAsFixed(2)} km"
                       : distance,
                   textColor: textColor,
-                  fontFamily: 'Crimson',
+                  fontFamily: 'Helvetica',
                   textAlign: TextAlign.start,
                   size: 16,
                 ),
@@ -151,12 +174,15 @@ class _DetailPageState extends State<DetailPage> {
           //   child: Services()),
           Padding(
             // opening hours title
-            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: FancyText(
-              text: 'Opening Hours',
-              size: 16.0,
-              textColor: textColor,
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
+            child: Text(
+              'Opening Hours',
               textAlign: TextAlign.start,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: textColor,
+                  fontFamily: 'Helvetica',
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
@@ -172,7 +198,7 @@ class _DetailPageState extends State<DetailPage> {
                 FancyText(
                   text: "8 am - 12 pm",
                   textColor: textColor,
-                  fontFamily: 'Crimson',
+                  fontFamily: 'Helvetica',
                   textAlign: TextAlign.start,
                   size: 16,
                 ),
@@ -182,17 +208,20 @@ class _DetailPageState extends State<DetailPage> {
 
           Padding(
             // address title
-            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
-            child: FancyText(
-              text: 'Address',
-              size: 16.0,
-              textColor: textColor,
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
+            child: Text(
+              'Address',
               textAlign: TextAlign.start,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: textColor,
+                  fontFamily: 'Helvetica',
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
               // address detail
-              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+              padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 18.0),
               child: Row(
                 children: [
                   Icon(
@@ -203,7 +232,7 @@ class _DetailPageState extends State<DetailPage> {
                   FancyText(
                     text: merchant["address"],
                     textColor: textColor,
-                    fontFamily: 'Crimson',
+                    fontFamily: 'Helvetica',
                     textAlign: TextAlign.start,
                     size: 16,
                   ),
@@ -233,12 +262,15 @@ class _DetailPageState extends State<DetailPage> {
                   : Text("")),
           Padding(
             // address title
-            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
-            child: FancyText(
-              text: 'Contact Us',
-              size: 16.0,
-              textColor: textColor,
+            padding: const EdgeInsets.fromLTRB(15.0, 15.0, 0, 8),
+            child: Text(
+              'Contact Us',
               textAlign: TextAlign.start,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: textColor,
+                  fontFamily: 'Helvetica',
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Row(
@@ -247,7 +279,7 @@ class _DetailPageState extends State<DetailPage> {
             children: <Widget>[
               Padding(
                 // address detail
-                padding: const EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 20.0),
                 child: Row(
                   children: [
                     Icon(
@@ -258,38 +290,14 @@ class _DetailPageState extends State<DetailPage> {
                     FancyText(
                       text: merchant["contact"],
                       textColor: textColor,
-                      fontFamily: 'Crimson',
+                      fontFamily: 'Helvetica',
                       textAlign: TextAlign.start,
                       size: 16,
                     ),
                   ],
                 ),
               ),
-              FlatButton(
-                onPressed: () async {
-                  final url = 'tel://${merchant["contact"]}';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    print('Could not launch $url');
-                  }
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(Icons.call),
-                    Text(
-                      "Call now",
-                      style: TextStyle(fontFamily: "Helvetica"),
-                    ),
-                  ],
-                ),
-              )
             ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Follow(),
           ),
         ],
       ),

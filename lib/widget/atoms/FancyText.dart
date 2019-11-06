@@ -8,7 +8,13 @@ class FancyText extends StatelessWidget {
   final fontFamily;
   final onTap;
 
-  FancyText({this.text, this.textAlign, this.textColor, this.size, this.fontFamily:'Bree', this.onTap});
+  FancyText(
+      {this.text,
+      this.textAlign,
+      this.textColor,
+      this.size,
+      this.fontFamily: 'Bree',
+      this.onTap});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,13 +23,15 @@ class FancyText extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          child: Text(text,
-              style: TextStyle(
-                fontFamily: fontFamily,
-                fontSize: size,
-                color: textColor,
-              ),
-              textAlign: textAlign,),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontFamily: fontFamily,
+              fontSize: size,
+              color: textColor,
+            ),
+            textAlign: textAlign,
+          ),
         ),
       ),
     );

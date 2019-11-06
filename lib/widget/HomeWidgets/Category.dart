@@ -44,16 +44,19 @@ class Category extends StatelessWidget {
                           network,
                           width: width,
                           height: height,
-                        ) 
+                        )
                       : Text("Image could not be loaded!"),
                   contentPadding: EdgeInsets.all(1.0),
                   subtitle: Container(
+                    padding: EdgeInsets.only(top: 3.0),
                     alignment: Alignment.topCenter,
                     child: Text(
                       name,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontFamily: 'Bree', fontSize: 14.0, color: textColor),
+                          fontFamily: 'Helvetica',
+                          fontSize: 15.0,
+                          color: textColor),
                     ),
                   ),
                 )),

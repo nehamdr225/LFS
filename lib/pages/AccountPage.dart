@@ -109,7 +109,22 @@ class AccountPage extends StatelessWidget {
                               );
                             },
                           ),
-                        )
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: RaisedButton(
+                            color: Colors.white,
+                            child: Text(
+                              "Logout",
+                              style: TextStyle(
+                                  color: errorColor,
+                                  fontFamily: "Helvetica",
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: userCleanup,
+                          ),
+                        ),
                       ]
                     : <Widget>[
                         Container(
@@ -227,21 +242,6 @@ class AccountPage extends StatelessWidget {
             )
           ],
         ),
-        Container(
-          alignment: Alignment.center,
-          child: RaisedButton(
-            color: errorColor,
-            child: Text(
-              "Logout",
-              style: TextStyle(
-                  color: Colors.white, fontFamily: "Helvetica", fontSize: 16.0),
-            ),
-            onPressed: userCleanup,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 0.0),
-        )
       ],
     );
   }

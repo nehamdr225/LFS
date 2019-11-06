@@ -3,7 +3,6 @@ import 'package:LFS/widget/HomeWidgets/CircleOpts.dart';
 import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/HomeWidgets/HorizontalSlider.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
-import 'package:LFS/widget/atoms/FancyText.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +22,14 @@ class HomePage extends StatelessWidget {
         Padding(padding: EdgeInsets.all(8.0)),
         Options(),
         Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: FancyText(
-            text: 'Near You',
-            textColor: textColor,
-            fontFamily: 'Bree',
-            size: 20.0,
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Near You',
+            style: TextStyle(
+                color: textColor,
+                fontFamily: 'Bree',
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500),
           ),
         ),
         Container(child: HorizontalList()),

@@ -11,12 +11,15 @@ class Follow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         FancyText(
-          text: 'Follow us at:',
+          text: 'Follow us',
           textAlign: TextAlign.start,
           textColor: primary,
-          size: 16.0,
+          size: 18.0,
+          fontFamily: 'Helvetica',
         ),
-        Padding(padding: EdgeInsets.all(10.0),),
+        Padding(
+          padding: EdgeInsets.all(10.0),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,6 +59,7 @@ class Follow extends StatelessWidget {
     );
   }
 }
+
 _launchURL() async {
   const url = 'https://facebook.com/LFS-card-105008720895276/';
   if (await canLaunch(url)) {

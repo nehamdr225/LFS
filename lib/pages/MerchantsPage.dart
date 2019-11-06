@@ -1,6 +1,5 @@
 import 'package:LFS/widget/HomeWidgets/Category.dart';
 import 'package:LFS/state/merchants.dart';
-import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/InfoNavBar.dart';
 import 'package:LFS/widget/atoms/OfferCard.dart';
@@ -74,10 +73,6 @@ class MerchantsPage extends StatelessWidget {
                       }, //
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                  Follow(),
                   Padding(
                     padding: EdgeInsets.all(10.0),
                   ),

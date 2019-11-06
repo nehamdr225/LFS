@@ -1,21 +1,25 @@
 const List CATEGORIES = const [
-  { //
+  {
+    //
     "name": "Automobiles",
     "image": "assets/images/categoryPics/lfsAutomobiles.jpg",
     "type": "Hotel"
   },
-  { //
-    "name": "Beauty and Care",
+  {
+    //
+    "name": "Beauty & Care",
     "image": "assets/images/categoryPics/lfsBeautyandCare.jpg",
     "type": "Hotel"
   },
-  { //
+  {
+    //
     "name": "Boutiques",
     "image": "assets/images/categoryPics/lfsBoutique.jpg",
     "type": "Hotel"
   },
-  { //
-    "name": "Communication and Ticketing",
+  {
+    //
+    "name": "Communication & Tickets",
     "image": "assets/images/categoryPics/lfsComm.jpg",
     "type": "Hotel"
   },
@@ -24,7 +28,8 @@ const List CATEGORIES = const [
     "image": "assets/images/categoryPics/lfsCollege.jpg",
     "type": "Education"
   },
-  { // movie and fitness?
+  {
+    // movie and fitness?
     "name": "Entertainment and Health",
     "image": "assets/images/categoryPics/lfsEntertain.jpg",
     "type": "Education"
@@ -39,7 +44,8 @@ const List CATEGORIES = const [
     "image": "assets/images/categoryPics/lfsGym.jpg",
     "type": "Fitness"
   },
-  { //
+  {
+    //
     "name": "Gadget and Electronics",
     "image": "assets/images/categoryPics/lfsGadget.jpg",
     "type": "Education"
@@ -49,7 +55,8 @@ const List CATEGORIES = const [
     "image": "assets/images/CategoryPage/hotel.jpg",
     "type": "Hotel"
   },
-  { //
+  {
+    //
     "name": "LFS Card offers",
     "image": "assets/images/logo.png",
     "type": "Education"
@@ -74,11 +81,10 @@ const List CATEGORIES = const [
     "image": "assets/images/CategoryPage/shoppingMall.jpg",
     "type": "Malls"
   },
-  {//
+  {
+    //
     "name": "Test Booking",
     "image": "assets/images/categoryPics/lfsTest.jpg",
     "type": "Movie"
   },
-  
-  
 ];

@@ -20,33 +20,28 @@ class Listtiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Padding(
-            padding: EdgeInsets.all(2.0),
-            child: InkWell(
-              onTap: onTap,
-              child: Container(
-                  width: 200.0,
-                  height: 150.0,
-                  child: ListTile(
-                    title: Image.asset(
-                      image,
-                      width: width,
-                      height: height,
-                      fit: BoxFit.cover,
-                    ),
-                    contentPadding: EdgeInsets.all(1.0),
-                    subtitle: Container(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text(
-                          text,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: 'Bree',
-                              fontSize: fontSize,
-                              color: primary),
-                        ),
+        child: InkWell(
+            onTap: onTap,
+            child: Container(
+              width: 200.0,
+              height: 150.0,
+              child: ListTile(
+                  title: Image.asset(
+                    image,
+                    width: width,
+                    height: height,
+                    fit: BoxFit.cover,
+                  ),
+                  contentPadding: EdgeInsets.all(2.0),
+                  subtitle: Padding(
+                    padding: EdgeInsets.only(top: 18.0),
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: fontSize,
+                        color: primary,
                       ),
                     ),
                   )),
