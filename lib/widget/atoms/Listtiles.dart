@@ -16,7 +16,7 @@ class Listtiles extends StatelessWidget {
       this.height = 200.0,
       this.width,
       this.margin: 0.0,
-      this.fontSize: 32.0});
+      this.fontSize: 24.0});
   @override
   Widget build(BuildContext context) {
     return Card(

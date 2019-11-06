@@ -7,7 +7,7 @@ class Options extends StatelessWidget {
   final TextStyle textStyle = TextStyle(
     fontFamily: 'Helvetica',
     color: primary,
-    fontSize: 16.0,
+    fontSize: 15.0,
   );
   final BorderRadius borderRadius = BorderRadius.all(Radius.circular(30.0));
 

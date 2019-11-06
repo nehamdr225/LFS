@@ -20,7 +20,7 @@ class HorizontalList extends StatelessWidget {
                   height: 150.0,
                   // width: 300.0,
                   margin: 5.0,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   onTap: () {
                     Navigator.push(
                       context,

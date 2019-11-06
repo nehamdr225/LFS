@@ -103,7 +103,9 @@ class _FavouritesPageState extends State<FavouritesPage> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(3.0),
-                        child: Image.network(merchant['media']['src'][0]),
+                        child: Image.network(merchant['media']['src'][0],
+                        height: 100.0,
+                        width: 100.0,),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),

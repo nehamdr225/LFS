@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Follow extends StatelessWidget {
+  final String fontFamily;
+  Follow({this.fontFamily:'Helvetica'});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +17,7 @@ class Follow extends StatelessWidget {
           textAlign: TextAlign.start,
           textColor: primary,
           size: 18.0,
-          fontFamily: 'Helvetica',
+          fontFamily: fontFamily,
         ),
         Padding(
           padding: EdgeInsets.all(10.0),

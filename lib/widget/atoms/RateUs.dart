@@ -13,26 +13,28 @@ class _RateUsState extends State<RateUs> {
   @override
   Widget build(BuildContext context) {
     return Column(
-                    children: [
-                      FancyText(
-                        text: 'Rate us',
-                        size: 24.0,
-                        textAlign: TextAlign.center,
-                        textColor: primary,
-                      ),
-                      SmoothStarRating(
-                          allowHalfRating: true,
-                          onRatingChanged: (v) {
-                            rating = v;
-                            setState(() {});
-                          },
-                          starCount: 5,
-                          rating: rating,
-                          size: 28.0,
-                          color: Colors.yellow[700],
-                          borderColor: Colors.black45,
-                          spacing: 0.0)
-                    ],
-                  );
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        FancyText(
+          text: 'Rate us',
+          size: 18.0,
+          textAlign: TextAlign.center,
+          textColor: primary,
+        ),
+        SmoothStarRating(
+            allowHalfRating: true,
+            onRatingChanged: (v) {
+              rating = v;
+              setState(() {});
+            },
+            starCount: 5,
+            rating: rating,
+            size: 28.0,
+            color: Colors.yellow[700],
+            borderColor: Colors.black45,
+            spacing: 0.0)
+      ],
+    );
   }
 }

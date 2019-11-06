@@ -3,8 +3,8 @@ import 'package:LFS/constants/colors.dart' as colors;
 import 'package:LFS/pages/EditProfilePage.dart';
 import 'package:LFS/pages/FavouritesPage.dart';
 import 'package:LFS/pages/UserPrompt.dart';
-// import 'package:LFS/widget/atoms/FancyText.dart';
-// import 'package:LFS/widget/atoms/RateUs.dart';
+import 'package:LFS/widget/HomeWidgets/FollowAt.dart';
+import 'package:LFS/widget/atoms/RateUs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +29,7 @@ class AccountPage extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
               child: Column(
@@ -110,21 +111,6 @@ class AccountPage extends StatelessWidget {
                             },
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: RaisedButton(
-                            color: Colors.white,
-                            child: Text(
-                              "Logout",
-                              style: TextStyle(
-                                  color: errorColor,
-                                  fontFamily: "Helvetica",
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            onPressed: userCleanup,
-                          ),
-                        ),
                       ]
                     : <Widget>[
                         Container(
@@ -186,39 +172,51 @@ class AccountPage extends StatelessWidget {
                   color: navColor,
                 ),
                 onTap: () {
-                  // showDialog(
-                  //     context: context,
-                  //     builder: (context) => AlertDialog(
-                  //           elevation: 2.0,
-                  //           title: FancyText(
-                  //             text: 'Rate Us',
-                  //             textColor: primary,
-                  //             size: 18.0,
-                  //           ),
-                  //           actions: <Widget>[RateUs()],
-                  //         ));
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            elevation: 2.0,
+                            content: Container(
+                              height: 100.0,
+                              width: 200.0,
+                              child: RateUs(),
+                            ),
+                          ));
                 },
               ),
             ),
             Container(
               child: ListTile(
-                leading: Icon(
-                  Icons.thumb_up,
-                  color: deepBlue,
-                ),
-                title: Text(
-                  'Like',
-                  style: TextStyle(
-                      color: textColor,
-                      fontFamily: 'Helvetica',
-                      fontSize: 15.0),
-                ),
-                trailing: Icon(
-                  CupertinoIcons.right_chevron,
-                  color: navColor,
-                ),
-                onTap: () {},
-              ),
+                  leading: Icon(
+                    Icons.thumb_up,
+                    color: deepBlue,
+                  ),
+                  title: Text(
+                    'Like',
+                    style: TextStyle(
+                        color: textColor,
+                        fontFamily: 'Helvetica',
+                        fontSize: 15.0),
+                  ),
+                  trailing: Icon(
+                    CupertinoIcons.right_chevron,
+                    color: navColor,
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        elevation: 2.0,
+                        content: Container(
+                          height: 150.0,
+                          width: 200.0,
+                          child: Follow(
+                            fontFamily: 'Bree',
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
             ),
             Container(
               child: ListTile(
@@ -241,6 +239,21 @@ class AccountPage extends StatelessWidget {
               ),
             )
           ],
+        ),
+        Container(
+          alignment: Alignment.center,
+          child: RaisedButton(
+            color: Colors.white,
+            child: Text(
+              "Logout",
+              style: TextStyle(
+                  color: errorColor,
+                  fontFamily: "Helvetica",
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: userCleanup,
+          ),
         ),
       ],
     );
