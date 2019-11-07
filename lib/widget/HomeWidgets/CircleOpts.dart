@@ -1,5 +1,6 @@
 //import 'package:LFS/constants/colors.dart';
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 
 class Options extends StatelessWidget {
@@ -24,7 +25,24 @@ class Options extends StatelessWidget {
               side: side,
               borderRadius: borderRadius,
             ),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        elevation: 2.0,
+                        content: Container(
+                          alignment: Alignment.center,
+                          height: 70.0,
+                          width: 200.0,
+                          child: FancyText(
+                            text: 'Coming Soon !!!',
+                            size: 18.0,
+                            textAlign: TextAlign.center,
+                            textColor: primary,
+                          ),
+                        ),
+                      ));
+            },
             child: Text('Merchant', style: textStyle),
           ),
           FlatButton(
@@ -32,7 +50,25 @@ class Options extends StatelessWidget {
               side: side,
               borderRadius: borderRadius,
             ),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        elevation: 2.0,
+                        content: Container(
+                          alignment: Alignment.center,
+                          
+                          height: 70.0,
+                          width: 200.0,
+                          child: FancyText(
+                            text: 'Coming Soon !!!',
+                            size: 18.0,
+                            textAlign: TextAlign.center,
+                            textColor: primary,
+                          ),
+                        ),
+                      ));
+            },
             child: Text('Gift Card', style: textStyle),
           ),
           FlatButton(
@@ -40,7 +76,24 @@ class Options extends StatelessWidget {
               side: side,
               borderRadius: borderRadius,
             ),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        elevation: 2.0,
+                        content: Container(
+                          alignment: Alignment.center,
+                          height: 70.0,
+                          width: 200.0,
+                          child: FancyText(
+                            text: 'Coming Soon !!!',
+                            size: 18.0,
+                            textAlign: TextAlign.center,
+                            textColor: primary,
+                          ),
+                        ),
+                      ));
+            },
             child: Text('Vouchers', style: textStyle),
           ),
         ],

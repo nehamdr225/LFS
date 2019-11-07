@@ -3,25 +3,25 @@ const List CATEGORIES = const [
     //
     "name": "Automobiles",
     "image": "assets/images/categoryPics/lfsAutomobiles.jpg",
-    "type": "Hotel"
+    "type": "Vehicles"
   },
   {
     //
     "name": "Beauty & Care",
     "image": "assets/images/categoryPics/lfsBeautyandCare.jpg",
-    "type": "Hotel"
+    "type": "Beauty"
   },
   {
     //
     "name": "Boutiques",
     "image": "assets/images/categoryPics/lfsBoutique.jpg",
-    "type": "Hotel"
+    "type": "Boutiques"
   },
   {
     //
     "name": "Communication & Tickets",
     "image": "assets/images/categoryPics/lfsComm.jpg",
-    "type": "Hotel"
+    "type": "Communication"
   },
   {
     "name": "Education / Institutions",
@@ -32,12 +32,12 @@ const List CATEGORIES = const [
     // movie and fitness?
     "name": "Entertainment and Health",
     "image": "assets/images/categoryPics/lfsEntertain.jpg",
-    "type": "Education"
+    "type": "Entertainment"
   },
   {
     "name": "E-Shopping",
     "image": "assets/images/categoryPics/lfsEShopping.jpg",
-    "type": "Education"
+    "type": "E-Shopping"
   },
   {
     "name": "Fitness",
@@ -48,7 +48,7 @@ const List CATEGORIES = const [
     //
     "name": "Gadget and Electronics",
     "image": "assets/images/categoryPics/lfsGadget.jpg",
-    "type": "Education"
+    "type": "Electronics"
   },
   {
     "name": "Hotels / Lodging",
@@ -59,7 +59,7 @@ const List CATEGORIES = const [
     //
     "name": "LFS Card offers",
     "image": "assets/images/logo.png",
-    "type": "Education"
+    "type": "LFS"
   },
   {
     "name": "Movie Halls",
@@ -85,6 +85,6 @@ const List CATEGORIES = const [
     //
     "name": "Test Booking",
     "image": "assets/images/categoryPics/lfsTest.jpg",
-    "type": "Movie"
+    "type": "Booking"
   },
 ];

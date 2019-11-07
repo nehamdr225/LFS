@@ -46,7 +46,7 @@ class OfferCard extends StatelessWidget {
               Align(
                 child: Text(
                   name,
-                  style: TextStyle(fontSize: 28),
+                  style: TextStyle(fontSize: 20,),
                 ),
                 alignment: Alignment.topCenter,
               ),

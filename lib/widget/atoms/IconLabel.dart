@@ -26,7 +26,7 @@ class IconLabel extends StatelessWidget {
             Padding(
               child: Text(
                 text,
-                style: TextStyle(fontSize: 18, backgroundColor: bg),
+                style: TextStyle(fontSize: 17, backgroundColor: bg),
               ),
               padding: EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
             )
