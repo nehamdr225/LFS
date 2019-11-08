@@ -18,6 +18,7 @@ class SignInPage extends StatefulWidget {
 class _PageState extends State<SignInPage> {
   String email, password, emailErr, passwordErr, loginErr;
   bool isSigningIn = false;
+  bool remember = true;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class _PageState extends State<SignInPage> {
           setState(() {
             isSigningIn = true;
           });
-          Map token = await login(email, password);
+          Map token = await login(email, password, remember);
           if (token['error'] == null) {
             user.token = token['token'];
             getUser(token['token']).then((userData) {
@@ -71,6 +72,7 @@ class _PageState extends State<SignInPage> {
             });
         }
       } catch (err) {
+        print(err);
         setState(() {
           isSigningIn = false;
           loginErr = "Please provide correct login info.";
@@ -113,17 +115,26 @@ class _PageState extends State<SignInPage> {
               autofocus: false,
               error: passwordErr,
             ),
-            //ListTile(
-            //   leading: Checkbox(
-            //     checkColor: primary,
-            //     value: product.isCheck, onChanged: (bool value) {
-            //     setState(() {
-            //       product.isCheck = value;
-            //  });
-            // }
-            //   ),
-            //   title: Text('Remember Password', style:TextStyle(fontFamily: 'Bree', color: textColor), textAlign: TextAlign.center,),
-            // ),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Checkbox(
+                      value: remember,
+                      onChanged: (bool value) {
+                        setState(() {
+                          remember = value;
+                        });
+                      }),
+                  Text(
+                    'Remember Password',
+                    style: TextStyle(fontFamily: 'Helvetica', color: textColor),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
             Container(
               width: 200.0,
               alignment: Alignment.center,

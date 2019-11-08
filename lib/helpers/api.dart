@@ -15,7 +15,7 @@ logout() async {
   }
 }
 
-login(String email, String password) async {
+login(String email, String password, bool remember) async {
   try {
     var response = await fetch(uri: '$URL/users/login', method: "POST", body: {
       'email': email,
@@ -24,7 +24,7 @@ login(String email, String password) async {
     if (response['error'] != null) {
       return {"error": response['error']};
     }
-    savekeyVal('token', response['token']);
+    if (remember == true) savekeyVal('token', response['token']);
     return {"token": response['token']};
   } catch (err) {
     return {"error": err};
