@@ -69,7 +69,7 @@ class Options extends StatelessWidget {
                         ),
                       ));
             },
-            child: Text('Gift Card', style: textStyle),
+            child: Text("Today's Deals", style: textStyle),
           ),
           FlatButton(
             shape: RoundedRectangleBorder(
@@ -94,7 +94,7 @@ class Options extends StatelessWidget {
                         ),
                       ));
             },
-            child: Text('Vouchers', style: textStyle),
+            child: Text('Merchant', style: textStyle),
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'package:LFS/constants/colors.dart';
 import 'package:LFS/pages/SearchPage.dart';
 import 'package:LFS/state/user.dart';
-
+import 'package:LFS/pages/NavigationPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,14 +52,19 @@ class FAppbar extends StatelessWidget {
       backgroundColor: lfsWhite,
       centerTitle: true,
       leading: leadingChoice == true
-          ? Container(
+          ? InkWell(
+            onTap: (){
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => NavigationPage()));
+            },
+            child:Container(
               padding: EdgeInsets.symmetric(vertical: 3.0),
               alignment: Alignment.center,
               child: Image.asset(
                 'assets/images/logopetals.png',
                 fit: BoxFit.fill,
               ),
-            )
+            ),)
           : IconButton(
               icon: Icon(
                 CupertinoIcons.back,
