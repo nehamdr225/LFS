@@ -44,7 +44,7 @@ class UserModel extends ChangeNotifier {
     return state["location"];
   }
 
-  List get favourites => state["favourites"];
+  List get favourites => state["favourites"]; 
 
   set token(String token) {
     if (token != state["token"]) {

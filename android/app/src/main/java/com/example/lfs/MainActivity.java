@@ -1,4 +1,4 @@
-package com.example.uno;
+package com.lwg.lfs;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
