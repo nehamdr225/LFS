@@ -15,10 +15,10 @@ logout() async {
   }
 }
 
-login(String email, String password, bool remember) async {
+login(String card_id, String password, bool remember) async {
   try {
     var response = await fetch(uri: '$URL/users/login', method: "POST", body: {
-      'email': email,
+      'card_id': card_id,
       'password': password,
     });
     if (response['error'] != null) {
