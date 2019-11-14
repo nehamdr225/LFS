@@ -41,9 +41,7 @@ class _ConnErrorState extends State<ConnError> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FancyText(
-              text: widget.error != null
-                  ? widget.error
-                  : 'Error ocurred! Try again later.',
+              text: widget.error != null ? widget.error : 'Try again later!',
               textColor: Colors.black54,
               size: 16.0,
               textAlign: TextAlign.center,
@@ -54,7 +52,7 @@ class _ConnErrorState extends State<ConnError> {
                 icon,
                 color: Colors.black54,
               ),
-              onPressed: onPressed,
+              onPressed: null,
             ),
           ],
         ),

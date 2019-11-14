@@ -21,6 +21,13 @@ class MerchantsModel extends ChangeNotifier {
   int _maxCount;
   Map one(id) => _merchants.firstWhere((merchant) => merchant["_id"] == id);
   get maxCount => _maxCount;
+  get page => _page;
+
+  set page(pageNo) {
+    _page = pageNo;
+    notifyListeners();
+  }
+
   set maxCount(count) {
     _maxCount = count;
     notifyListeners();
@@ -68,10 +75,9 @@ class MerchantsModel extends ChangeNotifier {
       _merchants.where((card) => card["category"].contains(cat)).toList();
 
   String refresh() {
-    if (maxCount != null && _page * 15 <= maxCount) {
-      _page++;
-      getMerchants(_page).then((result) {
-        print(result);
+    if (maxCount != null && merchants.length < maxCount) {
+      page = page + 1;
+      getMerchants(page).then((result) {
         if (result['result'].length > 0) {
           merchants = result['result'];
           notifyListeners();

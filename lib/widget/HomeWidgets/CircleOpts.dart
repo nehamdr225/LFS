@@ -57,7 +57,6 @@ class Options extends StatelessWidget {
                         elevation: 2.0,
                         content: Container(
                           alignment: Alignment.center,
-                          
                           height: 70.0,
                           width: 200.0,
                           child: FancyText(
@@ -94,7 +93,7 @@ class Options extends StatelessWidget {
                         ),
                       ));
             },
-            child: Text('Merchant', style: textStyle),
+            child: Text('Gift Cards', style: textStyle),
           ),
         ],
       ),

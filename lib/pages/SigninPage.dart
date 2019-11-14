@@ -16,7 +16,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _PageState extends State<SignInPage> {
-  String email, password, emailErr, passwordErr, loginErr;
+  String cardId, password, cardIdErr, passwordErr, loginErr;
   bool isSigningIn = false;
   bool remember = true;
 
@@ -24,15 +24,15 @@ class _PageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     var user = Provider.of<UserModel>(context);
 
-    var setEmail = (data) {
-      if (emailValidator(data) && data != email)
+    final setCardID = (id) {
+      if (id != cardId && id != null && cardIdValidator(id))
         setState(() {
-          email = data;
-          emailErr = null;
+          cardId = id;
+          cardIdErr = null;
         });
-      else if (emailErr == null)
+      else
         setState(() {
-          emailErr = "Email is not valid!";
+          cardIdErr = "Card ID is not valid!";
         });
     };
 
@@ -50,11 +50,11 @@ class _PageState extends State<SignInPage> {
 
     var loginUser = () async {
       try {
-        if (emailValidator(email) && pwdValidator(password)) {
+        if (cardIdValidator(cardId) && pwdValidator(password)) {
           setState(() {
             isSigningIn = true;
           });
-          Map token = await login(email, password, remember);
+          Map token = await login(cardId, password, remember);
           if (token['error'] == null) {
             user.token = token['token'];
             getUser(token['token']).then((userData) {
@@ -100,11 +100,10 @@ class _PageState extends State<SignInPage> {
             ),
             FForm(
               autofocus: true,
-              icon: Icon(Icons.mail_outline),
-              type: TextInputType.emailAddress,
-              text: "Email",
-              onChanged: setEmail,
-              error: emailErr,
+              icon: Icon(Icons.card_membership),
+              text: 'Card ID',
+              onChanged: setCardID,
+              error: cardIdErr,
             ),
             FForm(
               icon: Icon(Icons.vpn_key),

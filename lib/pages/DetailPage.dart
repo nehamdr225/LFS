@@ -2,6 +2,7 @@ import 'package:LFS/constants/colors.dart' as colors;
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/widget/atoms/Services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:geolocator/geolocator.dart';
@@ -57,36 +58,16 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: ListView(
         children: <Widget>[
-          Container(
-            // Carousel
-            height: 300.0,
-            child: FCarousel(asset: false, src: merchant['media']['src']),
-          ),
+          merchant['media'] != null
+              ? Container(
+                  // Carousel
+                  height: 300.0,
+                  child: FCarousel(asset: false, src: merchant['media']['src']),
+                )
+              : Text(''),
           Padding(
             padding: EdgeInsets.all(5.0),
           ),
-          Container(
-              alignment: Alignment.center,
-              width: 200.0,
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                IconButton(
-                  onPressed: () async {
-                    final url = 'tel://${merchant["contact"]}';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      print('Could not launch $url');
-                    }
-                  },
-                  color: colors.primary,
-                  icon: Icon(
-                    Icons.call,
-                    size: 28.0,
-                  ),
-                  tooltip: "Call us Now",
-                ),
-              ])),
           Padding(
             // Name
             padding: const EdgeInsets.fromLTRB(15.0, 8.0, 8.0, 2.0),
@@ -169,9 +150,12 @@ class _DetailPageState extends State<DetailPage> {
           //   ),
           // ),
 
-          // Container(
-          //   height:100.0,
-          //   child: Services()),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
+            child: Services(
+              contact: merchant['contact'],
+            ),
+          ),
           Padding(
             // opening hours title
             padding: const EdgeInsets.fromLTRB(15.0, 10.0, 8.0, 8.0),
