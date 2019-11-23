@@ -1,8 +1,8 @@
-import 'package:LFS/helpers/api.dart';
+// import 'package:LFS/helpers/api.dart';
 import 'package:LFS/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
-import 'package:LFS/state/merchants.dart';
-import 'package:provider/provider.dart';
+// import 'package:LFS/state/merchants.dart';
+// import 'package:provider/provider.dart';
 
 class ConnError extends StatefulWidget {
   final error;
@@ -18,20 +18,20 @@ class _ConnErrorState extends State<ConnError> {
 
   @override
   Widget build(BuildContext context) {
-    final merchants = Provider.of<MerchantsModel>(context);
-    onPressed() {
-      if (!isRefreshing) {
-        setState(() {
-          icon = Icons.blur_circular;
-          isRefreshing = true;
-        });
-        getMerchants(1).then((data) {
-          if (data["result"] != null) {
-            merchants.merchants = data["result"];
-          }
-        });
-      }
-    }
+    // final merchants = Provider.of<MerchantsModel>(context);
+    // onPressed() {
+    //   if (!isRefreshing) {
+    //     setState(() {
+    //       icon = Icons.blur_circular;
+    //       isRefreshing = true;
+    //     });
+    //     getMerchants(1).then((data) {
+    //       if (data["result"] != null) {
+    //         merchants.merchants = data["result"];
+    //       }
+    //     });
+    //   }
+    // }
 
     return Container(
       child: Container(

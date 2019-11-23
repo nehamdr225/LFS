@@ -4,7 +4,7 @@ import 'package:LFS/widget/atoms/IconLabel.dart';
 import 'package:flutter/material.dart';
 
 class OfferCard extends StatelessWidget {
-  final image, name, id, address, contact, padding, distance;
+  final image, name, id, address, contact, padding, distance, discount;
   OfferCard(
       {this.image,
       this.name,
@@ -12,7 +12,8 @@ class OfferCard extends StatelessWidget {
       this.contact,
       this.id,
       this.padding: 5.0,
-      this.distance});
+      this.distance,
+      this.discount});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,9 @@ class OfferCard extends StatelessWidget {
               Align(
                 child: Text(
                   name,
-                  style: TextStyle(fontSize: 20,),
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
                 alignment: Alignment.topCenter,
               ),
@@ -59,7 +62,7 @@ class OfferCard extends StatelessWidget {
                         )
                       : Text(""),
                   IconLabel(
-                      text: " 5% OFF ",
+                      text: " ${discount ?? 5}% OFF ",
                       icon: Icons.local_offer,
                       bg: buttonColor),
                   IconLabel(text: address, icon: Icons.location_on),

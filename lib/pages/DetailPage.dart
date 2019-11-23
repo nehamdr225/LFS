@@ -1,4 +1,4 @@
-import 'package:LFS/constants/colors.dart' as colors;
+import 'package:LFS/constants/colors.dart' as prefix0;
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/constants/colors.dart';
@@ -10,7 +10,6 @@ import 'package:LFS/widget/GoogleMaps.dart';
 import 'package:LFS/state/merchants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
   final String id;
@@ -69,6 +68,18 @@ class _DetailPageState extends State<DetailPage> {
             padding: EdgeInsets.all(5.0),
           ),
           Padding(
+            padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
+            child: Text(
+              "${merchant['discount'] ?? 5}% OFF",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  color: Colors.teal,
+                  fontFamily: 'Helvetica',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
             // Name
             padding: const EdgeInsets.fromLTRB(15.0, 8.0, 8.0, 2.0),
             child: FancyText(
@@ -90,6 +101,7 @@ class _DetailPageState extends State<DetailPage> {
               size: 16,
             ),
           ),
+
           Padding(
               // category
               padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),

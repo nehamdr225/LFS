@@ -72,6 +72,7 @@ class ProductsPage extends StatelessWidget {
                             id: merchants[index]['_id'],
                             address: merchants[index]['address'],
                             contact: merchants[index]['contact'],
+                            discount: merchants[index]['discount'],
                           );
                   },
                 ),

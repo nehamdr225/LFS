@@ -72,7 +72,8 @@ class _NearYouPageState extends State<NearYouPage> {
                               address: nearMerchant['address'],
                               contact: nearMerchant['contact'],
                               padding: 0.0,
-                              distance: filtered[index][1].toStringAsFixed(2));
+                              distance: filtered[index][1].toStringAsFixed(2),
+                              discount: nearMerchant['discount']);
                     }, //
                   )
                 : Container(
