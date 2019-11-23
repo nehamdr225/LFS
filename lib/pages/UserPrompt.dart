@@ -1,4 +1,5 @@
 import 'package:LFS/constants/colors.dart';
+import 'package:LFS/pages/ChangePwdPage.dart';
 import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/pages/SignupPage.dart';
 import 'package:LFS/widget/atoms/FButton.dart';
@@ -39,7 +40,9 @@ class UserPrompt extends StatelessWidget {
                 ),
                 padding: EdgeInsets.only(top: 80),
               ),
-              Padding(padding: EdgeInsets.all(50.0),),
+              Padding(
+                padding: EdgeInsets.all(50.0),
+              ),
               Container(
                   color: Colors.transparent,
                   child: Column(
@@ -69,9 +72,27 @@ class UserPrompt extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => SignUpPage()));
                           }),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        child: InkWell(
+                          child: Text(
+                            "Forgot Password?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: primary,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CPassword()));
+                          },
+                        ),
+                      )
                     ],
                   )),
-
             ],
           ),
         ),

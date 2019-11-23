@@ -131,6 +131,34 @@ deleteFavourites(id, token) async {
   }
 }
 
+sendActivationCode(email) async {
+  try {
+    return await fetch(uri: "$URL/users/reset/code/$email", method: "GET");
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+verifyActivationCode(code, email) async {
+  try {
+    return await fetch(
+        uri: "$URL/users/reset/verify/$email/$code", method: "GET");
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+changePassword(code, email, password) async {
+  try {
+    return await fetch(
+        uri: "$URL/users/reset/password",
+        method: "POST",
+        body: {"code": code, "email": email, "password": password});
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
 Map<String, String> headers = {
   HttpHeaders.contentTypeHeader: 'application/json',
 };
