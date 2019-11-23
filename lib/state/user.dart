@@ -9,9 +9,8 @@ class UserModel extends ChangeNotifier {
       if (localToken != null && localToken != state["token"]) {
         state["token"] = localToken;
         getUser(localToken).then((result) {
-          print(result);
-          if (result == "token expired") {
-            delKeyVal("token").then(() {
+          if (result == null || result == "token expired") {
+            delKeyVal("token").then((res) {
               state['token'] = null;
               notifyListeners();
             });
@@ -44,7 +43,7 @@ class UserModel extends ChangeNotifier {
     return state["location"];
   }
 
-  List get favourites => state["favourites"]; 
+  List get favourites => state["favourites"];
 
   set token(String token) {
     if (token != state["token"]) {

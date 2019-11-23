@@ -6,6 +6,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
+import 'package:LFS/widget/atoms/PasswordForm.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -63,8 +64,13 @@ class _PageState extends State<SignInPage> {
             setState(() {
               isSigningIn = false;
             });
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NavigationPage()));
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => NavigationPage()),
+                (Route<dynamic> route) => false);
+
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => NavigationPage()));
           } else
             setState(() {
               isSigningIn = false;
@@ -105,13 +111,9 @@ class _PageState extends State<SignInPage> {
               onChanged: setCardID,
               error: cardIdErr,
             ),
-            FForm(
-              icon: Icon(Icons.vpn_key),
-              type: TextInputType.text,
+            PasswordForm(
               text: "Password",
-              obscure: true,
               onChanged: setPassword,
-              autofocus: false,
               error: passwordErr,
             ),
             Padding(

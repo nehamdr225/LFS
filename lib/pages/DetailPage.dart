@@ -1,4 +1,3 @@
-import 'package:LFS/constants/colors.dart' as prefix0;
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/Carousel.dart';
 import 'package:LFS/constants/colors.dart';
@@ -192,7 +191,7 @@ class _DetailPageState extends State<DetailPage> {
                   color: deepBlue,
                 ),
                 FancyText(
-                  text: "8 am - 12 pm",
+                  text: merchant['hours'] ?? "8 am - 12 pm",
                   textColor: textColor,
                   fontFamily: 'Helvetica',
                   textAlign: TextAlign.start,

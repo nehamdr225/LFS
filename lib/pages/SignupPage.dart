@@ -5,6 +5,7 @@ import 'package:LFS/constants/colors.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
+import 'package:LFS/widget/atoms/PasswordForm.dart';
 
 import 'package:flutter/material.dart';
 
@@ -49,14 +50,15 @@ class _PageState extends State<SignUpPage> {
     };
 
     final setPassword = (data) {
-      if (pwdValidator(data) && data != password && data.length >= 8)
+      if (pwdValidator(data) && data != password && data.length > 7)
         setState(() {
-          password = data;
           passwordErr = null;
+          password = data;
         });
       else
         setState(() {
-          passwordErr = "Password not valid! (hint: p@55worD)";
+          passwordErr =
+              "Password not valid! (Use AlphaNumeric with special characters e.g. AbC123@#!)";
         });
     };
 
@@ -115,6 +117,7 @@ class _PageState extends State<SignUpPage> {
           isVerifying = true;
         });
         final message = await verifyCard(cardId);
+
         if (message['error'] != null) {
           setState(() {
             verifyCardErr = "Error Verifying CardID!";
@@ -122,6 +125,7 @@ class _PageState extends State<SignUpPage> {
         } else if (message['message'] != null) {
           setState(() {
             isCardValid = true;
+            name = message['card']['user'];
           });
         }
       } else {
@@ -169,6 +173,7 @@ class _PageState extends State<SignUpPage> {
                       onChanged: setName,
                       error: nameErr,
                       autofocus: false,
+                      value: name,
                     ),
                     FForm(
                       icon: Icon(
@@ -181,14 +186,10 @@ class _PageState extends State<SignUpPage> {
                       onChanged: setEmail,
                       autofocus: false,
                     ),
-                    FForm(
-                      icon: Icon(Icons.vpn_key),
-                      type: TextInputType.visiblePassword,
+                    PasswordForm(
                       text: 'Password',
-                      obscure: true,
                       onChanged: setPassword,
                       error: passwordErr,
-                      autofocus: false,
                     ),
                     Container(
                       width: 200.0,
