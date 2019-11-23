@@ -2,8 +2,11 @@ import 'package:LFS/helpers/api.dart';
 import 'package:LFS/helpers/validators.dart';
 import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
+import 'package:LFS/widget/atoms/ChangePassword.dart';
 import 'package:LFS/widget/atoms/FForm.dart';
 import 'package:LFS/widget/atoms/PasswordForm.dart';
+import 'package:LFS/widget/atoms/VerifyCode.dart';
+import 'package:LFS/widget/atoms/VerifyIdentity.dart';
 import 'package:flutter/material.dart';
 import 'package:LFS/widget/atoms/FLogo.dart';
 
@@ -126,105 +129,26 @@ class _CPasswordState extends State<CPassword> {
               search: false,
               title: "Reset Password",
             )),
-        body: ListView(
-          children: codeSent
-              ? verified
-                  ? <Widget>[
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 40.0),
-                        child: FLogo(text: ''),
-                      ),
-                      PasswordForm(
-                        text: 'Password',
-                        onChanged: handlePassword,
-                        error: passwordErr,
-                        // icon: Icons.lock,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                      ),
-                      PasswordForm(
-                        text: 'Password Again',
-                        onChanged: handlePassword,
-                        error: passwordErr,
-                        // icon: Icons.lock,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: isButtonActive
-                            ? CircularProgressIndicator()
-                            : RaisedButton(
-                                onPressed: handleChangePassword,
-                                child: Text(
-                                  "Change Password",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16.0),
-                                ),
-                              ),
-                      )
-                    ]
-                  : [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 40.0),
-                        child: FLogo(text: ''),
-                      ),
-                      FForm(
-                        text: 'Activation Code',
-                        onChanged: handleCode,
-                        error: codeErr,
-                        autofocus: true,
-                        // icon: Icons.lock,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: isButtonActive
-                            ? CircularProgressIndicator()
-                            : RaisedButton(
-                                onPressed: handleVerifyCode,
-                                child: Text(
-                                  "Verify Activation Code",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16.0),
-                                ),
-                              ),
-                      )
-                    ]
-              : <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 40.0),
-                    child: FLogo(text: ''),
-                  ),
-                  FForm(
-                    text: 'Email',
-                    onChanged: handleMail,
-                    error: mailErr,
-                    autofocus: true,
-                    // icon: Icons.lock,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: isButtonActive
-                        ? CircularProgressIndicator()
-                        : RaisedButton(
-                            onPressed: handleSendActivationCode,
-                            child: Text(
-                              "Send Activation Code",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 16.0),
-                            ),
-                          ),
+        body: codeSent
+            ? verified
+                ? ChangePassword(
+                    handleChangePassword: handleChangePassword,
+                    handlePassword: handlePassword,
+                    isButtonActive: isButtonActive,
+                    passwordErr: passwordErr,
                   )
-                ],
-        ),
+                : VerifyCode(
+                    handleCode: handleCode,
+                    handleVerifyCode: handleVerifyCode,
+                    codeErr: codeErr,
+                    isButtonActive: isButtonActive,
+                  )
+            : VerifyIdentity(
+                handleMail: handleMail,
+                handleSendActivationCode: handleSendActivationCode,
+                mailErr: mailErr,
+                isButtonActive: isButtonActive,
+              ),
       ),
     );
   }
