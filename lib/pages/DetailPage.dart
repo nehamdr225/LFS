@@ -69,7 +69,7 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 0.0, 8.0, 8.0),
             child: Text(
-              "${merchant['discount'] ?? 5}% OFF",
+              merchant['discount'] ?? "5% OFF",
               textAlign: TextAlign.start,
               style: TextStyle(
                   color: Colors.teal,

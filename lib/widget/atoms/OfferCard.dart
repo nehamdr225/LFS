@@ -62,7 +62,7 @@ class OfferCard extends StatelessWidget {
                         )
                       : Text(""),
                   IconLabel(
-                      text: " ${discount ?? 5}% OFF ",
+                      text: discount ?? "5% OFF",
                       icon: Icons.local_offer,
                       bg: buttonColor),
                   IconLabel(text: address, icon: Icons.location_on),

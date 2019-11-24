@@ -26,7 +26,6 @@ class VerifyCode extends StatelessWidget {
           onChanged: handleCode,
           error: codeErr,
           autofocus: true,
-          value: "",
           // icon: Icons.lock,
         ),
         Padding(

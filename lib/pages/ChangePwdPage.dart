@@ -3,12 +3,9 @@ import 'package:LFS/helpers/validators.dart';
 import 'package:LFS/pages/SigninPage.dart';
 import 'package:LFS/widget/atoms/Appbar.dart';
 import 'package:LFS/widget/atoms/ChangePassword.dart';
-import 'package:LFS/widget/atoms/FForm.dart';
-import 'package:LFS/widget/atoms/PasswordForm.dart';
 import 'package:LFS/widget/atoms/VerifyCode.dart';
 import 'package:LFS/widget/atoms/VerifyIdentity.dart';
 import 'package:flutter/material.dart';
-import 'package:LFS/widget/atoms/FLogo.dart';
 
 class CPassword extends StatefulWidget {
   @override
@@ -17,14 +14,15 @@ class CPassword extends StatefulWidget {
 
 class _CPasswordState extends State<CPassword> {
   String password, passwordErr;
+  String passwordAgain, passwordAgainErr;
   String mail, mailErr;
   String code, codeErr;
   bool codeSent = false;
   bool verified = false;
   bool isButtonActive = false;
+  String title = "Verify Identity";
 
   handlePassword(value) {
-    print(value);
     setState(() {
       password = value;
     });
@@ -37,8 +35,21 @@ class _CPasswordState extends State<CPassword> {
           "Password not valid! Use AlphaNumeric with special symbols!";
   }
 
+  handlePasswordAgain(value) {
+    setState(() {
+      passwordAgain = value;
+    });
+    if (pwdValidator(value) && value == password) {
+      setState(() {
+        passwordAgainErr = null;
+      });
+    } else
+      setState(() {
+        passwordAgainErr = "Password do not match!";
+      });
+  }
+
   handleMail(value) {
-    print(value);
     setState(() {
       mail = value;
     });
@@ -71,16 +82,17 @@ class _CPasswordState extends State<CPassword> {
       isButtonActive = true;
     });
     sendActivationCode(mail).then((data) {
-      print(data);
       if (data['error'] == null) {
         setState(() {
           codeSent = true;
           isButtonActive = false;
+          title = "Enter Activation Code";
         });
-      } else
+      } else {
         setState(() {
           isButtonActive = false;
         });
+      }
     });
   }
 
@@ -94,28 +106,32 @@ class _CPasswordState extends State<CPassword> {
         setState(() {
           verified = true;
           isButtonActive = false;
+          title = "Change Password";
         });
-      } else
+      } else {
         setState(() {
           isButtonActive = false;
         });
+      }
     });
   }
 
   handleChangePassword() {
-    setState(() {
-      isButtonActive = true;
-    });
-    changePassword(code, mail, password).then((data) {
-      print(data);
-      if (data['error'] == null) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignInPage()));
-      }
+    if (pwdValidator(password) && password == passwordAgain) {
       setState(() {
-        isButtonActive = false;
+        isButtonActive = true;
       });
-    });
+      changePassword(code, mail, password).then((data) {
+        print(data);
+        if (data['error'] == null) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignInPage()));
+        }
+        setState(() {
+          isButtonActive = false;
+        });
+      });
+    }
   }
 
   @override
@@ -127,7 +143,7 @@ class _CPasswordState extends State<CPassword> {
             child: FAppbar(
               leadingChoice: false,
               search: false,
-              title: "Reset Password",
+              title: title,
             )),
         body: codeSent
             ? verified
@@ -136,6 +152,8 @@ class _CPasswordState extends State<CPassword> {
                     handlePassword: handlePassword,
                     isButtonActive: isButtonActive,
                     passwordErr: passwordErr,
+                    passwordAgainErr: passwordAgainErr,
+                    handlePasswordAgain: handlePasswordAgain,
                   )
                 : VerifyCode(
                     handleCode: handleCode,

@@ -3,15 +3,18 @@ import 'package:LFS/widget/atoms/PasswordForm.dart';
 import 'package:flutter/material.dart';
 
 class ChangePassword extends StatelessWidget {
-  final handlePassword, handleChangePassword;
-  final passwordErr, isButtonActive;
-  const ChangePassword(
-      {Key key,
-      this.handleChangePassword,
-      this.handlePassword,
-      this.isButtonActive,
-      this.passwordErr})
-      : super(key: key);
+  final handlePassword, handleChangePassword, handlePasswordAgain;
+  final passwordErr, isButtonActive, passwordAgainErr;
+
+  const ChangePassword({
+    Key key,
+    this.handleChangePassword,
+    this.handlePassword,
+    this.isButtonActive,
+    this.passwordErr,
+    this.handlePasswordAgain,
+    this.passwordAgainErr,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +35,8 @@ class ChangePassword extends StatelessWidget {
         ),
         PasswordForm(
           text: 'Password Again',
-          onChanged: handlePassword,
-          error: passwordErr,
+          onChanged: handlePasswordAgain,
+          error: passwordAgainErr,
           // icon: Icons.lock,
         ),
         Padding(
