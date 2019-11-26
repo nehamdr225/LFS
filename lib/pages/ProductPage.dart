@@ -28,7 +28,7 @@ class ProductsPage extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    childAspectRatio: 0.9,
+                    childAspectRatio: 0.83,
                   ),
                   itemCount: merchants.length + 1,
                   itemBuilder: (BuildContext context, int index) {

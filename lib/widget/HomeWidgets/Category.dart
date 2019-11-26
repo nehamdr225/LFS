@@ -36,7 +36,7 @@ class Category extends StatelessWidget {
               );
             },
             child: Container(
-                height: height,
+                height: 200,
                 width: width,
                 child: ListTile(
                   title: network != null

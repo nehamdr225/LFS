@@ -10,14 +10,20 @@ class BottomLoader extends StatefulWidget {
 }
 
 class _BottomLoaderState extends State<BottomLoader> {
+  String status = "success";
   @override
   Widget build(BuildContext context) {
     final result = Provider.of<MerchantsModel>(context).refresh();
-    print(result);
+    result.then((data) {
+      if (data != null)
+        setState(() {
+          status = data;
+        });
+    });
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(vertical: 5.0),
-      child: result != null && result == "done"
+      child: status == "done"
           ? Column(
               children: <Widget>[
                 Icon(

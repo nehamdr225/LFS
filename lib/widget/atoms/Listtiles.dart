@@ -34,7 +34,7 @@ class Listtiles extends StatelessWidget {
                   ),
                   contentPadding: EdgeInsets.all(2.0),
                   subtitle: Padding(
-                    padding: EdgeInsets.only(top: 18.0),
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       text,
                       textAlign: TextAlign.center,

@@ -27,7 +27,7 @@ class MerchantsPage extends StatelessWidget {
               ? <Widget>[
                   InfoNavBar(type: type, text: "Recommendations"),
                   Container(
-                    height: 120.0,
+                    height: 140.0,
                     width: 150.0,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,

@@ -74,17 +74,16 @@ class MerchantsModel extends ChangeNotifier {
   category(String cat) =>
       _merchants.where((card) => card["category"].contains(cat)).toList();
 
-  String refresh() {
+  refresh() async {
     if (maxCount != null && merchants.length < maxCount) {
       page = page + 1;
-      getMerchants(page).then((result) {
-        if (result['result'].length > 0) {
-          merchants = result['result'];
-          notifyListeners();
-          return "success";
-        }
-        return "done";
-      });
+      final res = await getMerchants(page);
+      if (res['result'].length > 0) {
+        merchants = res['result'];
+        notifyListeners();
+        return "success";
+      }
+      return "done";
     }
     return "done";
   }
