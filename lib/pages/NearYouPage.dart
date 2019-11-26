@@ -32,6 +32,7 @@ class _NearYouPageState extends State<NearYouPage> {
     // final screenHeight = MediaQuery.of(context).size.height;
     final merch = Provider.of<MerchantsModel>(context);
     List merchants = merch.category(widget.type);
+    print(widget.type);
 
     if (filtered.length == 0 && merchants.length > 0)
       merch.location(merchants).then((data) {
@@ -87,7 +88,7 @@ class _NearYouPageState extends State<NearYouPage> {
                 children: <Widget>[
                   // merchantErr != null
                   //     ? ConnError(error: merchantErr)
-                  ConnError()
+                  BottomLoader()
                 ],
               ));
   }

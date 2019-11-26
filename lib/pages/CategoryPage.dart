@@ -18,8 +18,8 @@ class CategoryPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          MerchantsPage(type: category["type"])),
+                      builder: (context) => MerchantsPage(
+                          type: category["type"], name: category["name"])),
                 );
               },
             ),

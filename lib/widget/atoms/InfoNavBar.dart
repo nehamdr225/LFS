@@ -7,7 +7,8 @@ class InfoNavBar extends StatelessWidget {
   final type;
   final text;
   final offerCard;
-  const InfoNavBar({Key key, this.type, this.text, this.offerCard:false}) : super(key: key);
+  const InfoNavBar({Key key, this.type, this.text, this.offerCard: false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
