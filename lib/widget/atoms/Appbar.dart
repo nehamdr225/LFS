@@ -17,7 +17,7 @@ class FAppbar extends StatelessWidget {
     this.searchBar,
     this.title,
     this.searchController,
-    this.id,
+    this.id, 
   }) : super(key: key);
 
   @override

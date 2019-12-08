@@ -6,7 +6,7 @@ import 'package:LFS/state/merchants.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
-  SearchPage({Key key}) : super(key: key);
+  SearchPage({Key key}) : super(key: key); 
 
   _SearchPageState createState() => _SearchPageState();
 }
